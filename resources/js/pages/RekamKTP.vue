@@ -18,7 +18,7 @@
         class="vee-form"
         @submit="daftar"
       >
-        <DataPelaporPemohon />
+        <DataPelaporPemohon :rekamKtp="rekamKtp" />
         <hr />
         <div class="form_baris">
           <h2>UPLOAD DATA PENDUKUNG</h2>
@@ -74,11 +74,18 @@
 <script>
 import daftar from "../mixins/daftar";
 export default {
+  data() {
+    return {
+      rekamKtp: true,
+    };
+  },
   mixins: [daftar],
   created() {
     let data = {
       ...this.schema,
-      lampiran2: "required|image|size:2048",
+      lampiran2: "file|image|size:2048",
+      ibu: "nama",
+      ayah: "nama",
     };
     this.schemaCurrent = data;
   },

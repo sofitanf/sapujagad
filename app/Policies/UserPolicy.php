@@ -2,7 +2,6 @@
 
 namespace App\Policies;
 
-use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,8 +14,8 @@ class UserPolicy
      *
      * @return void
      */
-    public function update(User $user)
+    public function admin()
     {
-        return Auth::user()->id === $user->id;
+        return Auth::user()->role === 'Admin';
     }
 }

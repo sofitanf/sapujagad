@@ -13,6 +13,7 @@ class UserController extends Controller
 { 
     public function index(User $user)
     {
+        $this->authorize('admin');
         return response()->json([
             'data' => $user->data()
         ]);
@@ -20,6 +21,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        $this->authorize('admin');
         $validator = Validator::make($request->all(), [
             'email' => 'unique:users',
             'username' => 'unique:users',
@@ -49,6 +51,8 @@ class UserController extends Controller
 
     public function update(Request $request)
     {
+        $this->authorize('admin');
+
         $validator = Validator::make($request->all(), [
             'email' => 'unique:users|email|required',
         ]);

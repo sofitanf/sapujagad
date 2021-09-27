@@ -242,6 +242,10 @@ export default {
       lampiran2: [],
       lampiran3: [],
       lampiran4: [],
+      label1: "",
+      label2: "",
+      label3: "",
+      label4: "",
     };
   },
   computed: {
@@ -254,38 +258,38 @@ export default {
     jam() {
       return this.$d(new Date(this.data.jadwal), "short", "id-ID");
     },
-    label1() {
-      if (
-        this.data.kategori === "Cetak KTP-El" ||
-        this.data.kategori === "Rekam KTP-El" ||
-        this.data.kategori === "AKTA"
-      )
-        return "Kartu Keluarga";
-      if (this.data.kategori === "KIA") return "AKTA";
-    },
-    label2() {
-      if (this.data.kategori === "Cetak KTP-El") return "Surat Kehilangan";
-      if (this.data.kategori === "Rekam KTP-El") return "Surat Permohonan";
-      if (this.data.kategori === "AKTA")
-        return "Surat Nikah Orang Tua (Lembar 1)";
-      if (this.data.kategori === "KIA") return "Pas Photo";
-    },
-    label3() {
-      if (this.data.kategori === "Cetak KTP-El") return "KTP Lama";
-      if (this.data.kategori === "Rekam KTP-El") return "F-1.01 (Lembar 1)";
-      if (this.data.kategori === "AKTA")
-        return "Surat Nikah Orang Tua (Lembar 2)";
-    },
-    label4() {
-      if (this.data.kategori === "Rekam KTP-El") return "F-1.01 (Lembar 2)";
-      if (this.data.kategori === "AKTA") return "Surat Kelahiran / SPTJM";
-    },
   },
   methods: {
     async fetchPengajuan() {
       await this.$store.dispatch("getDetailPengajuan", this.$route.params.id);
       this.form.jadwal = this.data.jadwal;
       this.form.catatan = this.data.catatan;
+
+      if (this.data.kategori === "Cetak KTP-El") {
+        this.label1 = "Kartu Keluarga";
+        this.label2 = "Surat Kehilangan";
+        this.label3 = "KTP Lama";
+      }
+
+      if (this.data.kategori === "Rekam KTP-El") {
+        this.label1 = "Kartu Keluarga";
+        this.label2 = "Surat Permohonan";
+        this.label3 = "F-1.01 (Lembar 1)";
+        this.label4 = "F-1.01 (Lembar 2)";
+      }
+
+      if (this.data.kategori === "KIA") {
+        this.label1 = "AKTA";
+        this.label2 = "Pas Photo";
+      }
+
+      if (this.data.kategori === "AKTA") {
+        this.label1 = "Kartu Keluarga";
+        this.label2 = "Surat Nikah Orang Tua (Lembar 1)";
+        this.label3 = "Surat Nikah Orang Tua (Lembar 2)";
+        this.label4 = "Surat Kelahiran / SPTJM";
+      }
+
       this.lampiran1.push(`/storage/pengajuan/${this.data.lampiran1}`);
       this.lampiran2.push(`/storage/pengajuan/${this.data?.lampiran2}`);
       this.lampiran3.push(`/storage/pengajuan/${this.data?.lampiran3}`);

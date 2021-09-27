@@ -15,6 +15,7 @@ import Password from "primevue/password";
 import FileUpload from "primevue/fileupload";
 import Image from "primevue/image";
 import Chart from "primevue/chart";
+import Sidebar from "primevue/sidebar";
 
 export default {
     install(app) {
@@ -35,5 +36,6 @@ export default {
         app.component("FileUpload", FileUpload);
         app.component("Image", Image);
         app.component("Chart", Chart);
+        app.component("Sidebar", Sidebar);
     },
 };

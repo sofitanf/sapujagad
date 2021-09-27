@@ -74,9 +74,9 @@ export default {
   created() {
     let data = {
       ...this.schema,
-      lampiran2: "required|image|size:2048",
-      lampiran3: "required|image|size:2048",
-      lampiran4: "required|image|size:2048",
+      lampiran2: "file|image|size:2048",
+      lampiran3: "file|image|size:2048",
+      lampiran4: "file|image|size:2048",
     };
     this.schemaCurrent = data;
   },

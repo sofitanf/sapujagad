@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CekPengajuanResource;
+use App\Mail\PostMail;
 use App\Models\Pengajuan;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use PDF;
@@ -91,6 +92,13 @@ class PengajuanController extends Controller
         $this->upload($request, 'lampiran2', $pengajuan);
         $this->upload($request, 'lampiran3', $pengajuan);
         $this->upload($request, 'lampiran4', $pengajuan);
+
+        $emails = DB::table('users')
+                    ->select('email')
+                    ->get();
+
+        Mail::to($emails)
+        ->send(new PostMail());
 
         return response()->json([
             'message' => 'Pengajuan berhasil dibuat',

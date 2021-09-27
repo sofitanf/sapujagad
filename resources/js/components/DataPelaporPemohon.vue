@@ -66,6 +66,9 @@
     <vee-field type="text" name="nama" />
     <error-message name="nama" class="error" />
   </div>
+  <div v-if="rekamKtp">
+    <DataRekamKTP />
+  </div>
   <div class="form_baris">
     <label for="">JENIS KECACATAN</label>
     <p class="form_catatan">Abaikan jika pemohon tidak memiliki kecacatan</p>
@@ -131,7 +134,10 @@
   </div>
 </template>
 <script>
+import DataRekamKTP from "../components/DataRekamKTP.vue";
 export default {
+  props: ["rekamKtp"],
+  components: { DataRekamKTP },
   data() {
     return {
       kecamatan: [],

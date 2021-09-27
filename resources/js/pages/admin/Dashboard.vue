@@ -47,33 +47,6 @@
       </div>
     </div>
 
-    <!-- <div v-for="(data, i) in jadwalIndex" :key="i" class="col-12 lg:col-6">
-      <div class="card flex flex-column">
-        <span class="text-2xl mb-3">{{ data.jenis }}</span>
-        <DataTable
-          :loading="loading"
-          responsiveLayout="scroll"
-          :value="data.data"
-        >
-          <template #empty> Tidak ada jadwal pelayanan. </template>
-          <template #loading> Loading data. Please wait. </template>
-          <Column field="index" header="#" :sortable="true"></Column>
-          <Column field="jadwal" header="Pukul (WIB)">
-            <template #body="{ data }">
-              <p>{{ $d(new Date(data.jadwal), "short", "id-ID") }}</p>
-            </template>
-          </Column>
-          <Column field="alamat" header="Alamat">
-            <template #body="{ data }">
-              <p>
-                {{ data.alamat }}, {{ data.nama_kecamatan }},
-                {{ data.nama_kelurahan }}
-              </p>
-            </template>
-          </Column>
-        </DataTable>
-      </div>
-    </div> -->
     <div class="col-12">
       <div class="card">
         <FullCalendar :options="calendarOptions" />
@@ -224,7 +197,6 @@ export default {
     this.fetchTotalAll();
     this.fetchKategori();
     this.calendarOptions.events = this.jadwal;
-    console.log(this.jadwal);
     axios.get("/dashboard/chart").then(({ data }) => {
       let bulanChart = [];
       let cetakKtp = [];

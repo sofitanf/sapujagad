@@ -9,12 +9,6 @@ const router = createRouter({
 });
 
 router.beforeEach(async(to, from, next) => {
-    // if (
-    //     to.matched.some((record) => record.meta.requiresAuth) &&
-    //     !store.getters.isLoggedIn
-    // ) {
-    //     next("/login");
-    // }
     if (
         to.matched.some((record) => record.meta.login) &&
         store.getters.isLoggedIn

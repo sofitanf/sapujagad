@@ -6,16 +6,16 @@ export default {
     data() {
         return {
             schema: {
-                nik_pelapor: "required|numeric|nik_min:16|nik_max:16|min_value:3326019999999999|max_value:3326199999999999",
-                nama_pelapor: "required|alpha_spaces",
-                no_wa: "required|numeric",
-                nik: "required|numeric|nik_min:16|nik_max:16",
-                nama: "required|alpha_spaces",
+                nik_pelapor: "nik|nik_number|nik_min:16|nik_max:16|min_value:3326019999999999|max_value:3326199999999999",
+                nama_pelapor: "nama",
+                no_wa: "no_wa|no_wa_number",
+                nik: "nik|nik_number|nik_min:16|nik_max:16|min_value:3326019999999999|max_value:3326199999999999",
+                nama: "nama|nama_regex:/[()a-zA-Z ?,/.-]/",
                 kecamatan: "required",
-                hubungan: "required",
+                hubungan: "hubungan",
                 kelurahan: "required",
                 alamat: "required",
-                lampiran1: "required|image|size:2048",
+                lampiran1: "file|image|size:2048",
                 lampiran2: "image|size:2048",
                 lampiran3: "image|size:2048",
                 lampiran4: "image|size:2048",
@@ -85,8 +85,5 @@ export default {
 
             resetForm();
         },
-    },
-    created() {
-        console.log(this.akta);
     },
 };

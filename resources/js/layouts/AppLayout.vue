@@ -22,14 +22,12 @@
             >LIHAT PENGAJUAN</router-link
           >
         </div>
-        <i @click.prevent="toggleSidebar" class="fas fa-bars icon_nav"></i>
+        <i @click.prevent="toggleSidebar" class="pi pi-bars icon_nav icon"></i>
       </div>
     </div>
-    <router-view />
-    <!-- <transition name="fade" mode="out-in">
-        <component :is="Component"> </component>
-      </transition> -->
-    <!-- </router-view> -->
+    <transition name="fade" mode="out-in">
+      <router-view />
+    </transition>
     <div class="footer">
       <div class="footer_deskripsi">
         <h1 class="footer_judul">APLIKASI SAPU JAGAD</h1>
@@ -62,7 +60,7 @@
   </div>
   <div v-if="sidebarOpen" class="sidebar">
     <div class="align-right">
-      <i @click.prevent="toggleSidebar" class="fas fa-times icon_nav"></i>
+      <i @click.prevent="toggleSidebar" class="pi pi-times icon_nav icon"></i>
     </div>
     <div class="col">
       <router-link
@@ -112,5 +110,14 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
+.icon {
+  display: none;
+  font-size: 2.5rem;
+}
+@media screen and (max-width: 775px) {
+  .icon {
+    display: block;
+  }
+}
 </style>
