@@ -47,11 +47,12 @@ const routes = [{
     {
         path: "/admin",
         component: AdminLayout,
-        meta: {},
+
         children: [{
                 path: "/admin/dashboard",
                 component: Dashboard,
                 name: "Dashboard",
+                meta: { auth: true },
             },
             {
                 path: "/admin/pengajuan",

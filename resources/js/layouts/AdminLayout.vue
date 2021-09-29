@@ -185,7 +185,9 @@ export default {
     AppFooter: AppFooter,
   },
   created() {
-    if (!this.$store.getters.isLoggedIn) this.$router.push("/login");
+    if (!this.$store.getters.isLoggedIn) {
+      this.$router.push("/login");
+    }
   },
 };
 </script>

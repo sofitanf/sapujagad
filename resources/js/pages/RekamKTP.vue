@@ -84,8 +84,8 @@ export default {
     let data = {
       ...this.schema,
       lampiran2: "file|image|size:2048",
-      ibu: "nama",
-      ayah: "nama",
+      ibu: "nama|nama_alpha",
+      ayah: "nama|nama_alpha",
     };
     this.schemaCurrent = data;
   },

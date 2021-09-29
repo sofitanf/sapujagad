@@ -7,10 +7,10 @@ export default {
         return {
             schema: {
                 nik_pelapor: "nik|nik_number|nik_min:16|nik_max:16|min_value:3326019999999999|max_value:3326199999999999",
-                nama_pelapor: "nama",
+                nama_pelapor: "nama|nama_alpha",
                 no_wa: "no_wa|no_wa_number",
                 nik: "nik|nik_number|nik_min:16|nik_max:16|min_value:3326019999999999|max_value:3326199999999999",
-                nama: "nama|nama_regex:/[()a-zA-Z ?,/.-]/",
+                nama: "nama|nama_alpha",
                 kecamatan: "required",
                 hubungan: "hubungan",
                 kelurahan: "required",

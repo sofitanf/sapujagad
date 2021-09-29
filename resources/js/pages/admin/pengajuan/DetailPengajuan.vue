@@ -6,140 +6,153 @@
     <div class="card grid p-fluid">
       <h4 class="col-12">Data Pengajuan</h4>
       <div class="col-12 md:col-6">
-        <div class="flex">
-          <div>
-            <p>Tanggal Pengajuan</p>
-            <p>Kategori</p>
-            <p>Diupdate Oleh</p>
-          </div>
-          <div class="mr-2">
-            <p>:</p>
-            <p>:</p>
-            <p>:</p>
-          </div>
-          <div>
-            <p v-if="data.created_at">
+        <table>
+          <tr>
+            <td>Tanggal Pengajuan</td>
+            <td>:</td>
+            <td v-if="data.created_at">
               {{ $d(new Date(data.created_at), "long", "id-ID") }}
-            </p>
-            <p>{{ data.kategori }}</p>
-            <p v-if="data.diupdate">
-              {{ data.diupdate }}
-            </p>
-          </div>
-        </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Kategori</td>
+            <td>:</td>
+            <td>{{ data.kategori }}</td>
+          </tr>
+          <tr>
+            <td>Diupdate oleh</td>
+            <td>:</td>
+            <td v-if="data.diupdate">
+              {{ data.diupdate }} ({{ data.bagian }})
+            </td>
+          </tr>
+        </table>
       </div>
       <div class="col-12 md:col-6">
-        <div class="flex">
-          <div>
-            <p>Tanggal Pelayanan</p>
-            <p>Jam Pelayanan</p>
-            <p>Status</p>
-          </div>
-          <div class="mr-2">
-            <p>:</p>
-            <p>:</p>
-            <p>:</p>
-          </div>
-          <div>
-            <p v-if="data.jadwal">
+        <table>
+          <tr>
+            <td>Tanggal Pelayanan</td>
+            <td>:</td>
+            <td v-if="data.jadwal">
               {{ jadwal }}
-            </p>
-            <p v-if="data.jadwal">
-              {{ jam }}
-            </p>
-            <p>{{ data.status }}</p>
-          </div>
-        </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Jam Pelayanan</td>
+            <td>:</td>
+            <td v-if="data.jadwal">{{ jam }}</td>
+          </tr>
+          <tr>
+            <td>Status</td>
+            <td>:</td>
+            <td>{{ data.status }}</td>
+          </tr>
+        </table>
       </div>
       <div class="col-12 md:col-4">
         <Divider align="left">
           <span>Pelapor</span>
         </Divider>
-        <div class="flex">
-          <div>
-            <p>NIK</p>
-            <p>Nama</p>
-            <p>Nomor WA</p>
-            <p>Hubungan Thd Pemohon</p>
-          </div>
-          <div class="mr-2">
-            <p>:</p>
-            <p>:</p>
-            <p>:</p>
-            <p>:</p>
-          </div>
-          <div>
-            <p>{{ data.nik_pelapor }}</p>
-            <p>{{ data.nama_pelapor }}</p>
-            <p v-if="data.no_wa">
+        <table>
+          <tr>
+            <td>NIK</td>
+            <td>:</td>
+            <td>
+              {{ data.nik_pelapor }}
+            </td>
+          </tr>
+          <tr>
+            <td>Nama</td>
+            <td>:</td>
+            <td>
+              {{ data.nama_pelapor }}
+            </td>
+          </tr>
+          <tr>
+            <td>Nomor WA</td>
+            <td>:</td>
+            <td>
               {{ data.no_wa }}
-            </p>
-            <p v-if="data.hubungan">
+            </td>
+          </tr>
+          <tr>
+            <td>Hubungan Thd Pemohon</td>
+            <td>:</td>
+            <td>
               {{ data.hubungan }}
-            </p>
-          </div>
-        </div>
+            </td>
+          </tr>
+        </table>
       </div>
       <div class="col-12 md:col-4">
         <Divider align="left">
           <span>Pemohon</span>
         </Divider>
-        <div class="flex">
-          <div>
-            <p>NIK</p>
-            <p>Nama</p>
-            <p>Ibu</p>
-            <p>Ayah</p>
-            <p>Jenis Kecacatan</p>
-            <p>Lanjut Usia</p>
-          </div>
-          <div class="mr-2">
-            <p>:</p>
-            <p>:</p>
-            <p>:</p>
-            <p>:</p>
-            <p>:</p>
-            <p>:</p>
-          </div>
-          <div>
-            <p>{{ data.nik }}</p>
-            <p>{{ data.nama }}</p>
-            <p v-if="data.ibu">
+        <table>
+          <tr>
+            <td>NIK</td>
+            <td>:</td>
+            <td>
+              {{ data.nik }}
+            </td>
+          </tr>
+          <tr>
+            <td>Nama</td>
+            <td>:</td>
+            <td>
+              {{ data.nama }}
+            </td>
+          </tr>
+          <tr v-if="data.kategori === 'Rekam KTP-El'">
+            <td>Ibu</td>
+            <td>:</td>
+            <td>
               {{ data.ibu }}
-            </p>
-            <p v-if="data.ayah">
+            </td>
+          </tr>
+          <tr v-if="data.kategori === 'Rekam KTP-El'">
+            <td>Ayah</td>
+            <td>:</td>
+            <td>
               {{ data.ayah }}
-            </p>
-            <p>
+            </td>
+          </tr>
+          <tr>
+            <td>Jenis Kecacatan</td>
+            <td>:</td>
+            <td>
               {{ data.kecacatan }}
-            </p>
-            <p>
-              {{ data.lansia }}
-            </p>
-          </div>
-        </div>
+            </td>
+          </tr>
+        </table>
       </div>
       <div class="col-12 md:col-4">
         <Divider align="left">
           <span>Tempat Pelayanan</span>
         </Divider>
-        <div class="flex">
-          <div>
-            <p>Alamat</p>
-            <p>Desa/Kelurahan</p>
-            <p>Kecamatan</p>
-          </div>
-          <div class="mr-2">
-            <p>:</p>
-            <p>:</p>
-            <p>:</p>
-          </div>
-          <div>
-            <p>{{ data.alamat }}</p>
-            <p>{{ data.nama_kelurahan }}</p>
-            <p>{{ data.nama_kecamatan }}</p>
-          </div>
-        </div>
+        <table>
+          <tr>
+            <td>Alamat</td>
+            <td>:</td>
+            <td>
+              {{ data.alamat }}
+            </td>
+          </tr>
+          <tr>
+            <td>Desa/Kelurahan</td>
+            <td>:</td>
+            <td>
+              {{ data.nama_kelurahan }}
+            </td>
+          </tr>
+          <tr>
+            <td>Kecamatan</td>
+            <td>:</td>
+            <td>
+              {{ data.nama_kecamatan }}
+            </td>
+          </tr>
+        </table>
       </div>
       <div class="col-12">
         <div class="flex">
@@ -195,7 +208,9 @@
             class="w-full h-3rem"
             required
           >
-            <option value="">-- Pilih Status Pengajuan --</option>
+            <option value="" selected disable hidden>
+              Pilih Status Pengajuan
+            </option>
             <option value="Diproses">Diproses</option>
             <option value="Selesai">Selesai</option>
             <option value="Ditolak">Ditolak</option>
@@ -216,7 +231,7 @@
           <label for="">Catatan</label>
           <textarea v-model="form.catatan" name="catatan" rows="5"></textarea>
         </div>
-        <Button type="submit" label="Update" class="p-button-raised" />
+        <Button type="submit" label="Update" class="p-button-raised w-10rem" />
       </form>
     </div>
   </div>

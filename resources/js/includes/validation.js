@@ -27,7 +27,7 @@ export default {
 
         app.component("ErrorMessage", ErrorMessage);
 
-        defineRule("nama_regex", regex);
+        defineRule("regex", regex);
         defineRule("required", required);
         defineRule("nik", required);
         defineRule("nik_number", numeric);
@@ -39,7 +39,7 @@ export default {
         defineRule("nik_min", min);
         defineRule("nik_max", max);
         defineRule("numeric", numeric);
-        defineRule("alpha_spaces", alpha_spaces);
+        defineRule("nama_alpha", alpha_spaces);
         defineRule("min", min);
         defineRule("max", max);
         defineRule("min_value", min_value);
@@ -52,7 +52,6 @@ export default {
         configure({
             generateMessage: (ctx) => {
                 const messages = {
-                    nama_regex: "Nama harus berupa huruf",
                     nik: "NIK harus diisi",
                     nik_number: "NIK harus berupa angka",
                     nama: "Nama harus diisi",
@@ -62,7 +61,7 @@ export default {
                     file: "File harus diisi",
                     required: `${ctx.field} harus diisi`,
                     numeric: `${ctx.field} harus berupa angka`,
-                    alpha_spaces: `${ctx.field} harus berupa huruf`,
+                    nama_alpha: "Nama harus berupa huruf",
                     min: `${ctx.field} terlalu pendek`,
                     max: `${ctx.field} terlalu panjang`,
                     email: `${ctx.field} tidak valid`,

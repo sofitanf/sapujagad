@@ -73,7 +73,7 @@
     <label for="">JENIS KECACATAN</label>
     <p class="form_catatan">Abaikan jika pemohon tidak memiliki kecacatan</p>
     <vee-field name="kecacatan" id="kecacatan" as="select" class="select">
-      <option value="">-- pilih --</option>
+      <option value="" selected disable hidden>Pilih</option>
       <option value="Fisik">Fisik</option>
       <option value="Netra">Netra</option>
       <option value="Rungu">Rungu</option>
@@ -111,6 +111,7 @@
       as="select"
       class="select"
     >
+      <option value="" selected disable hidden>Pilih Kecamatan</option>
       <option v-for="data in kecamatan" :key="data.id" :value="data.id">
         {{ data.nama }}
       </option>
@@ -118,8 +119,9 @@
     <error-message name="kecamatan" class="error" />
   </div>
   <div class="form_baris">
-    <label for="">DESA</label>
+    <label for="">KELURAHAN/DESA</label>
     <vee-field name="kelurahan" as="select" class="select">
+      <option value="" selected disable hidden>Pilih Kelurahan/Desa</option>
       <option v-for="data in kelurahan" :key="data.id" :value="data.id">
         {{ data.nama }}
       </option>

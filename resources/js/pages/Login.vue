@@ -61,8 +61,8 @@ export default {
     async login(values) {
       await this.$store
         .dispatch("login", values)
-        .then((res) => {
-          this.$router.push("/admin/dashboard");
+        .then(() => {
+          this.$router.go("/admin/dashboard");
         })
         .catch((error) => {
           this.$toast.add({
