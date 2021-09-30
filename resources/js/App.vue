@@ -25,10 +25,6 @@
   gap: 2rem;
 }
 
-.form_gambar {
-  width: 45rem;
-}
-
 .form_baris {
   display: flex;
   flex-direction: column;
@@ -37,17 +33,6 @@
 
 .form_catatan {
   color: var(--color-blue);
-}
-
-.form_pernyataan {
-  display: flex;
-  gap: 1rem;
-  width: 45rem;
-}
-
-.form_peringatan {
-  width: 45rem;
-  color: red;
 }
 
 .form_kirim {
@@ -63,10 +48,6 @@
 
 .form_file {
   width: 30rem;
-}
-
-.form_judul {
-  width: 45rem;
 }
 
 .vee-form {
