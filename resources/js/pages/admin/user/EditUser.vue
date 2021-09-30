@@ -41,8 +41,9 @@
             <div class="avatar flex flex-column justify-content-start">
               <Image
                 :src="
-                  `/storage/avatar/${user?.avatar}` ||
-                  '/storage/avatar/avatar.png'
+                  user.avatar
+                    ? `/storage/avatar/${user.avatar}`
+                    : '/storage/avatar/avatar.png'
                 "
                 alt="Image"
                 width="150"

@@ -66,6 +66,19 @@ class PengajuanController extends Controller
 
     public function create(Request $request)
     {
+        $this->validate($request,[
+            'nik' => 'numeric|digits:16',
+            'nik_pelapor' => 'numeric|digits:16',
+            'nama' => 'regex:/^[\pL\s\-]+$/u',
+            'nama_pelapor' => 'regex:/^[\pL\s\-]+$/u',
+            'ibu' => 'regex:/^[\pL\s\-]+$/u',
+            'ayah' => 'regex:/^[\pL\s\-]+$/u',
+			'lampiran1' => 'required',
+            'hubungan' => 'required',
+            'no_wa' => 'numeric',
+            'g-recaptcha-response' => 'required|captcha'
+        ]);
+
         $phone = substr($request->no_wa, 1);
 
         $pengajuan = Pengajuan::create([

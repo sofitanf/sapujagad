@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/pengajuan/total', [PengajuanController::class, 'total']);
 Route::get('/pengajuan/cek', [PengajuanController::class, 'cekPengajuan']);
-Route::post('/pengajuan', [PengajuanController::class, 'create'])->middleware('optimizeImages');
+Route::post('/pengajuan', [PengajuanController::class, 'create']);
 Route::get('/kecamatan', KecamatanController::class);
 Route::get('/kelurahan/{id}', KelurahanController::class);
 

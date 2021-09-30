@@ -12,9 +12,11 @@
       Sebelum klik tombol "KIRIM" pastikan pengisian form sudah sesuai dengan
       persyaratan
     </p>
+    <vee-field hidden name="g-recaptcha-response" />
     <div class="align-center">
       <button :disabled="submitLoading" type="submit" class="button">
-        KIRIM
+        <i v-if="submitLoading" class="pi pi-spin pi-spinner"></i>
+        <p v-else>KIRIM</p>
       </button>
     </div>
   </div>
@@ -33,5 +35,8 @@ export default {
 .text-left {
   display: flex;
   align-items: flex-start;
+}
+i.pi.pi-spin.pi-spinner {
+  font-size: 2rem;
 }
 </style>

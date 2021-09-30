@@ -54,6 +54,11 @@ export default {
         emailEdit(state) {
             return state.emailEdit;
         },
+        avatar(state) {
+            state.user.avatar ?
+                `/storage/avatar/${state.user.avatar}` :
+                "/storage/avatar/avatar.png";
+        },
     },
     actions: {
         async login({ commit, dispatch }, payload) {

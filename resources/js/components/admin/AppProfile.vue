@@ -3,7 +3,9 @@
     <div>
       <Avatar
         :image="
-          `/storage/avatar/${user?.avatar}` || '/storage/avatar/avatar.png'
+          user.avatar
+            ? `/storage/avatar/${user.avatar}`
+            : '/storage/avatar/avatar.png'
         "
         size="xlarge"
         shape="circle"

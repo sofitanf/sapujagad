@@ -64,13 +64,20 @@ export default {
             this.setLampiran(e, 4);
         },
         async daftar(values, { resetForm }) {
+            this.submitLoading = true;
             values.lampiran1 = this.fileLampiran1;
             values.lampiran2 = this.fileLampiran2;
             values.lampiran3 = this.fileLampiran3;
             values.lampiran4 = this.fileLampiran4;
 
-            console.log(values);
+            await this.$recaptchaLoaded();
+
+            const token = await this.$recaptcha("register");
+            values["g-recaptcha-response"] = token;
+
             await this.$store.dispatch("addPengajuan", values).then(() => {
+                this.submitLoading = false;
+
                 setTimeout(() => {
                     window.scrollTo(0, 0);
                 }, 1000);

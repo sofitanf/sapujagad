@@ -25,9 +25,11 @@
         <i @click.prevent="toggleSidebar" class="pi pi-bars icon_nav icon"></i>
       </div>
     </div>
-    <transition name="fade" mode="out-in">
-      <router-view />
-    </transition>
+    <router-view v-slot="{ Component }">
+      <transition name="fade" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
     <div class="footer">
       <div class="footer_deskripsi">
         <h1 class="footer_judul">APLIKASI SAPU JAGAD</h1>

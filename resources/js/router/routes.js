@@ -1,94 +1,87 @@
-import Home from "../pages/Home.vue";
-import AppLayout from "../layouts/AppLayout.vue";
-import AdminLayout from "../layouts/AdminLayout.vue";
-import Login from "../pages/Login.vue";
-import LihatPengajuan from "../pages/LihatPengajuan.vue";
-import CetakKTP from "../pages/CetakKTP.vue";
-import RekamKTP from "../pages/RekamKTP.vue";
-import KIA from "../pages/KIA.vue";
-import Akta from "../pages/Akta.vue";
-import Dashboard from "../pages/admin/Dashboard.vue";
-import Pengajuan from "../pages/admin/pengajuan/Pengajuan.vue";
-import DetailPengajuan from "../pages/admin/pengajuan/DetailPengajuan.vue";
-import User from "../pages/admin/user/User.vue";
-import CreateUser from "../pages/admin/user/CreateUser.vue";
-import EditUser from "../pages/admin/user/EditUser.vue";
-
 const routes = [{
         path: "/",
-        component: AppLayout,
+        component: () =>
+            import ("../layouts/AppLayout.vue"),
         children: [{
                 path: "",
-                component: Home,
+                component: () =>
+                    import ("../pages/Home.vue"),
             },
             {
                 path: "lihat-pengajuan",
                 name: "lihat-pengajuan",
-                component: LihatPengajuan,
+                component: () =>
+                    import ("../pages/LihatPengajuan.vue"),
             },
             {
                 path: "cetak-ktp-el",
-                component: CetakKTP,
+                component: () =>
+                    import ("../pages/CetakKTP.vue"),
             },
             {
                 path: "rekam-ktp-el",
-                component: RekamKTP,
+                component: () =>
+                    import ("../pages/RekamKTP.vue"),
             },
             {
                 path: "kia",
-                component: KIA,
+                component: () =>
+                    import ("../pages/KIA.vue"),
             },
             {
                 path: "akta",
-                component: Akta,
+                component: () =>
+                    import ("../pages/Akta.vue"),
             },
         ],
     },
     {
         path: "/admin",
-        component: AdminLayout,
-
+        component: () =>
+            import ("../layouts/AdminLayout.vue"),
         children: [{
                 path: "/admin/dashboard",
-                component: Dashboard,
-                name: "Dashboard",
-                meta: { auth: true },
+                component: () =>
+                    import ("../pages/admin/Dashboard.vue"),
             },
             {
                 path: "/admin/pengajuan",
-                component: Pengajuan,
+                component: () =>
+                    import ("../pages/admin/pengajuan/Pengajuan.vue"),
             },
             {
                 path: "/admin/pengajuan/:id",
-                component: DetailPengajuan,
+                component: () =>
+                    import ("../pages/admin/pengajuan/DetailPengajuan.vue"),
                 name: "admin.pengajuan",
             },
             {
                 path: "/admin/user",
-                component: User,
+                component: () =>
+                    import ("../pages/admin/user/User.vue"),
                 meta: {
                     admin: true,
                 },
             },
             {
                 path: "/admin/create-user",
-                component: CreateUser,
+                component: () =>
+                    import ("../pages/admin/user/CreateUser.vue"),
                 meta: {
                     admin: true,
                 },
             },
             {
                 path: "/admin/edit-user",
-                component: EditUser,
-                meta: {
-                    admin: true,
-                },
+                component: () =>
+                    import ("../pages/admin/user/EditUser.vue"),
             },
         ],
     },
     {
         path: "/login",
-        component: Login,
+        component: () =>
+            import ("../pages/Login.vue"),
         name: "Login",
         meta: {
             login: true,
