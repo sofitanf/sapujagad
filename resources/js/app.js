@@ -48,7 +48,6 @@ store
         app.use(VueViewer);
         app.use(VueReCaptcha, {
             siteKey: process.env.MIX_SITEKEY,
-            badge: "bottomleft",
         });
         app.use(VCalendar);
         app.use(validation);

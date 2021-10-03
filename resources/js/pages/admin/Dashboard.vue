@@ -96,7 +96,6 @@ export default {
   data() {
     return {
       data: {},
-      jadwal: [],
       kecamatan: [],
       totalAll: null,
       kategori: {},
@@ -150,15 +149,6 @@ export default {
         index: i + 1,
       }));
     },
-    jadwalIndex() {
-      return this.jadwal.map((items) => ({
-        jenis: items.jenis,
-        data: items.data.map((items, i) => ({
-          ...items,
-          index: i + 1,
-        })),
-      }));
-    },
   },
   methods: {
     async fetchTotal() {
@@ -196,7 +186,6 @@ export default {
     this.fetchKecamatan();
     this.fetchTotalAll();
     this.fetchKategori();
-    this.calendarOptions.events = this.jadwal;
     axios.get("/dashboard/chart").then(({ data }) => {
       let bulanChart = [];
       let cetakKtp = [];

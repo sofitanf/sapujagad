@@ -11688,7 +11688,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       data: {},
-      jadwal: [],
       kecamatan: [],
       totalAll: null,
       kategori: {},
@@ -11741,18 +11740,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return _objectSpread(_objectSpread({}, items), {}, {
           index: i + 1
         });
-      });
-    },
-    jadwalIndex: function jadwalIndex() {
-      return this.jadwal.map(function (items) {
-        return {
-          jenis: items.jenis,
-          data: items.data.map(function (items, i) {
-            return _objectSpread(_objectSpread({}, items), {}, {
-              index: i + 1
-            });
-          })
-        };
       });
     }
   },
@@ -11878,7 +11865,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.fetchKecamatan();
     this.fetchTotalAll();
     this.fetchKategori();
-    this.calendarOptions.events = this.jadwal;
     axios.get("/dashboard/chart").then(function (_ref6) {
       var data = _ref6.data;
       var bulanChart = [];

@@ -47,28 +47,6 @@ class Dashboard extends Model
         return $this->status('diproses');
     }
 
-    // private function jadwal($data)
-    // {
-    //     return DB::table('pengajuan')
-    //     ->join('kecamatan', 'pengajuan.kecamatan', '=', 'kecamatan.id')
-    //     ->join('kelurahan', 'pengajuan.kelurahan', '=', 'kelurahan.id')
-    //     ->where('pengajuan.status', 'diproses')
-    //     ->whereDate('pengajuan.jadwal', $data)
-    //     ->orderBy('pengajuan.jadwal', 'ASC')
-    //     ->select('pengajuan.id','pengajuan.alamat', 'kecamatan.nama_kecamatan', 'kelurahan.nama_kelurahan','pengajuan.jadwal')
-    //     ->get();
-    // }
-
-    // public function jadwal_hari_ini()
-    // {
-    //     return $this->jadwal(date('Y-m-d'));
-    // }
-
-    // public function jadwal_besok() 
-    // {
-    //     return $this->jadwal(Carbon::tomorrow());
-    // }
-
     public function jadwal()
     {
         return DB::table('pengajuan')

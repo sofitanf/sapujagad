@@ -52,6 +52,7 @@ export default {
         configure({
             generateMessage: (ctx) => {
                 const messages = {
+                    regex: "Nama tidak valid",
                     nik: "NIK harus diisi",
                     nik_number: "NIK harus berupa angka",
                     nama: "Nama harus diisi",

@@ -942,10 +942,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       schema: {
         nik_pelapor: "nik|nik_number|nik_min:16|nik_max:16|min_value:3326019999999999|max_value:3326199999999999",
-        nama_pelapor: "nama|nama_alpha",
+        nama_pelapor: {
+          nama: true,
+          regex: /^[A-Za-z .']+$/
+        },
         no_wa: "no_wa|no_wa_number",
         nik: "nik|nik_number|nik_min:16|nik_max:16|min_value:3326019999999999|max_value:3326199999999999",
-        nama: "nama|nama_alpha",
+        nama: {
+          nama: true,
+          regex: /^[A-Za-z .']+$/
+        },
         kecamatan: "required",
         hubungan: "hubungan",
         kelurahan: "required",

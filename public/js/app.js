@@ -26325,8 +26325,7 @@ _store__WEBPACK_IMPORTED_MODULE_18__["default"].dispatch("getUser", token).then(
   app.use(_store__WEBPACK_IMPORTED_MODULE_18__["default"]);
   app.use(v_viewer__WEBPACK_IMPORTED_MODULE_9__["default"]);
   app.use(vue_recaptcha_v3__WEBPACK_IMPORTED_MODULE_10__.VueReCaptcha, {
-    siteKey: "6LczoJ0cAAAAAIAm4JYpMXjwZazPUdpE366B-hUX",
-    badge: "bottomleft"
+    siteKey: "6LczoJ0cAAAAAIAm4JYpMXjwZazPUdpE366B-hUX"
   });
   app.use(v_calendar__WEBPACK_IMPORTED_MODULE_12__["default"]);
   app.use(_includes_validation__WEBPACK_IMPORTED_MODULE_13__["default"]);
@@ -26608,6 +26607,7 @@ __webpack_require__.r(__webpack_exports__);
     (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.configure)({
       generateMessage: function generateMessage(ctx) {
         var messages = {
+          regex: "Nama tidak valid",
           nik: "NIK harus diisi",
           nik_number: "NIK harus berupa angka",
           nama: "Nama harus diisi",

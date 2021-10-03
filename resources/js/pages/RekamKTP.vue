@@ -84,8 +84,8 @@ export default {
     let data = {
       ...this.schema,
       lampiran2: "file|image|size:2048",
-      ibu: "nama|nama_alpha",
-      ayah: "nama|nama_alpha",
+      ibu: { nama: true, regex: /^[A-Za-z .']+$/ },
+      ayah: { nama: true, regex: /^[A-Za-z .']+$/ },
     };
     this.schemaCurrent = data;
   },
