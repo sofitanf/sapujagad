@@ -7,10 +7,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
-    use  Notifiable, HasApiTokens, HasFactory;
+    use  Notifiable, HasApiTokens, HasFactory, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -24,6 +26,7 @@ class User extends Authenticatable
     ];
 
     protected $table = 'users';
+    protected $dates = ['deleted_at'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -43,11 +46,34 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function masyarakat()
+     {
+         return $this->hasOne(Masyarakat::class);
+     }
+
     public function data()
     {
-        return DB::table('users')
-            ->select('nama', 'username', 'role', 'id')
-            ->where('id', '!=', auth()->id()) 
-            ->get();
+        return User::All()->where('role', '!=', 'Masyarakat')->except(Auth::id());
+        // return DB::table('users')
+        //     ->join('administrator', 'users.id' ,'=', 'administrator.user_id')
+        //     ->select('users.id', 'users.role', 'users.email', 'administrator.nama')
+        //     ->where('users.id', '!=', Auth::id())
+        //     ->where('users.role', '!=', 'Masyarakat')
+        //     ->get();
+    }
+
+    public function deleteUser($id)
+    {
+        return User::onlyTrashed()->where('id',$id)->forceDelete();
+    }
+
+    public function trash()
+    {
+    	return User::onlyTrashed()->get();
+    }
+
+    public function aktif($id)
+    {
+        return User::withTrashed()->find($id)->restore();
     }
 }

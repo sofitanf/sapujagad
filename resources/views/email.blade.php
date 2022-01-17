@@ -8,7 +8,7 @@
 </head> 
 <body>
     <h4>Hai, Petugas </h4>
-    <p>Ada pengajuan baru di aplikasi Sapu Jagad. Klik Link {{url('https://sapujagad.pekalongankab.go.id/pengajuan')}}
+    <p>Ada pengajuan baru di aplikasi Sapu Jagad. Klik Link {{url('https://sapujagad.pekalongankab.go.id/admin/pengajuan')}}
     </p>
 </body>
 </html>

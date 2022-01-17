@@ -63,12 +63,12 @@
       <tr>
         <td width="60">Pelapor</td>
         <td width="10">:</td>
-        <td>{{$pelapor}}</td>
+        <td>{{$pelapor}} Orang</td>
       </tr>
       <tr>
         <td>Pemohon</td>
         <td>:</td>
-        <td>{{$pemohon}}</td>
+        <td>{{$pemohon}} Orang</td>
       </tr>
     </table>
 </body>

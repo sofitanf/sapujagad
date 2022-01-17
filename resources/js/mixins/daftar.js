@@ -1,19 +1,17 @@
 import DataPelaporPemohon from "../components/DataPelaporPemohon.vue";
 import Kirim from "../components/Kirim.vue";
+import { mapGetters } from "vuex";
 
 export default {
     components: { DataPelaporPemohon, Kirim },
     data() {
         return {
             schema: {
-                nik_pelapor: "nik|nik_number|nik_min:16|nik_max:16|min_value:3326019999999999|max_value:3326199999999999",
-                nama_pelapor: { nama: true, regex: /^[A-Za-z .']+$/ },
-                no_wa: "no_wa|no_wa_number",
                 nik: "nik|nik_number|nik_min:16|nik_max:16|min_value:3326019999999999|max_value:3326199999999999",
                 nama: { nama: true, regex: /^[A-Za-z .']+$/ },
-                kecamatan: "required",
+                kecamatan_id: "required",
                 hubungan: "hubungan",
-                kelurahan: "required",
+                kelurahan_id: "required",
                 alamat: "required",
                 lampiran1: "file|image|size:2048",
                 lampiran2: "image|size:2048",
@@ -28,6 +26,11 @@ export default {
             fileLampiran3: null,
             fileLampiran4: null,
         };
+    },
+    computed: {
+        ...mapGetters({
+            user: "user",
+        }),
     },
     methods: {
         setLampiran(e, lampiran) {
@@ -70,10 +73,7 @@ export default {
             values.lampiran3 = this.fileLampiran3;
             values.lampiran4 = this.fileLampiran4;
 
-            await this.$recaptchaLoaded();
-
-            const token = await this.$recaptcha("register");
-            values["g-recaptcha-response"] = token;
+            values["user_id"] = this.user.id;
 
             await this.$store.dispatch("addPengajuan", values).then(() => {
                 this.submitLoading = false;

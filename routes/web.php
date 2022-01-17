@@ -10,9 +10,9 @@ Route::get('/admin/{any}', function () {
     return view('admin');
 })->where('any', '.*');
 
-Route::get('/login', function () {
-    return view('login');
-});
+// Route::get('/login', function () {
+//     return view('login');
+// });
 
 Route::get('/{any}', function () {
     return view('app');

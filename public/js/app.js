@@ -26267,20 +26267,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var primeflex_primeflex_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! primeflex/primeflex.css */ "./node_modules/primeflex/primeflex.css");
 /* harmony import */ var viewerjs_dist_viewer_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! viewerjs/dist/viewer.css */ "./node_modules/viewerjs/dist/viewer.css");
 /* harmony import */ var v_viewer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! v-viewer */ "./node_modules/v-viewer/dist/index.es.js");
-/* harmony import */ var vue_recaptcha_v3__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vue-recaptcha-v3 */ "./node_modules/vue-recaptcha-v3/dist/ReCaptchaVuePlugin.js");
-/* harmony import */ var vue_recaptcha_v3__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(vue_recaptcha_v3__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var primevue_config__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! primevue/config */ "./node_modules/primevue/config/config.esm.js");
-/* harmony import */ var v_calendar__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! v-calendar */ "./node_modules/v-calendar/lib/esm/index.js");
-/* harmony import */ var _includes_validation__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./includes/validation */ "./resources/js/includes/validation.js");
-/* harmony import */ var _includes_ui__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./includes/ui */ "./resources/js/includes/ui.js");
-/* harmony import */ var _includes_progress_bar__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./includes/progress-bar */ "./resources/js/includes/progress-bar.js");
-/* harmony import */ var _includes_i18n__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./includes/i18n */ "./resources/js/includes/i18n.js");
-/* harmony import */ var _includes_calendar__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./includes/calendar */ "./resources/js/includes/calendar.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
-/* harmony import */ var primevue_ripple__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! primevue/ripple */ "./node_modules/primevue/ripple/ripple.esm.js");
-/* harmony import */ var primevue_toastservice__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! primevue/toastservice */ "./node_modules/primevue/toastservice/toastservice.esm.js");
-/* harmony import */ var primevue_confirmationservice__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! primevue/confirmationservice */ "./node_modules/primevue/confirmationservice/confirmationservice.esm.js");
-/* harmony import */ var nprogress_nprogress_css__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! nprogress/nprogress.css */ "./node_modules/nprogress/nprogress.css");
+/* harmony import */ var primevue_config__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! primevue/config */ "./node_modules/primevue/config/config.esm.js");
+/* harmony import */ var v_calendar__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! v-calendar */ "./node_modules/v-calendar/lib/esm/index.js");
+/* harmony import */ var _includes_validation__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./includes/validation */ "./resources/js/includes/validation.js");
+/* harmony import */ var _includes_ui__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./includes/ui */ "./resources/js/includes/ui.js");
+/* harmony import */ var _includes_progress_bar__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./includes/progress-bar */ "./resources/js/includes/progress-bar.js");
+/* harmony import */ var _includes_i18n__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./includes/i18n */ "./resources/js/includes/i18n.js");
+/* harmony import */ var _includes_calendar__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./includes/calendar */ "./resources/js/includes/calendar.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
+/* harmony import */ var primevue_ripple__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! primevue/ripple */ "./node_modules/primevue/ripple/ripple.esm.js");
+/* harmony import */ var primevue_toastservice__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! primevue/toastservice */ "./node_modules/primevue/toastservice/toastservice.esm.js");
+/* harmony import */ var primevue_confirmationservice__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! primevue/confirmationservice */ "./node_modules/primevue/confirmationservice/confirmationservice.esm.js");
+/* harmony import */ var nprogress_nprogress_css__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! nprogress/nprogress.css */ "./node_modules/nprogress/nprogress.css");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
@@ -26305,9 +26303,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-(0,_includes_progress_bar__WEBPACK_IMPORTED_MODULE_15__["default"])(_router__WEBPACK_IMPORTED_MODULE_2__["default"]);
+(0,_includes_progress_bar__WEBPACK_IMPORTED_MODULE_14__["default"])(_router__WEBPACK_IMPORTED_MODULE_2__["default"]);
 var app;
 var token = localStorage.getItem("token");
 
@@ -26315,27 +26312,24 @@ if (token) {
   (0,_includes_auth__WEBPACK_IMPORTED_MODULE_3__.setHeaderToken)(token);
 }
 
-_store__WEBPACK_IMPORTED_MODULE_18__["default"].dispatch("getUser", token).then(function () {
-  app = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)(_App_vue__WEBPACK_IMPORTED_MODULE_1__["default"]).use(_includes_i18n__WEBPACK_IMPORTED_MODULE_16__["default"]);
+_store__WEBPACK_IMPORTED_MODULE_17__["default"].dispatch("getUser", token).then(function () {
+  app = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)(_App_vue__WEBPACK_IMPORTED_MODULE_1__["default"]).use(_includes_i18n__WEBPACK_IMPORTED_MODULE_15__["default"]);
   app.config.globalProperties.$appState = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
     inputStyle: "outlined"
   });
   app.use(_router__WEBPACK_IMPORTED_MODULE_2__["default"]);
-  app.use(primevue_confirmationservice__WEBPACK_IMPORTED_MODULE_21__["default"]);
-  app.use(_store__WEBPACK_IMPORTED_MODULE_18__["default"]);
+  app.use(primevue_confirmationservice__WEBPACK_IMPORTED_MODULE_20__["default"]);
+  app.use(_store__WEBPACK_IMPORTED_MODULE_17__["default"]);
   app.use(v_viewer__WEBPACK_IMPORTED_MODULE_9__["default"]);
-  app.use(vue_recaptcha_v3__WEBPACK_IMPORTED_MODULE_10__.VueReCaptcha, {
-    siteKey: "6LczoJ0cAAAAAIAm4JYpMXjwZazPUdpE366B-hUX"
-  });
-  app.use(v_calendar__WEBPACK_IMPORTED_MODULE_12__["default"]);
-  app.use(_includes_validation__WEBPACK_IMPORTED_MODULE_13__["default"]);
-  app.use(_includes_ui__WEBPACK_IMPORTED_MODULE_14__["default"]);
-  app.use(_includes_calendar__WEBPACK_IMPORTED_MODULE_17__["default"]);
-  app.use(primevue_config__WEBPACK_IMPORTED_MODULE_11__["default"], {
+  app.use(v_calendar__WEBPACK_IMPORTED_MODULE_11__["default"]);
+  app.use(_includes_validation__WEBPACK_IMPORTED_MODULE_12__["default"]);
+  app.use(_includes_ui__WEBPACK_IMPORTED_MODULE_13__["default"]);
+  app.use(_includes_calendar__WEBPACK_IMPORTED_MODULE_16__["default"]);
+  app.use(primevue_config__WEBPACK_IMPORTED_MODULE_10__["default"], {
     ripple: true
   });
-  app.use(primevue_toastservice__WEBPACK_IMPORTED_MODULE_20__["default"]);
-  app.directive("ripple", primevue_ripple__WEBPACK_IMPORTED_MODULE_19__["default"]);
+  app.use(primevue_toastservice__WEBPACK_IMPORTED_MODULE_19__["default"]);
+  app.directive("ripple", primevue_ripple__WEBPACK_IMPORTED_MODULE_18__["default"]);
   app.mount("#app");
 })["catch"](function (error) {
   console.error(error);
@@ -26520,6 +26514,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var primevue_image__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! primevue/image */ "./node_modules/primevue/image/image.esm.js");
 /* harmony import */ var primevue_chart__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! primevue/chart */ "./node_modules/primevue/chart/chart.esm.js");
 /* harmony import */ var primevue_sidebar__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! primevue/sidebar */ "./node_modules/primevue/sidebar/sidebar.esm.js");
+/* harmony import */ var primevue_dropdown__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! primevue/dropdown */ "./node_modules/primevue/dropdown/dropdown.esm.js");
+
 
 
 
@@ -26558,6 +26554,7 @@ __webpack_require__.r(__webpack_exports__);
     app.component("Image", primevue_image__WEBPACK_IMPORTED_MODULE_15__["default"]);
     app.component("Chart", primevue_chart__WEBPACK_IMPORTED_MODULE_16__["default"]);
     app.component("Sidebar", primevue_sidebar__WEBPACK_IMPORTED_MODULE_17__["default"]);
+    app.component("Dropdown", primevue_dropdown__WEBPACK_IMPORTED_MODULE_18__["default"]);
   }
 });
 
@@ -26686,13 +26683,37 @@ router.beforeEach( /*#__PURE__*/function () {
 
             if (to.matched.some(function (record) {
               return record.meta.admin;
-            }) && _store__WEBPACK_IMPORTED_MODULE_2__["default"].getters.user.role === "Petugas") {
+            }) && _store__WEBPACK_IMPORTED_MODULE_2__["default"].getters.isLoggedIn && _store__WEBPACK_IMPORTED_MODULE_2__["default"].getters.user.role === "Petugas") {
               next("/admin/dashboard");
+            }
+
+            if (to.matched.some(function (record) {
+              return record.meta.masyarakatLogin;
+            }) && _store__WEBPACK_IMPORTED_MODULE_2__["default"].getters.isLoggedIn) {
+              next("/");
+            }
+
+            if (to.matched.some(function (record) {
+              return record.meta.admininstrator;
+            }) && _store__WEBPACK_IMPORTED_MODULE_2__["default"].getters.isLoggedIn && _store__WEBPACK_IMPORTED_MODULE_2__["default"].getters.user.role === "Masyarakat") {
+              next("/redirect");
+            }
+
+            if (to.matched.some(function (record) {
+              return record.meta.masyarakat;
+            }) && !_store__WEBPACK_IMPORTED_MODULE_2__["default"].getters.isLoggedIn) {
+              next("/login");
+            }
+
+            if (to.matched.some(function (record) {
+              return record.meta.masyarakat;
+            }) && _store__WEBPACK_IMPORTED_MODULE_2__["default"].getters.isLoggedIn && _store__WEBPACK_IMPORTED_MODULE_2__["default"].getters.user.role !== "Masyarakat") {
+              next("/redirect-admin");
             }
 
             next();
 
-          case 3:
+          case 7:
           case "end":
             return _context.stop();
         }
@@ -26720,40 +26741,81 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 var routes = [{
+  path: "/redirect",
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_pages_Administrator_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/Administrator.vue */ "./resources/js/pages/Administrator.vue"));
+  }
+}, {
+  path: "/redirect-admin",
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_pages_Masyarakat_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/Masyarakat.vue */ "./resources/js/pages/Masyarakat.vue"));
+  }
+}, {
   path: "/",
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_layouts_AppLayout_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../layouts/AppLayout.vue */ "./resources/js/layouts/AppLayout.vue"));
   },
   children: [{
-    path: "",
+    path: "/",
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_pages_Home_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/Home.vue */ "./resources/js/pages/Home.vue"));
     }
   }, {
-    path: "lihat-pengajuan",
+    path: "/login",
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_pages_Login_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/Login.vue */ "./resources/js/pages/Login.vue"));
+    },
+    meta: {
+      masyarakatLogin: true
+    }
+  }, {
+    path: "/registrasi",
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_pages_Registrasi_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/Registrasi.vue */ "./resources/js/pages/Registrasi.vue"));
+    },
+    meta: {
+      masyarakatLogin: true
+    }
+  }, {
+    path: "/lihat-pengajuan",
     name: "lihat-pengajuan",
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_pages_LihatPengajuan_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/LihatPengajuan.vue */ "./resources/js/pages/LihatPengajuan.vue"));
+    },
+    meta: {
+      masyarakat: true
     }
   }, {
     path: "cetak-ktp-el",
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_pages_CetakKTP_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/CetakKTP.vue */ "./resources/js/pages/CetakKTP.vue"));
+    },
+    meta: {
+      masyarakat: true
     }
   }, {
     path: "rekam-ktp-el",
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_pages_RekamKTP_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/RekamKTP.vue */ "./resources/js/pages/RekamKTP.vue"));
+    },
+    meta: {
+      masyarakat: true
     }
   }, {
     path: "kia",
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_pages_KIA_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/KIA.vue */ "./resources/js/pages/KIA.vue"));
+    },
+    meta: {
+      masyarakat: true
     }
   }, {
     path: "akta",
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_pages_Akta_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/Akta.vue */ "./resources/js/pages/Akta.vue"));
+    },
+    meta: {
+      masyarakat: true
     }
   }]
 }, {
@@ -26765,25 +26827,35 @@ var routes = [{
     path: "/admin/dashboard",
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_pages_admin_Dashboard_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/admin/Dashboard.vue */ "./resources/js/pages/admin/Dashboard.vue"));
+    },
+    meta: {
+      admininstrator: true
     }
   }, {
     path: "/admin/pengajuan",
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_pages_admin_pengajuan_Pengajuan_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/admin/pengajuan/Pengajuan.vue */ "./resources/js/pages/admin/pengajuan/Pengajuan.vue"));
+    },
+    meta: {
+      admininstrator: true
     }
   }, {
     path: "/admin/pengajuan/:id",
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_pages_admin_pengajuan_DetailPengajuan_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/admin/pengajuan/DetailPengajuan.vue */ "./resources/js/pages/admin/pengajuan/DetailPengajuan.vue"));
     },
-    name: "admin.pengajuan"
+    name: "admin.pengajuan",
+    meta: {
+      admininstrator: true
+    }
   }, {
     path: "/admin/user",
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_pages_admin_user_User_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/admin/user/User.vue */ "./resources/js/pages/admin/user/User.vue"));
     },
     meta: {
-      admin: true
+      admin: true,
+      admininstrator: true
     }
   }, {
     path: "/admin/create-user",
@@ -26791,22 +26863,27 @@ var routes = [{
       return __webpack_require__.e(/*! import() */ "resources_js_pages_admin_user_CreateUser_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/admin/user/CreateUser.vue */ "./resources/js/pages/admin/user/CreateUser.vue"));
     },
     meta: {
-      admin: true
+      admin: true,
+      admininstrator: true
     }
   }, {
     path: "/admin/edit-user",
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_pages_admin_user_EditUser_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/admin/user/EditUser.vue */ "./resources/js/pages/admin/user/EditUser.vue"));
+    },
+    meta: {
+      admininstrator: true
     }
   }]
 }, {
-  path: "/login",
+  path: "/admin/login",
   component: function component() {
-    return __webpack_require__.e(/*! import() */ "resources_js_pages_Login_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/Login.vue */ "./resources/js/pages/Login.vue"));
+    return __webpack_require__.e(/*! import() */ "resources_js_pages_admin_Login_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/admin/Login.vue */ "./resources/js/pages/admin/Login.vue"));
   },
   name: "Login",
   meta: {
-    login: true
+    login: true,
+    admininstrator: true
   }
 }];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (routes);
@@ -26850,7 +26927,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _includes_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../includes/auth */ "./resources/js/includes/auth.js");
-/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../router */ "./resources/js/router/index.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -26862,7 +26938,6 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -26914,6 +26989,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     isLoggedIn: function isLoggedIn(state) {
       return state.isLoggedIn;
     },
+    isUserLoggedIn: function isUserLoggedIn(state) {
+      return state.isUserLoggedIn;
+    },
     emailEdit: function emailEdit(state) {
       return state.emailEdit;
     },
@@ -26952,50 +27030,37 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, _callee);
       }))();
     },
-    getUser: function getUser(_ref2) {
+    userLogin: function userLogin(_ref2, payload) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-        var commit, res;
+        var commit, dispatch;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                commit = _ref2.commit;
+                commit = _ref2.commit, dispatch = _ref2.dispatch;
+                return _context2.abrupt("return", new Promise(function (resolve, reject) {
+                  axios__WEBPACK_IMPORTED_MODULE_1___default().post("/login-user", payload).then(function (response) {
+                    var token = response.data.token;
+                    localStorage.setItem("token", token);
+                    (0,_includes_auth__WEBPACK_IMPORTED_MODULE_2__.setHeaderToken)(token);
+                    dispatch("getUser");
+                    resolve(response);
+                  })["catch"](function (err) {
+                    commit("resetUser");
+                    localStorage.removeItem("token");
+                    reject(err);
+                  });
+                }));
 
-                if (localStorage.getItem("token")) {
-                  _context2.next = 3;
-                  break;
-                }
-
-                return _context2.abrupt("return");
-
-              case 3:
-                _context2.prev = 3;
-                _context2.next = 6;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/userLogin");
-
-              case 6:
-                res = _context2.sent;
-                commit("setUser", res.data.data);
-                _context2.next = 16;
-                break;
-
-              case 10:
-                _context2.prev = 10;
-                _context2.t0 = _context2["catch"](3);
-                commit("resetUser");
-                (0,_includes_auth__WEBPACK_IMPORTED_MODULE_2__.removeHeaderToken)();
-                localStorage.removeItem("token");
-                return _context2.abrupt("return", _context2.t0);
-
-              case 16:
+              case 2:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[3, 10]]);
+        }, _callee2);
       }))();
     },
-    updateUser: function updateUser(_ref3, data) {
+    getUser: function getUser(_ref3) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
         var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
@@ -27003,22 +27068,42 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             switch (_context3.prev = _context3.next) {
               case 0:
                 commit = _ref3.commit;
-                _context3.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().patch("/user", data);
+
+                if (localStorage.getItem("token")) {
+                  _context3.next = 3;
+                  break;
+                }
+
+                return _context3.abrupt("return");
 
               case 3:
-                res = _context3.sent;
-                commit("editUser", res.data.data);
+                _context3.prev = 3;
+                _context3.next = 6;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/userLogin");
 
-              case 5:
+              case 6:
+                res = _context3.sent;
+                commit("setUser", res.data.data);
+                _context3.next = 16;
+                break;
+
+              case 10:
+                _context3.prev = 10;
+                _context3.t0 = _context3["catch"](3);
+                commit("resetUser");
+                (0,_includes_auth__WEBPACK_IMPORTED_MODULE_2__.removeHeaderToken)();
+                localStorage.removeItem("token");
+                return _context3.abrupt("return", _context3.t0);
+
+              case 16:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3);
+        }, _callee3, null, [[3, 10]]);
       }))();
     },
-    updatePassword: function updatePassword(_ref4, data) {
+    updateUser: function updateUser(_ref4, data) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
         var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
@@ -27027,11 +27112,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 commit = _ref4.commit;
                 _context4.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().put("/user/password", data);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().patch("/user", data);
 
               case 3:
                 res = _context4.sent;
-                commit("editPassword", res.data.data);
+                commit("editUser", res.data.data);
 
               case 5:
               case "end":
@@ -27041,7 +27126,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, _callee4);
       }))();
     },
-    updateAvatar: function updateAvatar(_ref5, data) {
+    updatePassword: function updatePassword(_ref5, data) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
         var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
@@ -27050,11 +27135,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 commit = _ref5.commit;
                 _context5.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().put("/updateAvatar", data);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().put("/user/password", data);
 
               case 3:
                 res = _context5.sent;
-                commit("editAvatar", res.data.data);
+                commit("editPassword", res.data.data);
 
               case 5:
               case "end":
@@ -27064,21 +27149,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, _callee5);
       }))();
     },
-    deleteAvatar: function deleteAvatar(_ref6) {
+    updateAvatar: function updateAvatar(_ref6, data) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6() {
-        var commit;
+        var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
           while (1) {
             switch (_context6.prev = _context6.next) {
               case 0:
                 commit = _ref6.commit;
                 _context6.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("/deleteAvatar");
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().put("/updateAvatar", data);
 
               case 3:
-                commit("removeAvatar");
+                res = _context6.sent;
+                commit("editAvatar", res.data.data);
 
-              case 4:
+              case 5:
               case "end":
                 return _context6.stop();
             }
@@ -27086,8 +27172,30 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, _callee6);
       }))();
     },
-    logout: function logout(_ref7) {
-      var commit = _ref7.commit;
+    deleteAvatar: function deleteAvatar(_ref7) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7() {
+        var commit;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                commit = _ref7.commit;
+                _context7.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("/deleteAvatar");
+
+              case 3:
+                commit("removeAvatar");
+
+              case 4:
+              case "end":
+                return _context7.stop();
+            }
+          }
+        }, _callee7);
+      }))();
+    },
+    logout: function logout(_ref8) {
+      var commit = _ref8.commit;
       return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/logout").then(function (res) {
         commit("resetUser");
         localStorage.removeItem("token");
@@ -27187,11 +27295,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       state.pengajuan = data;
       state.loadingPengajuan = false;
     },
-    removePengajuan: function removePengajuan(state, id) {
-      state.pengajuan = state.pengajuan.filter(function (data) {
-        return data.id !== id;
-      });
-    },
+    // removePengajuan(state, id) {
+    //     state.pengajuan = state.pengajuan.filter((data) => data.id !== id);
+    // },
     setDetailPengajuan: function setDetailPengajuan(state, data) {
       state.detailPengajuan = data;
     },
@@ -27269,21 +27375,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3);
       }))();
     },
-    deletePengajuan: function deletePengajuan(_ref4, id) {
+    // async deletePengajuan({ commit }, id) {
+    //     await axios.delete(`/pengajuan/${id}`);
+    //     commit("removePengajuan", id);
+    // },
+    editPengajuan: function editPengajuan(_ref4, data) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
-        var commit;
+        var commit, state, id, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                commit = _ref4.commit;
-                _context4.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("/pengajuan/".concat(id));
-
-              case 3:
-                commit("removePengajuan", id);
+                commit = _ref4.commit, state = _ref4.state;
+                id = state.detailPengajuan.id;
+                _context4.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().patch("/pengajuan/".concat(id), data);
 
               case 4:
+                res = _context4.sent;
+                commit("setDetailPengajuan", res.data.data);
+
+              case 6:
               case "end":
                 return _context4.stop();
             }
@@ -27291,23 +27403,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee4);
       }))();
     },
-    editPengajuan: function editPengajuan(_ref5, data) {
+    getDashboardTotal: function getDashboardTotal(_ref5) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
-        var commit, state, id, res;
+        var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
           while (1) {
             switch (_context5.prev = _context5.next) {
               case 0:
-                commit = _ref5.commit, state = _ref5.state;
-                id = state.detailPengajuan.id;
-                _context5.next = 4;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().patch("/pengajuan/".concat(id), data);
+                commit = _ref5.commit;
+                _context5.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/dashboard/total");
 
-              case 4:
+              case 3:
                 res = _context5.sent;
-                commit("setDetailPengajuan", res.data.data);
+                commit("setDashboardTotal", res.data);
 
-              case 6:
+              case 5:
               case "end":
                 return _context5.stop();
             }
@@ -27315,7 +27426,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee5);
       }))();
     },
-    getDashboardTotal: function getDashboardTotal(_ref6) {
+    getTotalKategori: function getTotalKategori(_ref6) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6() {
         var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
@@ -27324,11 +27435,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref6.commit;
                 _context6.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/dashboard/total");
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/pengajuan/total");
 
               case 3:
                 res = _context6.sent;
-                commit("setDashboardTotal", res.data);
+                commit("setTotalKategori", res.data);
 
               case 5:
               case "end":
@@ -27336,29 +27447,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee6);
-      }))();
-    },
-    getTotalKategori: function getTotalKategori(_ref7) {
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7() {
-        var commit, res;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
-          while (1) {
-            switch (_context7.prev = _context7.next) {
-              case 0:
-                commit = _ref7.commit;
-                _context7.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/pengajuan/total");
-
-              case 3:
-                res = _context7.sent;
-                commit("setTotalKategori", res.data);
-
-              case 5:
-              case "end":
-                return _context7.stop();
-            }
-          }
-        }, _callee7);
       }))();
     }
   }
@@ -27391,6 +27479,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   state: {
     users: [],
+    trash: [],
     loading: true
   },
   mutations: {
@@ -27398,18 +27487,45 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       state.loading = false;
       state.users = data;
     },
-    removeUser: function removeUser(state, id) {
-      state.users = state.users.filter(function (user) {
+    setTrash: function setTrash(state, data) {
+      state.loading = false;
+      state.trash = data;
+    },
+    remove: function remove(state, id) {
+      state.trash = state.trash.filter(function (user) {
         return user.id !== id;
       });
     },
     addUser: function addUser(state, data) {
       state.users.push(data);
+    },
+    removeUser: function removeUser(state, id) {
+      state.users.map(function (user) {
+        if (user.id === id) {
+          state.trash.push(user);
+        }
+      });
+      state.users = state.users.filter(function (user) {
+        return user.id !== id;
+      });
+    },
+    removeTrash: function removeTrash(state, id) {
+      state.trash.map(function (user) {
+        if (user.id === id) {
+          state.users.push(user);
+        }
+      });
+      state.trash = state.trash.filter(function (user) {
+        return user.id !== id;
+      });
     }
   },
   getters: {
     users: function users(state) {
       return state.users;
+    },
+    trash: function trash(state) {
+      return state.trash;
     },
     loading: function loading(state) {
       return state.loading;
@@ -27439,21 +27555,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    deleteUser: function deleteUser(_ref2, id) {
+    getTrash: function getTrash(_ref2) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-        var commit;
+        var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 commit = _ref2.commit;
                 _context2.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("/user/".concat(id));
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/user/trash");
 
               case 3:
-                commit("removeUser", id);
+                res = _context2.sent;
+                commit("setTrash", res.data.data);
 
-              case 4:
+              case 5:
               case "end":
                 return _context2.stop();
             }
@@ -27461,27 +27578,94 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }))();
     },
-    addUser: function addUser(_ref3, data) {
+    restoreUser: function restoreUser(_ref3, id) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
-        var commit, res;
+        var commit;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
                 commit = _ref3.commit;
                 _context3.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/user/".concat(id), data);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/user/restore/".concat(id));
 
               case 3:
-                res = _context3.sent;
-                commit("addUser", res.data.data);
+                commit("removeTrash", id);
 
-              case 5:
+              case 4:
               case "end":
                 return _context3.stop();
             }
           }
         }, _callee3);
+      }))();
+    },
+    softDeleteUser: function softDeleteUser(_ref4, id) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+        var commit;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                commit = _ref4.commit;
+                _context4.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("/user/delete/".concat(id));
+
+              case 3:
+                commit("removeUser", id);
+
+              case 4:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }))();
+    },
+    deleteUser: function deleteUser(_ref5, id) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
+        var commit;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                commit = _ref5.commit;
+                _context5.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("/user/".concat(id));
+
+              case 3:
+                commit("remove", id);
+
+              case 4:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5);
+      }))();
+    },
+    addUser: function addUser(_ref6, data) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6() {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                commit = _ref6.commit;
+                _context6.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/user", data);
+
+              case 3:
+                res = _context6.sent;
+                debugger;
+                commit("addUser", res.data.data);
+
+              case 6:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6);
       }))();
     }
   }
@@ -27675,7 +27859,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.form_center {\r\n  display: flex;\r\n  justify-content: center;\n}\n.button {\r\n  background-color: var(--color-blue);\r\n  border: none;\r\n  padding: 1.5rem 0;\r\n  color: var(--text-white);\r\n  border-radius: 0.5rem;\r\n  width: 35rem;\r\n  cursor: pointer;\n}\n.form_button {\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 2rem;\n}\n.form_baris {\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 1rem;\n}\n.form_catatan {\r\n  color: var(--color-blue);\n}\n.form_kirim {\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 2rem;\n}\n.form_file_wrap {\r\n  display: flex;\r\n  justify-content: center;\n}\n.form_file {\r\n  width: 30rem;\n}\n.vee-form {\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 2rem;\n}\n.row {\r\n  display: flex;\r\n  gap: 0.5rem;\r\n  align-items: center;\n}\n.select {\r\n  padding: 1rem;\r\n  border-radius: 0.5rem;\n}\n.error {\r\n  color: red;\n}\n.badge {\r\n  padding: 0.5rem;\r\n  border-radius: 1rem;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  text-transform: capitalize;\n}\n.badge-danger {\r\n  background-color: #ffcdd2;\r\n  color: #c63737;\n}\n.badge-success {\r\n  background-color: #c8e6c9;\r\n  color: #256029;\n}\n.badge-info {\r\n  background-color: #b3e5fc;\r\n  color: #23547b;\n}\n.badge-warning {\r\n  background-color: #ffd8b2;\r\n  color: #805b36;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nspan.p-menuitem-link {\r\n\tfont-size: 1.5rem !important;\n}\n.form_center {\r\n\tdisplay: flex;\r\n\tjustify-content: center;\n}\n.button {\r\n\tbackground-color: var(--color-blue);\r\n\tborder: none;\r\n\tpadding: 1.5rem 0;\r\n\tcolor: var(--text-white);\r\n\tborder-radius: 0.5rem;\r\n\twidth: 35rem;\r\n\tcursor: pointer;\n}\n.form_button {\r\n\tdisplay: flex;\r\n\tflex-direction: column;\r\n\tgap: 2rem;\n}\n.form_baris {\r\n\tdisplay: flex;\r\n\tflex-direction: column;\r\n\tgap: 1rem;\n}\n.form_catatan {\r\n\tcolor: var(--color-blue);\n}\n.form_kirim {\r\n\tdisplay: flex;\r\n\tflex-direction: column;\r\n\tgap: 2rem;\n}\n.form_file_wrap {\r\n\tdisplay: flex;\r\n\tjustify-content: center;\n}\n.form_file {\r\n\twidth: 30rem;\n}\n.vee-form {\r\n\tdisplay: flex;\r\n\tflex-direction: column;\r\n\tgap: 2rem;\n}\n.row {\r\n\tdisplay: flex;\r\n\tgap: 0.5rem;\r\n\talign-items: center;\n}\n.select {\r\n\tpadding: 1rem;\r\n\tborder-radius: 0.5rem;\n}\n.error {\r\n\tcolor: red;\n}\n.badge {\r\n\tpadding: 0.5rem;\r\n\tborder-radius: 1rem;\r\n\tdisplay: flex;\r\n\talign-items: center;\r\n\tjustify-content: center;\r\n\ttext-transform: capitalize;\r\n\tcursor: pointer;\n}\n.badge-danger {\r\n\tbackground-color: #ffcdd2;\r\n\tcolor: #c63737;\n}\n.badge-success {\r\n\tbackground-color: #c8e6c9;\r\n\tcolor: #256029;\n}\n.badge-info {\r\n\tbackground-color: #b3e5fc;\r\n\tcolor: #23547b;\n}\n.badge-warning {\r\n\tbackground-color: #ffd8b2;\r\n\tcolor: #805b36;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -63169,300 +63353,6 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
-/***/ "./node_modules/recaptcha-v3/dist/ReCaptcha.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/recaptcha-v3/dist/ReCaptcha.js ***!
-  \*****************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ReCaptchaInstance = exports.getInstance = exports.load = void 0;
-var ReCaptchaLoader_1 = __webpack_require__(/*! ./ReCaptchaLoader */ "./node_modules/recaptcha-v3/dist/ReCaptchaLoader.js");
-Object.defineProperty(exports, "load", ({ enumerable: true, get: function () { return ReCaptchaLoader_1.load; } }));
-Object.defineProperty(exports, "getInstance", ({ enumerable: true, get: function () { return ReCaptchaLoader_1.getInstance; } }));
-var ReCaptchaInstance_1 = __webpack_require__(/*! ./ReCaptchaInstance */ "./node_modules/recaptcha-v3/dist/ReCaptchaInstance.js");
-Object.defineProperty(exports, "ReCaptchaInstance", ({ enumerable: true, get: function () { return ReCaptchaInstance_1.ReCaptchaInstance; } }));
-
-
-/***/ }),
-
-/***/ "./node_modules/recaptcha-v3/dist/ReCaptchaInstance.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/recaptcha-v3/dist/ReCaptchaInstance.js ***!
-  \*************************************************************/
-/***/ (function(__unused_webpack_module, exports) {
-
-"use strict";
-
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ReCaptchaInstance = void 0;
-var ReCaptchaInstance = (function () {
-    function ReCaptchaInstance(siteKey, recaptchaID, recaptcha) {
-        this.siteKey = siteKey;
-        this.recaptchaID = recaptchaID;
-        this.recaptcha = recaptcha;
-        this.styleContainer = null;
-    }
-    ReCaptchaInstance.prototype.execute = function (action) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2, this.recaptcha.enterprise ? this.recaptcha.enterprise.execute(this.recaptchaID, { action: action }) : this.recaptcha.execute(this.recaptchaID, { action: action })];
-            });
-        });
-    };
-    ReCaptchaInstance.prototype.getSiteKey = function () {
-        return this.siteKey;
-    };
-    ReCaptchaInstance.prototype.hideBadge = function () {
-        if (this.styleContainer !== null) {
-            return;
-        }
-        this.styleContainer = document.createElement('style');
-        this.styleContainer.innerHTML = '.grecaptcha-badge{visibility:hidden !important;}';
-        document.head.appendChild(this.styleContainer);
-    };
-    ReCaptchaInstance.prototype.showBadge = function () {
-        if (this.styleContainer === null) {
-            return;
-        }
-        document.head.removeChild(this.styleContainer);
-        this.styleContainer = null;
-    };
-    return ReCaptchaInstance;
-}());
-exports.ReCaptchaInstance = ReCaptchaInstance;
-
-
-/***/ }),
-
-/***/ "./node_modules/recaptcha-v3/dist/ReCaptchaLoader.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/recaptcha-v3/dist/ReCaptchaLoader.js ***!
-  \***********************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.getInstance = exports.load = void 0;
-var ReCaptchaInstance_1 = __webpack_require__(/*! ./ReCaptchaInstance */ "./node_modules/recaptcha-v3/dist/ReCaptchaInstance.js");
-var ELoadingState;
-(function (ELoadingState) {
-    ELoadingState[ELoadingState["NOT_LOADED"] = 0] = "NOT_LOADED";
-    ELoadingState[ELoadingState["LOADING"] = 1] = "LOADING";
-    ELoadingState[ELoadingState["LOADED"] = 2] = "LOADED";
-})(ELoadingState || (ELoadingState = {}));
-var ReCaptchaLoader = (function () {
-    function ReCaptchaLoader() {
-    }
-    ReCaptchaLoader.load = function (siteKey, options) {
-        if (options === void 0) { options = {}; }
-        if (typeof document === 'undefined') {
-            return Promise.reject(new Error('This is a library for the browser!'));
-        }
-        if (ReCaptchaLoader.getLoadingState() === ELoadingState.LOADED) {
-            if (ReCaptchaLoader.instance.getSiteKey() === siteKey) {
-                return Promise.resolve(ReCaptchaLoader.instance);
-            }
-            else {
-                return Promise.reject(new Error('reCAPTCHA already loaded with different site key!'));
-            }
-        }
-        if (ReCaptchaLoader.getLoadingState() === ELoadingState.LOADING) {
-            if (siteKey !== ReCaptchaLoader.instanceSiteKey) {
-                return Promise.reject(new Error('reCAPTCHA already loaded with different site key!'));
-            }
-            return new Promise(function (resolve, reject) {
-                ReCaptchaLoader.successfulLoadingConsumers.push(function (instance) { return resolve(instance); });
-                ReCaptchaLoader.errorLoadingRunnable.push(function (reason) { return reject(reason); });
-            });
-        }
-        ReCaptchaLoader.instanceSiteKey = siteKey;
-        ReCaptchaLoader.setLoadingState(ELoadingState.LOADING);
-        var loader = new ReCaptchaLoader();
-        return new Promise(function (resolve, reject) {
-            loader.loadScript(siteKey, options.useRecaptchaNet || false, options.useEnterprise || false, options.renderParameters ? options.renderParameters : {}, options.customUrl).then(function () {
-                ReCaptchaLoader.setLoadingState(ELoadingState.LOADED);
-                var widgetID = loader.doExplicitRender(grecaptcha, siteKey, options.explicitRenderParameters ? options.explicitRenderParameters : {}, options.useEnterprise || false);
-                var instance = new ReCaptchaInstance_1.ReCaptchaInstance(siteKey, widgetID, grecaptcha);
-                ReCaptchaLoader.successfulLoadingConsumers.forEach(function (v) { return v(instance); });
-                ReCaptchaLoader.successfulLoadingConsumers = [];
-                if (options.autoHideBadge) {
-                    instance.hideBadge();
-                }
-                ReCaptchaLoader.instance = instance;
-                resolve(instance);
-            }).catch(function (error) {
-                ReCaptchaLoader.errorLoadingRunnable.forEach(function (v) { return v(error); });
-                ReCaptchaLoader.errorLoadingRunnable = [];
-                reject(error);
-            });
-        });
-    };
-    ReCaptchaLoader.getInstance = function () {
-        return ReCaptchaLoader.instance;
-    };
-    ReCaptchaLoader.setLoadingState = function (state) {
-        ReCaptchaLoader.loadingState = state;
-    };
-    ReCaptchaLoader.getLoadingState = function () {
-        if (ReCaptchaLoader.loadingState === null) {
-            return ELoadingState.NOT_LOADED;
-        }
-        else {
-            return ReCaptchaLoader.loadingState;
-        }
-    };
-    ReCaptchaLoader.prototype.loadScript = function (siteKey, useRecaptchaNet, useEnterprise, renderParameters, customUrl) {
-        var _this = this;
-        if (useRecaptchaNet === void 0) { useRecaptchaNet = false; }
-        if (useEnterprise === void 0) { useEnterprise = false; }
-        if (renderParameters === void 0) { renderParameters = {}; }
-        if (customUrl === void 0) { customUrl = ''; }
-        var scriptElement = document.createElement('script');
-        scriptElement.setAttribute('recaptcha-v3-script', '');
-        var scriptBase = 'https://www.google.com/recaptcha/api.js';
-        if (useRecaptchaNet) {
-            if (useEnterprise) {
-                scriptBase = 'https://recaptcha.net/recaptcha/enterprise.js';
-            }
-            else {
-                scriptBase = 'https://recaptcha.net/recaptcha/api.js';
-            }
-        }
-        if (useEnterprise) {
-            scriptBase = 'https://www.google.com/recaptcha/enterprise.js';
-        }
-        if (customUrl) {
-            scriptBase = customUrl;
-        }
-        if (renderParameters.render) {
-            renderParameters.render = undefined;
-        }
-        var parametersQuery = this.buildQueryString(renderParameters);
-        scriptElement.src = scriptBase + '?render=explicit' + parametersQuery;
-        return new Promise(function (resolve, reject) {
-            scriptElement.addEventListener('load', _this.waitForScriptToLoad(function () {
-                resolve(scriptElement);
-            }, useEnterprise), false);
-            scriptElement.onerror = function (error) {
-                ReCaptchaLoader.setLoadingState(ELoadingState.NOT_LOADED);
-                reject(error);
-            };
-            document.head.appendChild(scriptElement);
-        });
-    };
-    ReCaptchaLoader.prototype.buildQueryString = function (parameters) {
-        var parameterKeys = Object.keys(parameters);
-        if (parameterKeys.length < 1) {
-            return '';
-        }
-        return '&' + Object.keys(parameters)
-            .filter(function (parameterKey) {
-            return !!parameters[parameterKey];
-        })
-            .map(function (parameterKey) {
-            return parameterKey + '=' + parameters[parameterKey];
-        }).join('&');
-    };
-    ReCaptchaLoader.prototype.waitForScriptToLoad = function (callback, useEnterprise) {
-        var _this = this;
-        return function () {
-            if (window.grecaptcha === undefined) {
-                setTimeout(function () {
-                    _this.waitForScriptToLoad(callback, useEnterprise);
-                }, ReCaptchaLoader.SCRIPT_LOAD_DELAY);
-            }
-            else {
-                if (useEnterprise) {
-                    window.grecaptcha.enterprise.ready(function () {
-                        callback();
-                    });
-                }
-                else {
-                    window.grecaptcha.ready(function () {
-                        callback();
-                    });
-                }
-            }
-        };
-    };
-    ReCaptchaLoader.prototype.doExplicitRender = function (grecaptcha, siteKey, parameters, isEnterprise) {
-        var augmentedParameters = {
-            sitekey: siteKey,
-            badge: parameters.badge,
-            size: parameters.size,
-            tabindex: parameters.tabindex
-        };
-        if (parameters.container) {
-            if (isEnterprise) {
-                return grecaptcha.enterprise.render(parameters.container, augmentedParameters);
-            }
-            else {
-                return grecaptcha.render(parameters.container, augmentedParameters);
-            }
-        }
-        else {
-            if (isEnterprise) {
-                return grecaptcha.enterprise.render(augmentedParameters);
-            }
-            else {
-                return grecaptcha.render(augmentedParameters);
-            }
-        }
-    };
-    ReCaptchaLoader.loadingState = null;
-    ReCaptchaLoader.instance = null;
-    ReCaptchaLoader.instanceSiteKey = null;
-    ReCaptchaLoader.successfulLoadingConsumers = [];
-    ReCaptchaLoader.errorLoadingRunnable = [];
-    ReCaptchaLoader.SCRIPT_LOAD_DELAY = 25;
-    return ReCaptchaLoader;
-}());
-exports.load = ReCaptchaLoader.load;
-exports.getInstance = ReCaptchaLoader.getInstance;
-
-
-/***/ }),
-
 /***/ "./node_modules/regenerator-runtime/runtime.js":
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
@@ -86739,14 +86629,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _App_vue_vue_type_template_id_f348271a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App.vue?vue&type=template&id=f348271a */ "./resources/js/App.vue?vue&type=template&id=f348271a");
 /* harmony import */ var _App_vue_vue_type_style_index_0_id_f348271a_lang_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.vue?vue&type=style&index=0&id=f348271a&lang=css */ "./resources/js/App.vue?vue&type=style&index=0&id=f348271a&lang=css");
-/* harmony import */ var E_vue_project_sapu_vue_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var E_vue_project_sapujagad_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 const script = {}
 
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,E_vue_project_sapu_vue_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(script, [['render',_App_vue_vue_type_template_id_f348271a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/App.vue"]])
+const __exports__ = /*#__PURE__*/(0,E_vue_project_sapujagad_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(script, [['render',_App_vue_vue_type_template_id_f348271a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/App.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -86780,123 +86670,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_10_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_10_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_App_vue_vue_type_style_index_0_id_f348271a_lang_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/style-loader/dist/cjs.js!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-10.use[1]!../../node_modules/vue-loader/dist/stylePostLoader.js!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10.use[2]!../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./App.vue?vue&type=style&index=0&id=f348271a&lang=css */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-10.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-10.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/App.vue?vue&type=style&index=0&id=f348271a&lang=css");
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-recaptcha-v3/dist/ReCaptchaVuePlugin.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/vue-recaptcha-v3/dist/ReCaptchaVuePlugin.js ***!
-  \******************************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.useReCaptcha = exports.VueReCaptcha = void 0;
-var recaptcha_v3_1 = __webpack_require__(/*! recaptcha-v3 */ "./node_modules/recaptcha-v3/dist/ReCaptcha.js");
-var vue_1 = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-var VueReCaptchaInjectKey = Symbol('VueReCaptchaInjectKey');
-var globalConfig = {
-    loadedWaiters: [],
-    error: null
-};
-exports.VueReCaptcha = {
-    install: function (app, options) {
-        var isLoaded = vue_1.ref(false);
-        var instance = vue_1.ref(undefined);
-        app.config.globalProperties.$recaptchaLoaded = recaptchaLoaded(isLoaded);
-        initializeReCaptcha(options).then(function (wrapper) {
-            isLoaded.value = true;
-            instance.value = wrapper;
-            app.config.globalProperties.$recaptcha = recaptcha(instance);
-            app.config.globalProperties.$recaptchaInstance = instance;
-            globalConfig.loadedWaiters.forEach(function (v) { return v.resolve(true); });
-        }).catch(function (error) {
-            globalConfig.error = error;
-            globalConfig.loadedWaiters.forEach(function (v) { return v.reject(error); });
-        });
-        app.provide(VueReCaptchaInjectKey, {
-            instance: instance,
-            isLoaded: isLoaded,
-            executeRecaptcha: recaptcha(instance),
-            recaptchaLoaded: recaptchaLoaded(isLoaded)
-        });
-    }
-};
-function useReCaptcha() {
-    return vue_1.inject(VueReCaptchaInjectKey);
-}
-exports.useReCaptcha = useReCaptcha;
-function initializeReCaptcha(options) {
-    return __awaiter(this, void 0, void 0, function () {
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4, recaptcha_v3_1.load(options.siteKey, options.loaderOptions)];
-                case 1: return [2, _a.sent()];
-            }
-        });
-    });
-}
-function recaptchaLoaded(isLoaded) {
-    return function () { return new Promise(function (resolve, reject) {
-        if (globalConfig.error !== null) {
-            return reject(globalConfig.error);
-        }
-        if (isLoaded.value) {
-            return resolve(true);
-        }
-        globalConfig.loadedWaiters.push({ resolve: resolve, reject: reject });
-    }); };
-}
-function recaptcha(instance) {
-    var _this = this;
-    return function (action) { return __awaiter(_this, void 0, void 0, function () {
-        var _a;
-        return __generator(this, function (_b) {
-            switch (_b.label) {
-                case 0: return [4, ((_a = instance.value) === null || _a === void 0 ? void 0 : _a.execute(action))];
-                case 1: return [2, _b.sent()];
-            }
-        });
-    }); };
-}
 
 
 /***/ }),
@@ -92224,7 +91997,7 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_layouts_AppLayout_vue":1,"resources_js_pages_Home_vue":1,"resources_js_pages_LihatPengajuan_vue":1,"resources_js_pages_CetakKTP_vue":1,"resources_js_pages_RekamKTP_vue":1,"resources_js_pages_KIA_vue":1,"resources_js_pages_Akta_vue":1,"resources_js_layouts_AdminLayout_vue":1,"resources_js_pages_admin_Dashboard_vue":1,"resources_js_pages_admin_pengajuan_Pengajuan_vue":1,"resources_js_pages_admin_pengajuan_DetailPengajuan_vue":1,"resources_js_pages_admin_user_User_vue":1,"resources_js_pages_admin_user_CreateUser_vue":1,"resources_js_pages_admin_user_EditUser_vue":1,"resources_js_pages_Login_vue":1,"node_modules_chart_js_auto_auto_esm_js":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_pages_Administrator_vue":1,"resources_js_pages_Masyarakat_vue":1,"resources_js_layouts_AppLayout_vue":1,"resources_js_pages_Home_vue":1,"resources_js_pages_Login_vue":1,"resources_js_pages_Registrasi_vue":1,"resources_js_pages_LihatPengajuan_vue":1,"resources_js_pages_CetakKTP_vue":1,"resources_js_pages_RekamKTP_vue":1,"resources_js_pages_KIA_vue":1,"resources_js_pages_Akta_vue":1,"resources_js_layouts_AdminLayout_vue":1,"resources_js_pages_admin_Dashboard_vue":1,"resources_js_pages_admin_pengajuan_Pengajuan_vue":1,"resources_js_pages_admin_pengajuan_DetailPengajuan_vue":1,"resources_js_pages_admin_user_User_vue":1,"resources_js_pages_admin_user_CreateUser_vue":1,"resources_js_pages_admin_user_EditUser_vue":1,"resources_js_pages_admin_Login_vue":1,"node_modules_chart_js_auto_auto_esm_js":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

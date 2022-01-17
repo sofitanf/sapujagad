@@ -47,20 +47,21 @@ class Pengajuan extends Model
         return $this->totalJenis('AKTA');
     }
 
-    public function cekPengajuan($nik)
+    public function cekPengajuan($id) 
     {
         return DB::table('pengajuan')
-            ->where('nik_pelapor', $nik) 
+            ->where('user_id', $id) 
             ->get();
     }
 
     public function pengajuan()
     {
         return DB::table('pengajuan')
-            ->join('kecamatan', 'pengajuan.kecamatan', '=', 'kecamatan.id')
-            ->join('kelurahan', 'pengajuan.kelurahan', '=', 'kelurahan.id')
+            ->join('kecamatan', 'pengajuan.kecamatan_id', '=', 'kecamatan.id')
+            ->join('kelurahan', 'pengajuan.kelurahan_id', '=', 'kelurahan.id')
+            ->join('masyarakat', 'pengajuan.user_id', '=', 'masyarakat.id')
             ->select('pengajuan.id','kecamatan.nama_kecamatan', 'kelurahan.nama_kelurahan', 
-                    'pengajuan.nik', 'pengajuan.nama', 'pengajuan.nama_pelapor', 'pengajuan.kategori',
+                    'pengajuan.nik', 'pengajuan.nama', 'masyarakat.nama as nama_pelapor' , 'pengajuan.kategori',
                     'pengajuan.status', 'pengajuan.created_at')
             ->orderBy('created_at', 'DESC')
             ->get(); 
@@ -69,10 +70,12 @@ class Pengajuan extends Model
     public function pengajuanDetail($id)
     {
         return DB::table('pengajuan')
-            ->join('kecamatan', 'pengajuan.kecamatan', '=', 'kecamatan.id')
-            ->join('kelurahan', 'pengajuan.kelurahan', '=', 'kelurahan.id')
+            ->join('kecamatan', 'pengajuan.kecamatan_id', '=', 'kecamatan.id')
+            ->join('kelurahan', 'pengajuan.kelurahan_id', '=', 'kelurahan.id')
+            ->join('masyarakat', 'masyarakat.id', '=', 'pengajuan.user_id')
             ->where('pengajuan.id', $id)
-            ->select('pengajuan.*','kecamatan.nama_kecamatan', 'kelurahan.nama_kelurahan')
+            ->select('pengajuan.*','kecamatan.nama_kecamatan', 'kelurahan.nama_kelurahan', 'masyarakat.nama as nama_pelapor', 
+                    'masyarakat.nik as nik_pelapor', 'masyarakat.telepon as telepon')
             ->first();
     }
 

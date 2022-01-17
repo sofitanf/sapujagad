@@ -2,8 +2,10 @@
 
 namespace App\Policies;
 
+use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Support\Facades\Auth;
+// use App\User;
 
 class UserPolicy
 {
@@ -14,8 +16,13 @@ class UserPolicy
      *
      * @return void
      */
-    public function admin()
+    public function admin(User $user)
     {
-        return Auth::user()->role === 'Admin';
+        return $user->role === 'Admin';
+    }
+
+    public function petugas(User $user)
+    {
+        return $user->role === 'Petugas';
     }
 }

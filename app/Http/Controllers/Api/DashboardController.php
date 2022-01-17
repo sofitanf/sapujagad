@@ -21,7 +21,7 @@ class DashboardController extends Controller
 
     public function jadwal(Dashboard $dashboard)
     {
-        $data = $dashboard->jadwal();
+        $data = $dashboard->jadwal(); 
 
         return response()->json([
             'data' => JadwalResource::collection($data)
@@ -35,16 +35,17 @@ class DashboardController extends Controller
         ]);
     }
 
-    public function chart(Dashboard $dashboard)
+    public function chart(Dashboard $dashboard, $tahun)
     {
-        // $data = $dashboard->chartCetakKtp();
-
-        // dd($data);
-
-        // view('app');
         return response()->json([
-            'chart' => $dashboard->chart(),
-            'bulan' => $dashboard->bulan(),
+            'chart' => $dashboard->chart($tahun),
+        ]);
+    }
+
+    public function tahun(Dashboard $dashboard)
+    {
+        return response()->json([
+            'data' => $dashboard->tahun(),
         ]);
     }
 }

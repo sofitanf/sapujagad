@@ -7,7 +7,16 @@
     <title>{{ config('app.name') }}</title>
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 </head>
+
 <body>
+    <style>
+        .rc-anchor-normal-footer {
+	display: none !important;
+}
+.grecaptcha-badge {
+	visibility: hidden;
+}
+    </style>
     <div id="app"></div>
     <script>
         window.Urls = @json([

@@ -10,7 +10,6 @@ import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
 import "viewerjs/dist/viewer.css";
 import VueViewer from "v-viewer";
-import { VueReCaptcha } from "vue-recaptcha-v3";
 import PrimeVue from "primevue/config";
 import VCalendar from "v-calendar";
 import validation from "./includes/validation";
@@ -46,9 +45,6 @@ store
         app.use(ConfirmationService);
         app.use(store);
         app.use(VueViewer);
-        app.use(VueReCaptcha, {
-            siteKey: process.env.MIX_SITEKEY,
-        });
         app.use(VCalendar);
         app.use(validation);
         app.use(ui);

@@ -16,6 +16,7 @@ import FileUpload from "primevue/fileupload";
 import Image from "primevue/image";
 import Chart from "primevue/chart";
 import Sidebar from "primevue/sidebar";
+import Dropdown from "primevue/dropdown";
 
 export default {
     install(app) {
@@ -37,5 +38,6 @@ export default {
         app.component("Image", Image);
         app.component("Chart", Chart);
         app.component("Sidebar", Sidebar);
+        app.component("Dropdown", Dropdown);
     },
 };

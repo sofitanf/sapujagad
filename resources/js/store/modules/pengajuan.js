@@ -36,9 +36,9 @@ export default {
             state.pengajuan = data;
             state.loadingPengajuan = false;
         },
-        removePengajuan(state, id) {
-            state.pengajuan = state.pengajuan.filter((data) => data.id !== id);
-        },
+        // removePengajuan(state, id) {
+        //     state.pengajuan = state.pengajuan.filter((data) => data.id !== id);
+        // },
         setDetailPengajuan(state, data) {
             state.detailPengajuan = data;
         },
@@ -60,10 +60,10 @@ export default {
             let res = await axios.get(`/pengajuan/${id}`);
             commit("setDetailPengajuan", res.data.data);
         },
-        async deletePengajuan({ commit }, id) {
-            await axios.delete(`/pengajuan/${id}`);
-            commit("removePengajuan", id);
-        },
+        // async deletePengajuan({ commit }, id) {
+        //     await axios.delete(`/pengajuan/${id}`);
+        //     commit("removePengajuan", id);
+        // },
         async editPengajuan({ commit, state }, data) {
             const id = state.detailPengajuan.id;
             let res = await axios.patch(`/pengajuan/${id}`, data);

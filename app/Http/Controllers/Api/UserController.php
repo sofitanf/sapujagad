@@ -3,56 +3,102 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Administrator;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
-
+ 
 class UserController extends Controller
 { 
     public function index(User $user)
     {
-        $this->authorize('admin');
+        $this->authorize('admin', $user);
         return response()->json([
             'data' => $user->data()
         ]);
     }
 
-    public function store(Request $request)
+    public function trash(User $user)
     {
-        $this->authorize('admin');
+        $this->authorize('admin', $user);
+
+        return response()->json([
+            'data' => $user->trash()
+        ]);
+    }
+
+    public function restore($id, User $user)
+    {
+        $this->authorize('admin', $user);
+
+        return response()->json([
+            'data' =>$user->aktif($id)
+        ]);
+    }
+
+
+    public function store(User $user, Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'email' => 'unique:users',
-            'username' => 'unique:users',
         ],[
-            'email.unique' => 'email sudah terdaftar',
-            'username.unique' => 'username sudah terdaftar',
+            'email.unique' => 'Email sudah terdaftar',
         ]);
 
         if ($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
 
-        $user = new User;
+        $user = new User();
         $user->role = $request->role;
-        $user->nama = $request->nama;
-        $user->username = $request->username;
-        $user->bagian = $request->bagian;
         $user->email = $request->email;
         $user->password = bcrypt('rahasia'); 
         $user->save();
 
+        $masyarakat = new Administrator();
+        $masyarakat->nama = $request->nama;
+        $masyarakat->user_id = $user->id;
+        $masyarakat->bagian = $request->bagian;
+        $masyarakat->save();
+
         return response()->json([
-            'message' => 'User berhasil dibuat!',
+            'message' => 'User berhasil dibuat',
             'data' => $user
+        ]);
+    }
+
+    public function delete($id)
+    {
+        $data = User::find($id);
+        $data->delete();
+
+        return response()->json([
+            'message' => 'User berhasil dinonaktifkan!',
+        ]);
+    }
+
+    public function destroy($id)
+    {
+        $data = User::onlyTrashed()->where('id',$id);
+
+        $user = User::find($id);
+        $administrator = Administrator::where('user_id', $id);
+        
+        if(optional($user)->avatar) {
+            Storage::disk('public')->delete('/avatar/'.$user->avatar);
+        }
+        $data->forceDelete();
+        $administrator->delete();
+
+        return response()->json([
+            'message' => 'User berhasil dihapus!',
         ]);
     }
 
     public function update(Request $request)
     {
-        $this->authorize('admin');
-
         $validator = Validator::make($request->all(), [
             'email' => 'unique:users|email|required',
         ]);
@@ -68,7 +114,7 @@ class UserController extends Controller
         $user->save();
 
         return response()->json([
-            'message' => 'Profil berhasil diperbaharui!',
+            'message' => 'Email berhasil diperbaharui!',
             'data' => $user->email
         ]);
     }
@@ -107,21 +153,6 @@ class UserController extends Controller
         return response()->json([
             'message' => 'Avatar berhasil diperbaharui!',
             'data' => $user->avatar
-        ]);
-    }
-
-    public function destroy($id)
-    {
-        $data = User::find($id);
-        
-        if($data->avatar) {
-            Storage::disk('public')->delete('/avatar/'.$data->avatar);
-         }
-
-        $data->delete();
-
-        return response()->json([
-            'message' => 'User berhasil dihapus!',
         ]);
     }
 

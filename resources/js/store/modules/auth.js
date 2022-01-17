@@ -1,6 +1,5 @@
 import axios from "axios";
 import { removeHeaderToken, setHeaderToken } from "../../includes/auth";
-import router from "../../router";
 
 export default {
     state: {
@@ -51,6 +50,9 @@ export default {
         isLoggedIn(state) {
             return state.isLoggedIn;
         },
+        isUserLoggedIn(state) {
+            return state.isUserLoggedIn;
+        },
         emailEdit(state) {
             return state.emailEdit;
         },
@@ -65,6 +67,24 @@ export default {
             return new Promise((resolve, reject) => {
                 axios
                     .post("/login", payload)
+                    .then((response) => {
+                        const token = response.data.token;
+                        localStorage.setItem("token", token);
+                        setHeaderToken(token);
+                        dispatch("getUser");
+                        resolve(response);
+                    })
+                    .catch((err) => {
+                        commit("resetUser");
+                        localStorage.removeItem("token");
+                        reject(err);
+                    });
+            });
+        },
+        async userLogin({ commit, dispatch }, payload) {
+            return new Promise((resolve, reject) => {
+                axios
+                    .post("/login-user", payload)
                     .then((response) => {
                         const token = response.data.token;
                         localStorage.setItem("token", token);

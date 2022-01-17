@@ -53,9 +53,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     cetaklaporan: function cetaklaporan() {
       this.range.start = moment__WEBPACK_IMPORTED_MODULE_2___default()(this.range.start).format("YYYY-MM-DD");
       this.range.end = moment__WEBPACK_IMPORTED_MODULE_2___default()(this.range.end).format("YYYY-MM-DD");
-      window.open("/laporan/" + this.range.start + "+" + this.range.end, "_blank"); // this.range.end.slice(0, -6);
-
-      console.log(this.range);
+      window.open("/laporan/" + this.range.start + "+" + this.range.end, "_blank");
     },
     initFilters: function initFilters() {
       this.filters = {
@@ -64,27 +62,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           matchMode: primevue_api__WEBPACK_IMPORTED_MODULE_0__.FilterMatchMode.CONTAINS
         }
       };
-    },
-    deletePengajuan: function deletePengajuan(id) {
-      var _this = this;
+    } // deletePengajuan(id) {
+    //   this.$confirm.require({
+    //     message: "Anda yakin ingin menghapus data ini?",
+    //     header: "Konfirmasi",
+    //     icon: "pi pi-exclamation-triangle",
+    //     accept: () => {
+    //       this.$store.dispatch("deletePengajuan", id).then((res) => {
+    //         this.$toast.add({
+    //           severity: "success",
+    //           summary: "Sukses",
+    //           detail: "Pengajuan berhasil dihapus",
+    //           life: 3000,
+    //         });
+    //       });
+    //     },
+    //     reject: () => {},
+    //   });
+    // },
 
-      this.$confirm.require({
-        message: "Anda yakin ingin menghapus data ini?",
-        header: "Konfirmasi",
-        icon: "pi pi-exclamation-triangle",
-        accept: function accept() {
-          _this.$store.dispatch("deletePengajuan", id).then(function (res) {
-            _this.$toast.add({
-              severity: "success",
-              summary: "Sukses",
-              detail: "Pengajuan berhasil dihapus",
-              life: 3000
-            });
-          });
-        },
-        reject: function reject() {}
-      });
-    }
   }),
   created: function created() {
     this.getPengajuan();
@@ -176,7 +172,6 @@ var _hoisted_14 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_15 = ["onClick"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Button");
 
@@ -304,11 +299,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, {
         body: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref4) {
           var data = _ref4.data;
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+          return [data.status === 'Terkirim' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", {
+            key: 0,
+            "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["center", 'badge badge-' + _ctx.badgeClass('Terkirim')])
+          }, "Pengajuan Baru", 2
+          /* CLASS */
+          )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", {
+            key: 1,
             "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)('badge badge-' + _ctx.badgeClass(data.status))
           }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(data.status), 3
           /* TEXT, CLASS */
-          )];
+          ))];
         }),
         _: 1
         /* STABLE */
@@ -334,14 +335,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
           }, 1032
           /* PROPS, DYNAMIC_SLOTS */
-          , ["to"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-            onClick: function onClick($event) {
-              return $options.deletePengajuan(data.id);
-            },
-            "class": "badge badge-danger pi pi-trash"
-          }, null, 8
-          /* PROPS */
-          , _hoisted_15)])];
+          , ["to"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <span\r\n                  @click=\"deletePengajuan(data.id)\"\r\n                  class=\"badge badge-danger pi pi-trash\"\r\n                ></span> ")])];
         }),
         _: 1
         /* STABLE */
@@ -404,7 +398,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.icon[data-v-1156754e] {\r\n  margin: 0 1rem;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.icon[data-v-1156754e] {\r\n\tmargin: 0 1rem;\n}\n.center[data-v-1156754e] {\r\n\ttext-align: center;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21889,7 +21883,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Pengajuan_vue_vue_type_template_id_1156754e_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Pengajuan.vue?vue&type=template&id=1156754e&scoped=true */ "./resources/js/pages/admin/pengajuan/Pengajuan.vue?vue&type=template&id=1156754e&scoped=true");
 /* harmony import */ var _Pengajuan_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Pengajuan.vue?vue&type=script&lang=js */ "./resources/js/pages/admin/pengajuan/Pengajuan.vue?vue&type=script&lang=js");
 /* harmony import */ var _Pengajuan_vue_vue_type_style_index_0_id_1156754e_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pengajuan.vue?vue&type=style&index=0&id=1156754e&scoped=true&lang=css */ "./resources/js/pages/admin/pengajuan/Pengajuan.vue?vue&type=style&index=0&id=1156754e&scoped=true&lang=css");
-/* harmony import */ var E_vue_project_sapu_vue_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var E_vue_project_sapujagad_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -21897,7 +21891,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,E_vue_project_sapu_vue_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_Pengajuan_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Pengajuan_vue_vue_type_template_id_1156754e_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-1156754e"],['__file',"resources/js/pages/admin/pengajuan/Pengajuan.vue"]])
+const __exports__ = /*#__PURE__*/(0,E_vue_project_sapujagad_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_Pengajuan_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Pengajuan_vue_vue_type_template_id_1156754e_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-1156754e"],['__file',"resources/js/pages/admin/pengajuan/Pengajuan.vue"]])
 /* hot reload */
 if (false) {}
 
