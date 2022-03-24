@@ -13,9 +13,11 @@ class MasyarakatController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'unique:users',
-            'telepon' => 'unique:masyarakat',
-            'nik' => 'unique:masyarakat',
+            'email' => 'unique:users|required',
+            'password' => 'required',
+            'nama' => 'required',
+            'telepon' => 'unique:masyarakat|required',
+            'nik' => 'unique:masyarakat|required',
         ],[
             'email.unique' => 'Email sudah terdaftar',
             'telepon.unique' => 'Telepon sudah terdaftar',
@@ -36,7 +38,7 @@ class MasyarakatController extends Controller
         $masyarakat->nama = $request->nama;
         $masyarakat->nik = $request->nik;
         $masyarakat->telepon = $request->telepon;
-        $masyarakat->user_id = $user->id;
+        $masyarakat->id_user = $user->id_user;
         $masyarakat->save();
 
         return response()->json([

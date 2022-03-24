@@ -19,7 +19,7 @@ class Dashboard extends Model
     }
 
     public function pelapor(){
-        return $this->objek('user_id');
+        return $this->objek('id_masyarakat');
     }
 
     public function pemohon(){
@@ -43,8 +43,8 @@ class Dashboard extends Model
     public function jadwal()
     {
         return DB::table('pengajuan')
-            ->join('kecamatan', 'pengajuan.kecamatan_id', '=', 'kecamatan.id')
-            ->select('pengajuan.id','kecamatan.nama_kecamatan','pengajuan.jadwal','pengajuan.kategori')
+            ->join('kecamatan', 'pengajuan.id_kecamatan', '=', 'kecamatan.id_kecamatan')
+            ->select('pengajuan.id_pengajuan','kecamatan.nama_kecamatan','pengajuan.jadwal','pengajuan.kategori')
             ->where('pengajuan.status', 'diproses')
             ->orderBy('pengajuan.jadwal', 'ASC')
             ->get();
@@ -53,7 +53,7 @@ class Dashboard extends Model
     public function tabelKecamatan()
     {
         return DB::table('pengajuan')
-            ->join('kecamatan', 'pengajuan.kecamatan_id', '=', 'kecamatan.id')
+            ->join('kecamatan', 'pengajuan.id_kecamatan', '=', 'kecamatan.id_kecamatan')
             ->addSelect('kecamatan.nama_kecamatan')
             ->addSelect(DB::raw('COUNT(kecamatan.nama_kecamatan) as total'))
             ->addSelect(DB::raw("COUNT(CASE WHEN pengajuan.kategori = 'Cetak KTP-El' THEN 1 END) as cetakKtp"))

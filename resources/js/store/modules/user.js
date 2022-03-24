@@ -16,28 +16,28 @@ export default {
             state.trash = data;
         },
         remove(state, id) {
-            state.trash = state.trash.filter((user) => user.id !== id);
+            state.trash = state.trash.filter((user) => user.id_user !== id);
         },
         addUser(state, data) {
             state.users.push(data);
         },
         removeUser(state, id) {
             state.users.map((user) => {
-                if (user.id === id) {
+                if (user.id_user === id) {
                     state.trash.push(user);
                 }
             });
 
-            state.users = state.users.filter((user) => user.id !== id);
+            state.users = state.users.filter((user) => user.id_user !== id);
         },
         removeTrash(state, id) {
             state.trash.map((user) => {
-                if (user.id === id) {
+                if (user.id_user === id) {
                     state.users.push(user);
                 }
             });
 
-            state.trash = state.trash.filter((user) => user.id !== id);
+            state.trash = state.trash.filter((user) => user.id_user !== id);
         },
     },
     getters: {
@@ -61,12 +61,10 @@ export default {
             commit("setTrash", res.data.data);
         },
         async restoreUser({ commit }, id) {
-            // debugger;
             await axios.get(`/user/restore/${id}`);
             commit("removeTrash", id);
         },
         async softDeleteUser({ commit }, id) {
-            // debugger;
             await axios.delete(`/user/delete/${id}`);
             commit("removeUser", id);
         },

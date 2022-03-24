@@ -3,13 +3,18 @@
 		<div class="form form_center">
 			<div class="form_header">
 				<h1 class="form_judul">FORM PENGAJUAN CETAK KTP-EL</h1>
-				<img class="form_gambar" src="../../../public/images/ktp.jpeg" alt="" />
+				<img class="form_gambar" src="images/ktp.jpeg" alt="" />
 			</div>
 			<div class="form_baris">
 				<h2>DATA PELAPOR</h2>
 			</div>
-			<vee-form :validation-schema="schema" class="vee-form" @submit="daftar">
-				<DataPelaporPemohon />
+			<vee-form
+				:validation-schema="schema"
+				@invalid-submit="onInvalidSubmit"
+				class="vee-form"
+				@submit="daftar"
+			>
+				<DataPelaporPemohon @sendLampiran="getLampiran" />
 				<hr />
 				<div class="form_baris">
 					<h2>UPLOAD DATA PENDUKUNG</h2>
@@ -49,29 +54,6 @@
 import daftar from "../mixins/daftar";
 export default {
 	mixins: [daftar],
-	data() {
-		return {
-			items: [
-				{
-					label: "Pelapor",
-					to: "pelapor",
-				},
-				{
-					label: "Pemohon",
-					to: "pemohon",
-				},
-				{
-					label: "Tempat Pelayanan",
-					to: "tempat",
-				},
-				{
-					label: "Berkas Pendukung",
-					to: "berkas",
-				},
-			],
-			formObject: {},
-		};
-	},
 };
 </script>
 <style>

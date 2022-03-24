@@ -188,12 +188,6 @@ export default {
 		if (!this.$store.getters.isLoggedIn) {
 			this.$router.push("/admin/login");
 		}
-		// if (
-		// 	this.$store.getters.isLoggedIn &&
-		// 	this.$store.getters.user.role === "Masyarakat"
-		// ) {
-		// 	this.$router.go("/");
-		// }
 	},
 };
 </script>

@@ -45,7 +45,6 @@
 				</vee-field>
 				<error-message name="role" class="error" />
 			</div>
-			<vee-field hidden name="password" value="capiloke" />
 			<Button type="submit" label="Tambah" class="p-button-raised w-10rem" />
 		</vee-form>
 	</div>

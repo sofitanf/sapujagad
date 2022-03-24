@@ -14,13 +14,8 @@
 	<div class="form_baris">
 		<label for="">HUBUNGAN PELAPOR TERHADAP PEMOHON</label>
 		<div class="row">
-			<vee-field
-				type="radio"
-				id="ortu"
-				name="hubungan"
-				value="Orang Tua/Wali"
-			/>
-			<label for="ortu">Orang Tua / Wali</label>
+			<vee-field type="radio" id="ortu" name="hubungan" value="Keluarga/Wali" />
+			<label for="ortu">Keluarga / Wali</label>
 		</div>
 		<div class="row">
 			<vee-field
@@ -40,11 +35,19 @@
 			/>
 			<label for="kepala-sekolah">Kepala Sekolah</label>
 		</div>
-		<div class="row">
-			<vee-field type="radio" id="lainnya" name="hubungan" value="Lainnya" />
-			<label for="lainnya">Lainnya</label>
-		</div>
 		<error-message name="hubungan" class="error" />
+	</div>
+	<div class="form_baris">
+		<div class="h2">BUKTI KETERIKATAN PELAPOR TERHADAP PEMOHON</div>
+		<p class="form_catatan">*Kartu Keluarga (Pelapor Keluarga/Wali)</p>
+		<p class="form_catatan">
+			*Surat Keterikatan Pelapor Terhadap Pemohon (Pelapor Kepala Desa/Kepala
+			Sekolah)
+		</p>
+	</div>
+	<div class="form_baris">
+		<vee-field type="file" name="lampiran5" @change="setLampiran" />
+		<error-message name="lampiran5" class="error" />
 	</div>
 	<hr />
 	<div class="form_baris">
@@ -70,7 +73,7 @@
 		<label for="">JENIS KECACATAN</label>
 		<p class="form_catatan">Abaikan jika pemohon tidak memiliki kecacatan</p>
 		<vee-field name="kecacatan" id="kecacatan" as="select" class="select">
-			<option value="" selected disable hidden>Pilih</option>
+			<option value="" selected>Pilih</option>
 			<option value="Fisik">Fisik</option>
 			<option value="Netra">Netra</option>
 			<option value="Rungu">Rungu</option>
@@ -85,7 +88,7 @@
 			<option value="Fisik dan Mental">Fisik dan Mental</option>
 		</vee-field>
 	</div>
-	<div class="form_baris">
+	<div v-if="lansia" class="form_baris">
 		<label for="">LANJUT USIA</label>
 		<p class="form_catatan">
 			Centang jika pemohon dalam kelompok lanjut usia (usia 60 tahun ke atas)
@@ -104,7 +107,7 @@
 		<vee-field
 			v-model="id_kecamatan"
 			@change="pilihKecamatan()"
-			name="kecamatan_id"
+			name="id_kecamatan"
 			as="select"
 			class="select"
 		>
@@ -113,17 +116,17 @@
 				{{ data.nama }}
 			</option>
 		</vee-field>
-		<error-message name="kecamatan_id" class="error" />
+		<error-message name="id_kecamatan" class="error" />
 	</div>
 	<div class="form_baris">
 		<label for="">KELURAHAN/DESA</label>
-		<vee-field name="kelurahan_id" as="select" class="select">
+		<vee-field name="id_kelurahan" as="select" class="select">
 			<option value="" selected disable hidden>Pilih Kelurahan/Desa</option>
 			<option v-for="data in kelurahan" :key="data.id" :value="data.id">
 				{{ data.nama }}
 			</option>
 		</vee-field>
-		<error-message name="kelurahan_id" class="error" />
+		<error-message name="id_kelurahan" class="error" />
 	</div>
 	<div class="form_baris">
 		<label for="">ALAMAT</label>
@@ -137,13 +140,23 @@ import DataRekamKTP from "../components/DataRekamKTP.vue";
 import { mapGetters } from "vuex";
 
 export default {
-	props: ["rekamKtp"],
+	emits: ["sendLampiran"],
+	props: {
+		rekamKtp: {
+			type: Boolean,
+		},
+		lansia: {
+			type: Boolean,
+			default: true,
+		},
+	},
 	components: { DataRekamKTP },
 	data() {
 		return {
 			kecamatan: [],
 			kelurahan: [],
 			id_kecamatan: null,
+			lampiran: null,
 		};
 	},
 	computed: {
@@ -152,6 +165,17 @@ export default {
 		}),
 	},
 	methods: {
+		setLampiran(e) {
+			let file = e.target.files[0];
+
+			let reader = new FileReader();
+			reader.onload = (e) => {
+				this.lampiran = e.target.result;
+				this.$emit("sendLampiran", this.lampiran);
+			};
+
+			reader.readAsDataURL(file);
+		},
 		fetchKecamatan() {
 			axios
 				.get("/kecamatan")

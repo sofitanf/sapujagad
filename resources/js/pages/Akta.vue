@@ -11,7 +11,7 @@
 				class="vee-form"
 				@submit="daftar"
 			>
-				<DataPelaporPemohon />
+				<DataPelaporPemohon @sendLampiran="getLampiran" />
 				<hr />
 				<div class="form_baris">
 					<h2>UPLOAD DATA PENDUKUNG</h2>

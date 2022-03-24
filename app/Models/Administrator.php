@@ -11,4 +11,5 @@ class Administrator extends Model
 
     protected $table = 'administrator';
     protected $guarded = [];
+    protected $primaryKey = 'id_administrator';
 }

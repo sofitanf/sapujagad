@@ -5,11 +5,7 @@
 			<div class="pengajuan_daftar">
 				<div class="pengajuan-1">
 					<div class="pengajuan_tipe">
-						<img
-							class="pengajuan_gambar"
-							src="../../../public/images/ktp.jpeg"
-							alt=""
-						/>
+						<img class="pengajuan_gambar" src="images/ktp.jpeg" alt="" />
 						<div class="pengajuan_deskripsi">
 							<h2 class="pengajuan_tipe_judul">CETAK KTP-EL</h2>
 							<div class="pengajuan_persyaratan">
@@ -28,11 +24,7 @@
 						</div>
 					</div>
 					<div class="pengajuan_tipe">
-						<img
-							class="pengajuan_gambar"
-							src="../../../public/images/rekam-ktp.jpg"
-							alt=""
-						/>
+						<img class="pengajuan_gambar" src="images/rekam-ktp.jpg" alt="" />
 						<div class="pengajuan_deskripsi">
 							<h2 class="pengajuan_tipe_judul">REKAM KTP-EL</h2>
 							<div class="pengajuan_persyaratan">
@@ -60,11 +52,7 @@
 				</div>
 				<div class="pengajuan-2">
 					<div class="pengajuan_tipe">
-						<img
-							class="pengajuan_gambar"
-							src="../../../public/images/kia.jpeg"
-							alt=""
-						/>
+						<img class="pengajuan_gambar" src="images/kia.jpeg" alt="" />
 						<div class="pengajuan_deskripsi">
 							<h2 class="pengajuan_tipe_judul">KARTU IDENTITAS ANAK</h2>
 							<div class="pengajuan_persyaratan">
@@ -73,8 +61,8 @@
 									<li>Akta Kelahiran</li>
 									<li>
 										Anak usia 5 tahun ke atas pas photo berwarna ukuran 2 x 3,
-										bila tahun kelahiran genap background warna biru, tahun
-										kelahiran ganjil background warna merah.
+										bila tahun kelahiran genap background warna <span style="color: blue">BIRU</span>, tahun
+										kelahiran ganjil background warna <span style="color: red">MERAH</span>.
 									</li>
 									<li>Anak usia 0 - 5 tahun tanpa pas photo.</li>
 								</ol>
@@ -87,11 +75,7 @@
 						</div>
 					</div>
 					<div class="pengajuan_tipe">
-						<img
-							class="pengajuan_gambar"
-							src="../../../public/images/akta.jpeg"
-							alt=""
-						/>
+						<img class="pengajuan_gambar" src="images/akta.jpeg" alt="" />
 						<div class="pengajuan_deskripsi">
 							<h2 class="pengajuan_tipe_judul">AKTA KELAHIRAN</h2>
 							<div class="pengajuan_persyaratan">

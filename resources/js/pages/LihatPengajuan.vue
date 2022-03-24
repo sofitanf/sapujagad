@@ -94,7 +94,7 @@ export default {
 	methods: {
 		async fetchData() {
 			await axios
-				.get(`/cek-pengajuan/${this.user.id}`)
+				.get(`/cek-pengajuan/${this.user.id_masyarakat}`)
 				.then(({ data }) => {
 					this.pengajuan = data.data;
 					this.loading = false;

@@ -62,25 +62,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           matchMode: primevue_api__WEBPACK_IMPORTED_MODULE_0__.FilterMatchMode.CONTAINS
         }
       };
-    } // deletePengajuan(id) {
-    //   this.$confirm.require({
-    //     message: "Anda yakin ingin menghapus data ini?",
-    //     header: "Konfirmasi",
-    //     icon: "pi pi-exclamation-triangle",
-    //     accept: () => {
-    //       this.$store.dispatch("deletePengajuan", id).then((res) => {
-    //         this.$toast.add({
-    //           severity: "success",
-    //           summary: "Sukses",
-    //           detail: "Pengajuan berhasil dihapus",
-    //           life: 3000,
-    //         });
-    //       });
-    //     },
-    //     reject: () => {},
-    //   });
-    // },
-
+    }
   }),
   created: function created() {
     this.getPengajuan();
@@ -323,7 +305,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             to: {
               name: 'admin.pengajuan',
               params: {
-                id: data.id
+                id: data.id_pengajuan
               }
             }
           }, {
@@ -335,7 +317,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
           }, 1032
           /* PROPS, DYNAMIC_SLOTS */
-          , ["to"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <span\r\n                  @click=\"deletePengajuan(data.id)\"\r\n                  class=\"badge badge-danger pi pi-trash\"\r\n                ></span> ")])];
+          , ["to"])])];
         }),
         _: 1
         /* STABLE */

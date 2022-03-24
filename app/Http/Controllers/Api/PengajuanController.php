@@ -36,7 +36,7 @@ class PengajuanController extends Controller
 
     public function cekPengajuan($id)
     {
-        $data = Pengajuan::where('user_id', $id)->get();
+        $data = Pengajuan::where('id_masyarakat', $id)->get();
 
         return response()->json([
             'data' => CekPengajuanResource::collection($data),
@@ -70,54 +70,77 @@ class PengajuanController extends Controller
         $validator = Validator::make($request->all(), [
             'nik' => 'numeric|digits:16|required',
             'nama' => 'regex:/^[\pL\s\-]+$/u|required',
+            'id_masyarakat' => 'required',
             'ibu' => 'regex:/^[\pL\s\-]+$/u',
             'ayah' => 'regex:/^[\pL\s\-]+$/u',
             'alamat' => 'required',
-            'kecamatan_id' => 'required',
-            'kelurahan_id' => 'required',
+            'id_kecamatan' => 'required',
+            'id_kelurahan' => 'required',
+            'kecacatan' => 'required',
+            'lansia' => 'required',
             'kategori' => 'required',
             'hubungan' => 'required',
             'pernyataan' => 'required',
 			'lampiran1' => 'required',
         ]);
 
+        $onProcess = DB::table('pengajuan')->where('nik', $request->nik)
+                        ->where('kategori', $request->kategori)->where(function($query) {
+                            $query->where('status', 'Terkirim')
+                                ->orWhere('status', 'Diproses');
+                        })->get();
+
+        $rekam = DB::table('pengajuan')->where('nik', $request->nik)
+                    ->where('kategori', 'Rekam KTP-El')
+                    ->where('status', 'Selesai')
+                    ->get();
+
+        $countOnProcess = count($onProcess);
+        $countRekam = count($rekam);
+
         if ($validator->fails()) {
             return response()->json($validator->errors(), 400);
         } else {
-            $pengajuan = Pengajuan::create([
-                'nik' => $request->nik,
-                'nama' => $request->nama,
-                'user_id' => $request->user_id,
-                'alamat' => $request->alamat,
-                'ibu' => $request->ibu,
-                'ayah' => $request->ayah,
-                'kecamatan_id' => $request->kecamatan_id,
-                'kelurahan_id' => $request->kelurahan_id,
-                'kategori' => $request->kategori,
-                'hubungan' => $request->hubungan,
-                'status' => 'Terkirim',
-                'jadwal' => $request->jadwal,
-                'kecacatan' => $request->kecacatan,
-                'lansia' => $request->lansia,
-                'pernyataan' => $request->pernyataan,
-            ]);
-    
-            $this->upload($request, 'lampiran1', $pengajuan);
-            $this->upload($request, 'lampiran2', $pengajuan);
-            $this->upload($request, 'lampiran3', $pengajuan);
-            $this->upload($request, 'lampiran4', $pengajuan);
-    
-            $emails = DB::table('users')
-                        ->where('role', 'Petugas')
-                        ->select('email')
-                        ->get();
-    
-            Mail::to($emails)->send(new PostMail());
-    
-            return response()->json([
-                'message' => 'Pengajuan berhasil dibuat',
-                'data' => $pengajuan
-            ]);
+            if($countOnProcess < 1 && $countRekam < 1) {
+                $pengajuan = Pengajuan::create([
+                    'nik' => $request->nik,
+                    'nama' => $request->nama,
+                    'id_masyarakat' => $request->id_masyarakat,
+                    'alamat' => $request->alamat,
+                    'ibu' => $request->ibu,
+                    'ayah' => $request->ayah,
+                    'id_kecamatan' => $request->id_kecamatan,
+                    'id_kelurahan' => $request->id_kelurahan,
+                    'kategori' => $request->kategori,
+                    'hubungan' => $request->hubungan,
+                    'status' => 'Terkirim',
+                    'kecacatan' => $request->kecacatan,
+                    'lansia' => $request->lansia,
+                    'pernyataan' => $request->pernyataan,
+                ]);
+        
+                $this->upload($request, 'lampiran1', $pengajuan);
+                $this->upload($request, 'lampiran2', $pengajuan);
+                $this->upload($request, 'lampiran3', $pengajuan);
+                $this->upload($request, 'lampiran4', $pengajuan);
+                $this->upload($request, 'lampiran5', $pengajuan);
+        
+                $emails = DB::table('users')
+                            ->where('role', 'Petugas')
+                            ->select('email')
+                            ->get();
+        
+                Mail::to($emails)->send(new PostMail());
+        
+                return response()->json([
+                    'message' => 'Pengajuan berhasil dibuat',
+                    'data' => $pengajuan,
+                ]);
+            } else {
+                return response()->json([
+                    'message' => 'Pengajuan sudah ada',
+                ], 400);
+            }
         }
     }
 
@@ -134,43 +157,28 @@ class PengajuanController extends Controller
     {
         $this->authorize('petugas', $user);
 
-        $data = Pengajuan::findOrFail($id);
-        $data->status=$request->get('status');
-        $data->catatan=$request->get('catatan');
-        $data->jadwal=$request->get('jadwal');
-        $data->petugas_id = $request->get('petugas_id');
-        $data->nama_petugas = $request->get('nama_petugas');
-        $data->bagian_petugas = $request->get('bagian_petugas');
-        $data->save();
-
-        return response()->json([
-            'message' => 'Pengajuan berhasil diupdate!',
-            'data' => $data
+        $validator = Validator::make($request->all(), [
+            'status' => 'required'
         ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        } else {
+            $data = Pengajuan::findOrFail($id);
+            $data->status=$request->get('status');
+            $data->catatan=$request->get('catatan');
+            $data->jadwal=$request->get('jadwal');
+            $data->id_administrator = $request->get('id_administrator');
+            $data->nama_administrator = $request->get('nama_administrator');
+            $data->bagian_administrator = $request->get('bagian_administrator');
+            $data->save();
+
+            return response()->json([
+                'message' => 'Pengajuan berhasil diupdate!',
+                'data' => $data
+            ]);
+        }
     }
-
-    // private function deleteImage($file)
-    // {
-    //     if($file) {
-    //        Storage::disk('public')->delete('/pengajuan/'.$file);
-    //     }
-    // }
-
-    // public function destroy($id)
-    // {
-    //     $data = Pengajuan::find($id);
-
-    //     $this->deleteImage($data->lampiran1);
-    //     $this->deleteImage($data->lampiran2);
-    //     $this->deleteImage($data->lampiran3);
-    //     $this->deleteImage($data->lampiran4);
-
-    //     $data->delete();
-
-    //     return response()->json([
-    //         'message' => 'Pengajuan berhasil dihapus!',
-    //     ]);
-    // }
 
     private function laporanKategori($start, $end, $kategori)
     {
@@ -180,7 +188,7 @@ class PengajuanController extends Controller
                     ->count();
     }
 
-    private function client($start, $end, $kategori)
+    private function jumlahMasyarakat($start, $end, $kategori)
     {
         return DB::table('pengajuan')
             		->select($kategori, DB::raw('count(*) as total'))
@@ -198,7 +206,7 @@ class PengajuanController extends Controller
         $end = $date[1];
 
         $kecamatan = DB::table('pengajuan')
-                    ->join('kecamatan', 'pengajuan.kecamatan_id', '=', 'kecamatan.id')
+                    ->join('kecamatan', 'pengajuan.id_kecamatan', '=', 'kecamatan.id_kecamatan')
                     ->addSelect('kecamatan.nama_kecamatan')
                     ->addSelect(DB::raw('COUNT(kecamatan.nama_kecamatan) as total'))
                     ->addSelect(DB::raw("COUNT(CASE WHEN pengajuan.kategori = 'Cetak KTP-El' THEN 1 END) as cetakKtp"))
@@ -218,8 +226,8 @@ class PengajuanController extends Controller
         $kia = $this->laporanKategori($start, $end, 'KIA');
         $akta = $this->laporanKategori($start, $end, 'AKTA');
 
-        $pelapor = $this->client($start, $end, 'user_id');
-        $pemohon = $this->client($start, $end, 'nik');
+        $pelapor = $this->jumlahMasyarakat($start, $end, 'id_masyarakat');
+        $pemohon = $this->jumlahMasyarakat($start, $end, 'nik');
 
         $start = TanggalID("j M Y", $start);
         $end = TanggalID("j M Y", $end);

@@ -152,7 +152,7 @@ export default {
 				locale: "id",
 				events: [],
 				eventClick: function (info) {
-					alert("Event " + info.event.title);
+					alert("Jam " + info.event.title);
 				},
 			},
 		};

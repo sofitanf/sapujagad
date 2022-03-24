@@ -244,11 +244,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
         name: "role",
         "class": "error"
-      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
-        hidden: "",
-        name: "password",
-        value: "capiloke"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Button, {
+      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Button, {
         type: "submit",
         label: "Tambah",
         "class": "p-button-raised w-10rem"

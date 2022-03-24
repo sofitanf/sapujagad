@@ -59,21 +59,21 @@ class AuthController extends Controller
                 'message' => 'Logout Success!',  
             ]);
         }
-    }
+    } 
 
     public function user()
     {
-        $id = Auth::user()->id;
-        $user = User::find($id);
+        $id = Auth::user()->id_user;
+        $user = User::where('id_user', $id)->first();
         if($user->role === 'Masyarakat') {
             $user = DB::table('masyarakat')
-            ->join('users', 'users.id', '=', 'masyarakat.user_id')
-            ->where('users.id', $id)
+            ->join('users', 'users.id_user', '=', 'masyarakat.id_user')
+            ->where('users.id_user', $id)
             ->select('masyarakat.*','users.role')->first();
         } else {
             $user =DB::table('administrator')
-            ->join('users', 'users.id', '=', 'administrator.user_id')
-            ->where('users.id', $id)
+            ->join('users', 'users.id_user', '=', 'administrator.id_user')
+            ->where('users.id_user', $id)
             ->select('administrator.*','users.role', 'users.avatar', 'users.email')->first();
         }
 

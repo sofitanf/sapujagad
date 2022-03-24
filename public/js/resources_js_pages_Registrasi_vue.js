@@ -19,20 +19,25 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
+    var _schema;
+
     return {
-      schema: {
+      schema: (_schema = {
         nik: "nik|nik_number|nik_min:16|nik_max:16|min_value:3326019999999999|max_value:3326199999999999",
         nama: {
           nama: true,
           regex: /^[A-Za-z .']+$/
         },
-        telepon: "no_wa|no_wa_number",
-        email: "required|email",
-        password: "required|min:6",
-        confirm_password: "required|min:6|confirmed:@password"
-      },
+        telepon: "no_wa|no_wa_number"
+      }, _defineProperty(_schema, "telepon", {
+        no_wa: true,
+        no_wa_number: true,
+        phone: /^08\d{9,11}$/
+      }), _defineProperty(_schema, "email", "required|email"), _defineProperty(_schema, "password", "required|min:6"), _defineProperty(_schema, "confirm_password", "required|min:6|confirmed:@password"), _schema),
       validation: []
     };
   },

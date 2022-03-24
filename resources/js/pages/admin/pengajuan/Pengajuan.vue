@@ -86,14 +86,13 @@
 						<template #body="{ data }">
 							<div class="flex gap-2">
 								<router-link
-									:to="{ name: 'admin.pengajuan', params: { id: data.id } }"
+									:to="{
+										name: 'admin.pengajuan',
+										params: { id: data.id_pengajuan },
+									}"
 								>
 									<span class="badge badge-warning pi pi-pencil mr-2"></span>
 								</router-link>
-								<!-- <span
-                  @click="deletePengajuan(data.id)"
-                  class="badge badge-danger pi pi-trash"
-                ></span> -->
 							</div>
 						</template>
 					</Column>
@@ -147,24 +146,6 @@ export default {
 				global: { value: null, matchMode: FilterMatchMode.CONTAINS },
 			};
 		},
-		// deletePengajuan(id) {
-		//   this.$confirm.require({
-		//     message: "Anda yakin ingin menghapus data ini?",
-		//     header: "Konfirmasi",
-		//     icon: "pi pi-exclamation-triangle",
-		//     accept: () => {
-		//       this.$store.dispatch("deletePengajuan", id).then((res) => {
-		//         this.$toast.add({
-		//           severity: "success",
-		//           summary: "Sukses",
-		//           detail: "Pengajuan berhasil dihapus",
-		//           life: 3000,
-		//         });
-		//       });
-		//     },
-		//     reject: () => {},
-		//   });
-		// },
 	},
 	created() {
 		this.getPengajuan();

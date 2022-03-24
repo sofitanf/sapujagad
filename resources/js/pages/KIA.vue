@@ -7,7 +7,7 @@
 				<h2>DATA PELAPOR</h2>
 			</div>
 			<vee-form :validation-schema="schema" class="vee-form" @submit="daftar">
-				<DataPelaporPemohon />
+				<DataPelaporPemohon :lansia="lansia" @sendLampiran="getLampiran" />
 				<hr />
 				<div class="form_baris">
 					<h2>UPLOAD DATA PENDUKUNG</h2>
@@ -38,6 +38,11 @@
 import daftar from "../mixins/daftar";
 export default {
 	mixins: [daftar],
+	data() {
+		return {
+			lansia: false,
+		};
+	},
 };
 </script>
 <style>

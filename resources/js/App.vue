@@ -82,7 +82,6 @@ span.p-menuitem-link {
 	align-items: center;
 	justify-content: center;
 	text-transform: capitalize;
-	cursor: pointer;
 }
 
 .badge-danger {

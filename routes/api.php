@@ -42,18 +42,17 @@ Route::group(['middleware'=>['auth:api']],function(){
     Route::get('/dashboard/tabel-kecamatan', [DashboardController::class, 'tabelKecamatan']);
     Route::get('/pengajuan', [PengajuanController::class, 'pengajuan']);
     Route::get('/pengajuan/{id}', [PengajuanController::class, 'pengajuanDetail']);
-    // Route::delete('/pengajuan/{id}', [PengajuanController::class, 'destroy']);
     Route::patch('/pengajuan/{id}', [PengajuanController::class, 'update']);
-    Route::get('/user', [UserController::class, 'index']);
+    Route::get('/user', [AdministratorController::class, 'index']);
     Route::post('/user', [AdministratorController::class, 'store']);
-    Route::get('/user/trash', [UserController::class, 'trash']);
-    Route::get('/user/restore/{id}', [UserController::class, 'restore']);
-    Route::patch('/user', [UserController::class, 'update']);
-    Route::put('/user/password', [UserController::class, 'updatePassword']);
-    Route::delete('/user/{id}', [UserController::class, 'destroy']);
-    Route::delete('/user/delete/{id}', [UserController::class, 'delete']);
-    Route::delete('/deleteAvatar', [UserController::class, 'deleteAvatar']);
-    Route::put('/updateAvatar', [UserController::class, 'updateAvatar']);
+    Route::get('/user/trash', [AdministratorController::class, 'trash']);
+    Route::get('/user/restore/{id}', [AdministratorController::class, 'restore']);
+    Route::patch('/user', [AdministratorController::class, 'update']);
+    Route::put('/user/password', [AdministratorController::class, 'updatePassword']);
+    Route::delete('/user/{id}', [AdministratorController::class, 'destroy']);
+    Route::delete('/user/delete/{id}', [AdministratorController::class, 'delete']);
+    Route::delete('/deleteAvatar', [AdministratorController::class, 'deleteAvatar']);
+    Route::put('/updateAvatar', [AdministratorController::class, 'updateAvatar']);
 });
 
 

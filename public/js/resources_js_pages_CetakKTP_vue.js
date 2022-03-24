@@ -22,7 +22,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["rekamKtp"],
+  emits: ["sendLampiran"],
+  props: {
+    rekamKtp: {
+      type: Boolean
+    },
+    lansia: {
+      type: Boolean,
+      "default": true
+    }
+  },
   components: {
     DataRekamKTP: _components_DataRekamKTP_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -30,29 +39,44 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {
       kecamatan: [],
       kelurahan: [],
-      id_kecamatan: null
+      id_kecamatan: null,
+      lampiran: null
     };
   },
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)({
     user: "user"
   })),
   methods: {
-    fetchKecamatan: function fetchKecamatan() {
+    setLampiran: function setLampiran(e) {
       var _this = this;
+
+      var file = e.target.files[0];
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        _this.lampiran = e.target.result;
+
+        _this.$emit("sendLampiran", _this.lampiran);
+      };
+
+      reader.readAsDataURL(file);
+    },
+    fetchKecamatan: function fetchKecamatan() {
+      var _this2 = this;
 
       axios.get("/kecamatan").then(function (_ref) {
         var data = _ref.data;
-        _this.kecamatan = data.data;
+        _this2.kecamatan = data.data;
       })["catch"](function (error) {
         return console.log(error);
       });
     },
     fetchKelurahan: function fetchKelurahan() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.get("/kelurahan/".concat(this.id_kecamatan)).then(function (_ref2) {
         var data = _ref2.data;
-        _this2.kelurahan = data.data;
+        _this3.kelurahan = data.data;
       });
     },
     pilihKecamatan: function pilihKecamatan() {
@@ -100,25 +124,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mixins_daftar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../mixins/daftar */ "./resources/js/mixins/daftar.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  mixins: [_mixins_daftar__WEBPACK_IMPORTED_MODULE_0__["default"]],
-  data: function data() {
-    return {
-      items: [{
-        label: "Pelapor",
-        to: "pelapor"
-      }, {
-        label: "Pemohon",
-        to: "pemohon"
-      }, {
-        label: "Tempat Pelayanan",
-        to: "tempat"
-      }, {
-        label: "Berkas Pendukung",
-        to: "berkas"
-      }],
-      formObject: {}
-    };
-  }
+  mixins: [_mixins_daftar__WEBPACK_IMPORTED_MODULE_0__["default"]]
 });
 
 /***/ }),
@@ -184,7 +190,7 @@ var _hoisted_12 = {
 
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "ortu"
-}, "Orang Tua / Wali", -1
+}, "Keluarga / Wali", -1
 /* HOISTED */
 );
 
@@ -208,15 +214,21 @@ var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_18 = {
-  "class": "row"
-};
-
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "lainnya"
-}, "Lainnya", -1
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form_baris"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "h2"
+}, "BUKTI KETERIKATAN PELAPOR TERHADAP PEMOHON"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "form_catatan"
+}, "*Kartu Keluarga (Pelapor Keluarga/Wali)"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "form_catatan"
+}, " *Surat Keterikatan Pelapor Terhadap Pemohon (Pelapor Kepala Desa/Kepala Sekolah) ")], -1
 /* HOISTED */
 );
+
+var _hoisted_19 = {
+  "class": "form_baris"
+};
 
 var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1
 /* HOISTED */
@@ -271,9 +283,7 @@ var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 
 var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "",
-  selected: "",
-  disable: "",
-  hidden: ""
+  selected: ""
 }, "Pilih", -1
 /* HOISTED */
 );
@@ -351,6 +361,7 @@ var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_43 = {
+  key: 1,
   "class": "form_baris"
 };
 
@@ -471,7 +482,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     type: "radio",
     id: "ortu",
     name: "hubungan",
-    value: "Orang Tua/Wali"
+    value: "Keluarga/Wali"
   }), _hoisted_13]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
     type: "radio",
     id: "kepala-desa",
@@ -482,13 +493,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     id: "kepala-sekolah",
     name: "hubungan",
     value: "Kepala Sekolah"
-  }), _hoisted_17]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
-    type: "radio",
-    id: "lainnya",
+  }), _hoisted_17]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
     name: "hubungan",
-    value: "Lainnya"
-  }), _hoisted_19]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
-    name: "hubungan",
+    "class": "error"
+  })]), _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
+    type: "file",
+    name: "lampiran5",
+    onChange: $options.setLampiran
+  }, null, 8
+  /* PROPS */
+  , ["onChange"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
+    name: "lampiran5",
     "class": "error"
   })]), _hoisted_20, _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
     type: "text",
@@ -514,11 +529,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_43, [_hoisted_44, _hoisted_45, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_46, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
+  })]), $props.lansia ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_43, [_hoisted_44, _hoisted_45, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_46, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
     type: "checkbox",
     name: "lansia",
     value: "Ya"
-  }), _hoisted_47])]), _hoisted_48, _hoisted_49, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_50, [_hoisted_51, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
+  }), _hoisted_47])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_48, _hoisted_49, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_50, [_hoisted_51, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
     modelValue: $data.id_kecamatan,
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return $data.id_kecamatan = $event;
@@ -526,7 +541,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onChange: _cache[1] || (_cache[1] = function ($event) {
       return $options.pilihKecamatan();
     }),
-    name: "kecamatan_id",
+    name: "id_kecamatan",
     as: "select",
     "class": "select"
   }, {
@@ -548,10 +563,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8
   /* PROPS */
   , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
-    name: "kecamatan_id",
+    name: "id_kecamatan",
     "class": "error"
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_54, [_hoisted_55, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
-    name: "kelurahan_id",
+    name: "id_kelurahan",
     as: "select",
     "class": "select"
   }, {
@@ -571,7 +586,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* STABLE */
 
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
-    name: "kelurahan_id",
+    name: "id_kelurahan",
     "class": "error"
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_58, [_hoisted_59, _hoisted_60, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
     as: "textarea",
@@ -736,8 +751,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var _public_images_ktp_jpeg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../public/images/ktp.jpeg */ "./public/images/ktp.jpeg");
-
 
 var _hoisted_1 = {
   "class": "container"
@@ -752,7 +765,7 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   "class": "form_judul"
 }, "FORM PENGAJUAN CETAK KTP-EL"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   "class": "form_gambar",
-  src: _public_images_ktp_jpeg__WEBPACK_IMPORTED_MODULE_1__["default"],
+  src: "images/ktp.jpeg",
   alt: ""
 })], -1
 /* HOISTED */
@@ -823,11 +836,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_form, {
     "validation-schema": _ctx.schema,
+    onInvalidSubmit: _ctx.onInvalidSubmit,
     "class": "vee-form",
     onSubmit: _ctx.daftar
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DataPelaporPemohon), _hoisted_5, _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DataPelaporPemohon, {
+        onSendLampiran: _ctx.getLampiran
+      }, null, 8
+      /* PROPS */
+      , ["onSendLampiran"]), _hoisted_5, _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
         type: "file",
         name: "lampiran1",
         onChange: _ctx.setLampiran1
@@ -869,7 +887,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["validation-schema", "onSubmit"])])]);
+  , ["validation-schema", "onInvalidSubmit", "onSubmit"])])]);
 }
 
 /***/ }),
@@ -917,14 +935,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           nama: true,
           regex: /^[A-Za-z .']+$/
         },
-        kecamatan_id: "required",
+        id_kecamatan: "required",
         hubungan: "hubungan",
-        kelurahan_id: "required",
+        id_kelurahan: "required",
         alamat: "required",
         lampiran1: "file|image|size:2048",
         lampiran2: "image|size:2048",
         lampiran3: "image|size:2048",
         lampiran4: "image|size:2048",
+        lampiran5: "file|image|size:2048",
         pernyataan: "required"
       },
       schemaCurrent: {},
@@ -932,13 +951,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       fileLampiran1: null,
       fileLampiran2: null,
       fileLampiran3: null,
-      fileLampiran4: null
+      fileLampiran4: null,
+      fileLampiran5: null
     };
   },
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)({
     user: "user"
   })),
   methods: {
+    getLampiran: function getLampiran(value) {
+      this.fileLampiran5 = value;
+    },
     setLampiran: function setLampiran(e, lampiran) {
       var _this = this;
 
@@ -977,7 +1000,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     setLampiran4: function setLampiran4(e) {
       this.setLampiran(e, 4);
     },
-    daftar: function daftar(values, _ref) {
+    onInvalidSubmit: function onInvalidSubmit(_ref) {
+      var values = _ref.values,
+          errors = _ref.errors,
+          results = _ref.results;
+      console.log(values); // current form values
+
+      console.log(errors); // a map of field names and their first error message
+
+      console.log(results); // a detailed map of field names and their validation results
+    },
+    daftar: function daftar(values, _ref2) {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
@@ -986,14 +1019,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                resetForm = _ref.resetForm;
+                resetForm = _ref2.resetForm;
                 _this2.submitLoading = true;
                 values.lampiran1 = _this2.fileLampiran1;
                 values.lampiran2 = _this2.fileLampiran2;
                 values.lampiran3 = _this2.fileLampiran3;
                 values.lampiran4 = _this2.fileLampiran4;
-                values["user_id"] = _this2.user.id;
-                _context.next = 9;
+                values.lampiran5 = _this2.fileLampiran5;
+                values["id_masyarakat"] = _this2.user.id_masyarakat;
+                _context.next = 10;
                 return _this2.$store.dispatch("addPengajuan", values).then(function () {
                   _this2.submitLoading = false;
                   setTimeout(function () {
@@ -1006,12 +1040,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     detail: "Pengajuan berhasil!",
                     life: 3000
                   });
+                })["catch"](function (error) {
+                  _this2.submitLoading = false;
+                  setTimeout(function () {
+                    window.scrollTo(0, 0);
+                  }, 1000);
+
+                  _this2.$toast.add({
+                    severity: "error",
+                    summary: "Gagal",
+                    detail: "Pengajuan sudah terekam!",
+                    life: 3000
+                  });
                 });
 
-              case 9:
+              case 10:
                 resetForm();
 
-              case 10:
+              case 11:
               case "end":
                 return _context.stop();
             }
@@ -1067,20 +1113,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, "\n.text-left[data-v-a3b0f8c6] {\r\n\td
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
-
-/***/ }),
-
-/***/ "./public/images/ktp.jpeg":
-/*!********************************!*\
-  !*** ./public/images/ktp.jpeg ***!
-  \********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/ktp.jpeg?c63a012007f62050d9c86542f2c02ac7");
 
 /***/ }),
 

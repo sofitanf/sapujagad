@@ -23,7 +23,9 @@
 					<Column header="Aksi" class="opsi">
 						<template #body="{ data }">
 							<div class="aksi">
-								<span @click="softDelete(data.id)" class="badge badge-danger"
+								<span
+									@click="softDelete(data.id_user)"
+									class="badge badge-danger"
 									>Nonaktifkan</span
 								>
 							</div>
@@ -48,10 +50,12 @@
 					<Column header="Aksi" class="opsi">
 						<template #body="{ data }">
 							<div class="aksi">
-								<span @click="restore(data.id)" class="badge badge-info"
+								<span @click="restore(data.id_user)" class="badge badge-info"
 									>Aktifkan</span
 								>
-								<span @click="deleteUser(data.id)" class="badge badge-danger"
+								<span
+									@click="deleteUser(data.id_user)"
+									class="badge badge-danger"
 									>Hapus</span
 								>
 							</div>
@@ -179,12 +183,15 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .aksi {
 	display: flex;
 	gap: 1rem;
 }
 .opsi {
 	width: 90px;
+}
+.badge {
+	cursor: pointer;
 }
 </style>

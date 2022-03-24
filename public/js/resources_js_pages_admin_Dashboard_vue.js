@@ -11747,7 +11747,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         locale: "id",
         events: [],
         eventClick: function eventClick(info) {
-          alert("Event " + info.event.title);
+          alert("Jam " + info.event.title);
         }
       }
     };

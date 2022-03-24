@@ -15,8 +15,8 @@ class KelurahanResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'id_kec' => $this->kecamatan_id,
+            'id' => $this->id_kelurahan,
+            'id_kec' => $this->id_kecamatan,
             'nama' => $this->nama_kelurahan
         ];
     }

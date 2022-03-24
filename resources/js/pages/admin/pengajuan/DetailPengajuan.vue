@@ -22,8 +22,8 @@
 					<tr>
 						<td>Diupdate oleh</td>
 						<td>:</td>
-						<td v-if="data.petugas_id">
-							{{ data.nama_petugas }} ({{ data.bagian_petugas }})
+						<td v-if="data.id_administrator">
+							{{ data.nama_administrator }} ({{ data.bagian_administrator }})
 						</td>
 					</tr>
 				</table>
@@ -155,6 +155,13 @@
 					</tr>
 				</table>
 			</div>
+			<div v-if="data.lampiran5" class="col-12 sm:col-4">
+				<Button
+					label="Bukti keterkaitan pelapor dan pemohon"
+					@click="showLampiran5"
+					class="p-button-raised"
+				/>
+			</div>
 			<div class="col-12">
 				<Divider align="left">
 					<span>Data Pendukung</span>
@@ -221,7 +228,9 @@
 						<option v-if="data.status === 'Diproses'" value="Selesai">
 							Selesai
 						</option>
-						<option value="Ditolak">Ditolak</option>
+						<option v-if="data.status !== 'Selesai'" value="Ditolak">
+							Ditolak
+						</option>
 					</select>
 				</div>
 				<div v-if="showJadwal" class="form_baris mb-5">
@@ -265,6 +274,7 @@ export default {
 			lampiran2: [],
 			lampiran3: [],
 			lampiran4: [],
+			lampiran5: [],
 			label1: "",
 			label2: "",
 			label3: "",
@@ -321,6 +331,7 @@ export default {
 			this.lampiran2.push(`/storage/pengajuan/${this.data?.lampiran2}`);
 			this.lampiran3.push(`/storage/pengajuan/${this.data?.lampiran3}`);
 			this.lampiran4.push(`/storage/pengajuan/${this.data?.lampiran4}`);
+			this.lampiran5.push(`/storage/pengajuan/${this.data?.lampiran5}`);
 		},
 		showLampiran1() {
 			this.$viewerApi({
@@ -342,6 +353,11 @@ export default {
 				images: this.lampiran4,
 			});
 		},
+		showLampiran5() {
+			this.$viewerApi({
+				images: this.lampiran5,
+			});
+		},
 		async editPengajuan() {
 			if (
 				this.form.status === "Diproses" &&
@@ -360,9 +376,9 @@ export default {
 					.dispatch("editPengajuan", {
 						...this.form,
 						jadwal: date,
-						petugas_id: this.user.id,
-						nama_petugas: this.user.nama,
-						bagian_petugas: this.user.bagian,
+						id_administrator: this.user.id_user,
+						nama_administrator: this.user.nama,
+						bagian_administrator: this.user.bagian,
 					})
 					.then(() => {
 						setTimeout(() => {

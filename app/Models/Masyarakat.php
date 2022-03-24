@@ -10,6 +10,9 @@ class Masyarakat extends Model
     use HasFactory;
 
     protected $table = 'masyarakat';
+    protected $primaryKey = 'id_masyarakat';
+
+
     protected $guarded = [];
 
     public function user()

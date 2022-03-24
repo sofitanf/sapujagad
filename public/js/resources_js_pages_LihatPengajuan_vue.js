@@ -61,7 +61,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios.get("/cek-pengajuan/".concat(_this.user.id)).then(function (_ref) {
+                return axios.get("/cek-pengajuan/".concat(_this.user.id_masyarakat)).then(function (_ref) {
                   var data = _ref.data;
                   _this.pengajuan = data.data;
                   _this.loading = false;

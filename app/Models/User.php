@@ -27,6 +27,7 @@ class User extends Authenticatable
 
     protected $table = 'users';
     protected $dates = ['deleted_at'];
+    protected $primaryKey = 'id_user';
 
     /**
      * The attributes that should be hidden for arrays.
@@ -54,17 +55,11 @@ class User extends Authenticatable
     public function data()
     {
         return User::All()->where('role', '!=', 'Masyarakat')->except(Auth::id());
-        // return DB::table('users')
-        //     ->join('administrator', 'users.id' ,'=', 'administrator.user_id')
-        //     ->select('users.id', 'users.role', 'users.email', 'administrator.nama')
-        //     ->where('users.id', '!=', Auth::id())
-        //     ->where('users.role', '!=', 'Masyarakat')
-        //     ->get();
     }
 
     public function deleteUser($id)
     {
-        return User::onlyTrashed()->where('id',$id)->forceDelete();
+        return User::onlyTrashed()->where('id_user',$id)->forceDelete();
     }
 
     public function trash()

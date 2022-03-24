@@ -26601,6 +26601,8 @@ __webpack_require__.r(__webpack_exports__);
     (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("size", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.size);
     (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("email", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.email);
     (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("confirmed", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.confirmed);
+    (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("phone", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.regex);
+    (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("nik_format", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.regex);
     (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.configure)({
       generateMessage: function generateMessage(ctx) {
         var messages = {
@@ -26623,10 +26625,20 @@ __webpack_require__.r(__webpack_exports__);
           size: "Ukuran file maksimal 2MB",
           min_value: "NIK tidak dalam cakupan warga Kabupaten Pekalongan",
           max_value: "NIK tidak dalam cakupan warga Kabupaten Pekalongan",
+          nik_format: "NIK tidak dalam cakupan warga Kabupaten Pekalongan",
+          phone: "Nomor WA tidak valid",
           nik_min: "NIK harus berjumlah 16 angka",
           nik_max: "NIK harus berjumlah 16 angka"
         };
-        var message = messages[ctx.rule.name] ? messages[ctx.rule.name] : "".concat(ctx.field, " adalah kesalahan");
+        var message = messages[ctx.rule.name] ? messages[ctx.rule.name] : "".concat(ctx.field, " adalah kesalahan"); // if (message.length != null) {
+        //     this.$toast.add({
+        //         severity: "error",
+        //         summary: "Gagal",
+        //         detail: "Cek data pengajuan!",
+        //         life: 3000,
+        //     });
+        // }
+
         return message;
       },
       validateOnBlur: true,
@@ -27387,7 +27399,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context4.prev = _context4.next) {
               case 0:
                 commit = _ref4.commit, state = _ref4.state;
-                id = state.detailPengajuan.id;
+                id = state.detailPengajuan.id_pengajuan;
                 _context4.next = 4;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default().patch("/pengajuan/".concat(id), data);
 
@@ -27493,7 +27505,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     remove: function remove(state, id) {
       state.trash = state.trash.filter(function (user) {
-        return user.id !== id;
+        return user.id_user !== id;
       });
     },
     addUser: function addUser(state, data) {
@@ -27501,22 +27513,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     removeUser: function removeUser(state, id) {
       state.users.map(function (user) {
-        if (user.id === id) {
+        if (user.id_user === id) {
           state.trash.push(user);
         }
       });
       state.users = state.users.filter(function (user) {
-        return user.id !== id;
+        return user.id_user !== id;
       });
     },
     removeTrash: function removeTrash(state, id) {
       state.trash.map(function (user) {
-        if (user.id === id) {
+        if (user.id_user === id) {
           state.users.push(user);
         }
       });
       state.trash = state.trash.filter(function (user) {
-        return user.id !== id;
+        return user.id_user !== id;
       });
     }
   },
@@ -27859,7 +27871,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nspan.p-menuitem-link {\r\n\tfont-size: 1.5rem !important;\n}\n.form_center {\r\n\tdisplay: flex;\r\n\tjustify-content: center;\n}\n.button {\r\n\tbackground-color: var(--color-blue);\r\n\tborder: none;\r\n\tpadding: 1.5rem 0;\r\n\tcolor: var(--text-white);\r\n\tborder-radius: 0.5rem;\r\n\twidth: 35rem;\r\n\tcursor: pointer;\n}\n.form_button {\r\n\tdisplay: flex;\r\n\tflex-direction: column;\r\n\tgap: 2rem;\n}\n.form_baris {\r\n\tdisplay: flex;\r\n\tflex-direction: column;\r\n\tgap: 1rem;\n}\n.form_catatan {\r\n\tcolor: var(--color-blue);\n}\n.form_kirim {\r\n\tdisplay: flex;\r\n\tflex-direction: column;\r\n\tgap: 2rem;\n}\n.form_file_wrap {\r\n\tdisplay: flex;\r\n\tjustify-content: center;\n}\n.form_file {\r\n\twidth: 30rem;\n}\n.vee-form {\r\n\tdisplay: flex;\r\n\tflex-direction: column;\r\n\tgap: 2rem;\n}\n.row {\r\n\tdisplay: flex;\r\n\tgap: 0.5rem;\r\n\talign-items: center;\n}\n.select {\r\n\tpadding: 1rem;\r\n\tborder-radius: 0.5rem;\n}\n.error {\r\n\tcolor: red;\n}\n.badge {\r\n\tpadding: 0.5rem;\r\n\tborder-radius: 1rem;\r\n\tdisplay: flex;\r\n\talign-items: center;\r\n\tjustify-content: center;\r\n\ttext-transform: capitalize;\r\n\tcursor: pointer;\n}\n.badge-danger {\r\n\tbackground-color: #ffcdd2;\r\n\tcolor: #c63737;\n}\n.badge-success {\r\n\tbackground-color: #c8e6c9;\r\n\tcolor: #256029;\n}\n.badge-info {\r\n\tbackground-color: #b3e5fc;\r\n\tcolor: #23547b;\n}\n.badge-warning {\r\n\tbackground-color: #ffd8b2;\r\n\tcolor: #805b36;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nspan.p-menuitem-link {\r\n\tfont-size: 1.5rem !important;\n}\n.form_center {\r\n\tdisplay: flex;\r\n\tjustify-content: center;\n}\n.button {\r\n\tbackground-color: var(--color-blue);\r\n\tborder: none;\r\n\tpadding: 1.5rem 0;\r\n\tcolor: var(--text-white);\r\n\tborder-radius: 0.5rem;\r\n\twidth: 35rem;\r\n\tcursor: pointer;\n}\n.form_button {\r\n\tdisplay: flex;\r\n\tflex-direction: column;\r\n\tgap: 2rem;\n}\n.form_baris {\r\n\tdisplay: flex;\r\n\tflex-direction: column;\r\n\tgap: 1rem;\n}\n.form_catatan {\r\n\tcolor: var(--color-blue);\n}\n.form_kirim {\r\n\tdisplay: flex;\r\n\tflex-direction: column;\r\n\tgap: 2rem;\n}\n.form_file_wrap {\r\n\tdisplay: flex;\r\n\tjustify-content: center;\n}\n.form_file {\r\n\twidth: 30rem;\n}\n.vee-form {\r\n\tdisplay: flex;\r\n\tflex-direction: column;\r\n\tgap: 2rem;\n}\n.row {\r\n\tdisplay: flex;\r\n\tgap: 0.5rem;\r\n\talign-items: center;\n}\n.select {\r\n\tpadding: 1rem;\r\n\tborder-radius: 0.5rem;\n}\n.error {\r\n\tcolor: red;\n}\n.badge {\r\n\tpadding: 0.5rem;\r\n\tborder-radius: 1rem;\r\n\tdisplay: flex;\r\n\talign-items: center;\r\n\tjustify-content: center;\r\n\ttext-transform: capitalize;\n}\n.badge-danger {\r\n\tbackground-color: #ffcdd2;\r\n\tcolor: #c63737;\n}\n.badge-success {\r\n\tbackground-color: #c8e6c9;\r\n\tcolor: #256029;\n}\n.badge-info {\r\n\tbackground-color: #b3e5fc;\r\n\tcolor: #23547b;\n}\n.badge-warning {\r\n\tbackground-color: #ffd8b2;\r\n\tcolor: #805b36;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

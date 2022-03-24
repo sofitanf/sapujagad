@@ -11,11 +11,12 @@ class Kelurahan extends Model
     use HasFactory;
 
     protected $table = 'kelurahan';
+    protected $primaryKey = 'id_kelurahan';
 
     public function data($kec)
     {
         return DB::table('kelurahan')
-        ->where('kecamatan_id', $kec)
+        ->where('id_kecamatan', $kec)
         ->get(); 
     }
 }

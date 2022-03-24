@@ -65,7 +65,7 @@ export default {
         //     commit("removePengajuan", id);
         // },
         async editPengajuan({ commit, state }, data) {
-            const id = state.detailPengajuan.id;
+            const id = state.detailPengajuan.id_pengajuan;
             let res = await axios.patch(`/pengajuan/${id}`, data);
             commit("setDetailPengajuan", res.data.data);
         },

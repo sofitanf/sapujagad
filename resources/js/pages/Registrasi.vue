@@ -91,6 +91,7 @@ export default {
 				nik: "nik|nik_number|nik_min:16|nik_max:16|min_value:3326019999999999|max_value:3326199999999999",
 				nama: { nama: true, regex: /^[A-Za-z .']+$/ },
 				telepon: "no_wa|no_wa_number",
+				telepon: { no_wa: true, no_wa_number: true, phone: /^08\d{9,11}$/ },
 				email: "required|email",
 				password: "required|min:6",
 				confirm_password: "required|min:6|confirmed:@password",

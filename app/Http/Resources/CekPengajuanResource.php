@@ -15,7 +15,7 @@ class CekPengajuanResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
+            'id' => $this->id_pengajuan,
             'nama' => $this->nama,
             'kategori' => $this->kategori,
             'status' => $this->status,

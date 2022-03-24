@@ -15,7 +15,7 @@ class KecamatanResource extends JsonResource
     public function toArray($request)
     {
         return [
-           'id' => $this->id,
+           'id' => $this->id_kecamatan,
            'nama' => $this->nama_kecamatan 
         ];
     }

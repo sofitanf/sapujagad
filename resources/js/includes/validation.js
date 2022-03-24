@@ -48,6 +48,8 @@ export default {
         defineRule("size", size);
         defineRule("email", email);
         defineRule("confirmed", confirmed);
+        defineRule("phone", regex);
+        defineRule("nik_format", regex);
 
         configure({
             generateMessage: (ctx) => {
@@ -71,6 +73,8 @@ export default {
                     size: `Ukuran file maksimal 2MB`,
                     min_value: "NIK tidak dalam cakupan warga Kabupaten Pekalongan",
                     max_value: "NIK tidak dalam cakupan warga Kabupaten Pekalongan",
+                    nik_format: "NIK tidak dalam cakupan warga Kabupaten Pekalongan",
+                    phone: "Nomor WA tidak valid",
                     nik_min: "NIK harus berjumlah 16 angka",
                     nik_max: "NIK harus berjumlah 16 angka",
                 };
@@ -78,6 +82,15 @@ export default {
                 const message = messages[ctx.rule.name] ?
                     messages[ctx.rule.name] :
                     `${ctx.field} adalah kesalahan`;
+
+                // if (message.length != null) {
+                //     this.$toast.add({
+                //         severity: "error",
+                //         summary: "Gagal",
+                //         detail: "Cek data pengajuan!",
+                //         life: 3000,
+                //     });
+                // }
 
                 return message;
             },
