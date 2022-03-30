@@ -11,7 +11,6 @@ import "primeflex/primeflex.css";
 import "viewerjs/dist/viewer.css";
 import VueViewer from "v-viewer";
 import PrimeVue from "primevue/config";
-import VCalendar from "v-calendar";
 import validation from "./includes/validation";
 import ui from "./includes/ui";
 import progressBar from "./includes/progress-bar";
@@ -45,7 +44,6 @@ store
         app.use(ConfirmationService);
         app.use(store);
         app.use(VueViewer);
-        app.use(VCalendar);
         app.use(validation);
         app.use(ui);
         app.use(calendar);

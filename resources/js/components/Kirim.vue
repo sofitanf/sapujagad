@@ -31,6 +31,10 @@ export default {
 };
 </script>
 <style scoped>
+.button:disabled {
+	cursor: not-allowed;
+	background-color: cornflowerblue;
+}
 .text-left {
 	display: flex;
 	align-items: flex-start;

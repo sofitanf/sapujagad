@@ -69,7 +69,6 @@ export default {
             commit("removeUser", id);
         },
         async deleteUser({ commit }, id) {
-            // debugger;
             await axios.delete(`/user/${id}`);
             commit("remove", id);
         },

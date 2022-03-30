@@ -83,15 +83,6 @@ export default {
                     messages[ctx.rule.name] :
                     `${ctx.field} adalah kesalahan`;
 
-                // if (message.length != null) {
-                //     this.$toast.add({
-                //         severity: "error",
-                //         summary: "Gagal",
-                //         detail: "Cek data pengajuan!",
-                //         life: 3000,
-                //     });
-                // }
-
                 return message;
             },
             validateOnBlur: true,

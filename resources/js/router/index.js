@@ -8,47 +8,50 @@ const router = createRouter({
     linkExactActiveClass: "active",
 });
 
-router.beforeEach(async(to, from, next) => {
+router.beforeEach((to) => {
+    if (
+        to.matched.some((record) => record.meta.admininstratorLoginRequired) &&
+        store.getters.isLoggedIn &&
+        store.getters.user.role === "Masyarakat"
+    ) {
+        return "/redirect";
+    }
+    if (
+        to.matched.some((record) => record.meta.masyarakatLoginRequired) &&
+        store.getters.isLoggedIn &&
+        store.getters.user.role !== "Masyarakat"
+    ) {
+        return "/redirect-admin";
+    }
     if (
         to.matched.some((record) => record.meta.login) &&
-        store.getters.isLoggedIn
+        store.getters.isLoggedIn &&
+        store.getters.user.role !== "Masyarakat"
     ) {
-        next("/admin/dashboard");
+        return "/admin/dashboard";
     }
     if (
         to.matched.some((record) => record.meta.admin) &&
         store.getters.isLoggedIn &&
         store.getters.user.role === "Petugas"
     ) {
-        next("/admin/dashboard");
+        return "/admin/dashboard";
     }
     if (
-        to.matched.some((record) => record.meta.masyarakatLogin) &&
-        store.getters.isLoggedIn
-    ) {
-        next("/");
-    }
-    if (
-        to.matched.some((record) => record.meta.admininstrator) &&
+        to.matched.some(
+            (record) => record.meta.masyarakatLoginRequired == false
+        ) &&
         store.getters.isLoggedIn &&
         store.getters.user.role === "Masyarakat"
     ) {
-        next("/redirect");
+        return "/";
     }
     if (
-        to.matched.some((record) => record.meta.masyarakat) &&
+        to.matched.some((record) => record.meta.masyarakatLoginRequired) &&
         !store.getters.isLoggedIn
     ) {
-        next("/login");
+        return "/login";
     }
-    if (
-        to.matched.some((record) => record.meta.masyarakat) &&
-        store.getters.isLoggedIn &&
-        store.getters.user.role !== "Masyarakat"
-    ) {
-        next("/redirect-admin");
-    }
-    next();
 });
 
 export default router;

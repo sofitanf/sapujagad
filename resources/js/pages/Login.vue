@@ -54,13 +54,13 @@ export default {
 		};
 	},
 	methods: {
-		async login(values) {
-			await this.$store
+		login(values) {
+			this.$store
 				.dispatch("userLogin", values)
 				.then(() => {
 					this.$router.push("/");
 				})
-				.catch((error) => {
+				.catch(() => {
 					this.$toast.add({
 						severity: "error",
 						summary: "Gagal",

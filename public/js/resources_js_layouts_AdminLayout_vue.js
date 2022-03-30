@@ -81,8 +81,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     logout: function logout() {
       var _this = this;
 
-      this.$store.dispatch("logout").then(function (res) {
-        _this.$router.push("/admin/login");
+      this.$store.dispatch("logout").then(function () {
+        return _this.$router.push("/admin/login");
       });
     }
   }
@@ -457,7 +457,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Avatar, {
-    image: _ctx.user && _ctx.user.avatar ? "/storage/avatar/".concat(_ctx.user.avatar) : '/storage/avatar/avatar.png',
+    image: _ctx.avatar,
     size: "xlarge",
     shape: "circle"
   }, null, 8

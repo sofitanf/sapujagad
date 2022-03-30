@@ -100,8 +100,8 @@ export default {
 		};
 	},
 	methods: {
-		async daftar(values) {
-			await axios
+		daftar(values) {
+			axios
 				.post("/registrasi", values)
 				.then(() => {
 					this.$toast.add({

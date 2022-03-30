@@ -22,7 +22,7 @@ const routes = [{
                 component: () =>
                     import ("../pages/Login.vue"),
                 meta: {
-                    masyarakatLogin: true,
+                    masyarakatLoginRequired: false,
                 },
             },
             {
@@ -30,7 +30,7 @@ const routes = [{
                 component: () =>
                     import ("../pages/Registrasi.vue"),
                 meta: {
-                    masyarakatLogin: true,
+                    masyarakatLoginRequired: false,
                 },
             },
 
@@ -40,7 +40,7 @@ const routes = [{
                 component: () =>
                     import ("../pages/LihatPengajuan.vue"),
                 meta: {
-                    masyarakat: true,
+                    masyarakatLoginRequired: true,
                 },
             },
             {
@@ -48,7 +48,7 @@ const routes = [{
                 component: () =>
                     import ("../pages/CetakKTP.vue"),
                 meta: {
-                    masyarakat: true,
+                    masyarakatLoginRequired: true,
                 },
             },
             {
@@ -56,7 +56,7 @@ const routes = [{
                 component: () =>
                     import ("../pages/RekamKTP.vue"),
                 meta: {
-                    masyarakat: true,
+                    masyarakatLoginRequired: true,
                 },
             },
             {
@@ -64,7 +64,7 @@ const routes = [{
                 component: () =>
                     import ("../pages/KIA.vue"),
                 meta: {
-                    masyarakat: true,
+                    masyarakatLoginRequired: true,
                 },
             },
             {
@@ -72,7 +72,7 @@ const routes = [{
                 component: () =>
                     import ("../pages/Akta.vue"),
                 meta: {
-                    masyarakat: true,
+                    masyarakatLoginRequired: true,
                 },
             },
         ],
@@ -86,7 +86,7 @@ const routes = [{
                 component: () =>
                     import ("../pages/admin/Dashboard.vue"),
                 meta: {
-                    admininstrator: true,
+                    admininstratorLoginRequired: true,
                 },
             },
             {
@@ -94,7 +94,7 @@ const routes = [{
                 component: () =>
                     import ("../pages/admin/pengajuan/Pengajuan.vue"),
                 meta: {
-                    admininstrator: true,
+                    admininstratorLoginRequired: true,
                 },
             },
             {
@@ -103,7 +103,7 @@ const routes = [{
                     import ("../pages/admin/pengajuan/DetailPengajuan.vue"),
                 name: "admin.pengajuan",
                 meta: {
-                    admininstrator: true,
+                    admininstratorLoginRequired: true,
                 },
             },
             {
@@ -112,7 +112,7 @@ const routes = [{
                     import ("../pages/admin/user/User.vue"),
                 meta: {
                     admin: true,
-                    admininstrator: true,
+                    admininstratorLoginRequired: true,
                 },
             },
             {
@@ -121,7 +121,7 @@ const routes = [{
                     import ("../pages/admin/user/CreateUser.vue"),
                 meta: {
                     admin: true,
-                    admininstrator: true,
+                    admininstratorLoginRequired: true,
                 },
             },
             {
@@ -129,7 +129,7 @@ const routes = [{
                 component: () =>
                     import ("../pages/admin/user/EditUser.vue"),
                 meta: {
-                    admininstrator: true,
+                    admininstratorLoginRequired: true,
                 },
             },
         ],
@@ -141,7 +141,7 @@ const routes = [{
         name: "Login",
         meta: {
             login: true,
-            admininstrator: true,
+            admininstratorLoginRequired: true,
         },
     },
 ];

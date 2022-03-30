@@ -22,7 +22,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  emits: ["sendLampiran"],
   props: {
     rekamKtp: {
       type: Boolean
@@ -30,6 +29,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     lansia: {
       type: Boolean,
       "default": true
+    },
+    setLampiran: {
+      type: Function
     }
   },
   components: {
@@ -39,52 +41,31 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {
       kecamatan: [],
       kelurahan: [],
-      id_kecamatan: null,
-      lampiran: null
+      id_kecamatan: null
     };
   },
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)({
     user: "user"
   })),
   methods: {
-    setLampiran: function setLampiran(e) {
+    fetchKelurahan: function fetchKelurahan() {
       var _this = this;
 
-      var file = e.target.files[0];
-      var reader = new FileReader();
-
-      reader.onload = function (e) {
-        _this.lampiran = e.target.result;
-
-        _this.$emit("sendLampiran", _this.lampiran);
-      };
-
-      reader.readAsDataURL(file);
-    },
-    fetchKecamatan: function fetchKecamatan() {
-      var _this2 = this;
-
-      axios.get("/kecamatan").then(function (_ref) {
+      axios.get("/kelurahan/".concat(this.id_kecamatan)).then(function (_ref) {
         var data = _ref.data;
-        _this2.kecamatan = data.data;
-      })["catch"](function (error) {
-        return console.log(error);
+        _this.kelurahan = data.data;
       });
-    },
-    fetchKelurahan: function fetchKelurahan() {
-      var _this3 = this;
-
-      axios.get("/kelurahan/".concat(this.id_kecamatan)).then(function (_ref2) {
-        var data = _ref2.data;
-        _this3.kelurahan = data.data;
-      });
-    },
-    pilihKecamatan: function pilihKecamatan() {
-      this.fetchKelurahan();
     }
   },
   created: function created() {
-    this.fetchKecamatan();
+    var _this2 = this;
+
+    axios.get("/kecamatan").then(function (_ref2) {
+      var data = _ref2.data;
+      _this2.kecamatan = data.data;
+    })["catch"](function (error) {
+      return console.log(error);
+    });
   }
 });
 
@@ -525,10 +506,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   })]), _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
     type: "file",
     name: "lampiran5",
-    onChange: $options.setLampiran
-  }, null, 8
-  /* PROPS */
-  , ["onChange"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
+    onChange: _cache[0] || (_cache[0] = function ($event) {
+      return $props.setLampiran($event, 'lampiran5');
+    })
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
     name: "lampiran5",
     "class": "error"
   })]), _hoisted_20, _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
@@ -561,11 +542,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     value: "Ya"
   }), _hoisted_47])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_48, _hoisted_49, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_50, [_hoisted_51, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
     modelValue: $data.id_kecamatan,
-    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $data.id_kecamatan = $event;
     }),
-    onChange: _cache[1] || (_cache[1] = function ($event) {
-      return $options.pilihKecamatan();
+    onChange: _cache[2] || (_cache[2] = function ($event) {
+      return $options.fetchKelurahan();
     }),
     name: "id_kecamatan",
     as: "select",
@@ -777,12 +758,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var _public_images_rekam_ktp_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../public/images/rekam-ktp.jpg */ "./public/images/rekam-ktp.jpg");
-/* harmony import */ var _public_file_lembar1_f101_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../public/file/lembar1-f101.png */ "./public/file/lembar1-f101.png");
-/* harmony import */ var _public_file_lembar2_f101_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../public/file/lembar2-f101.png */ "./public/file/lembar2-f101.png");
-
-
-
 
 var _hoisted_1 = {
   "class": "container"
@@ -799,7 +774,7 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   "class": "form_gambar",
-  src: _public_images_rekam_ktp_jpg__WEBPACK_IMPORTED_MODULE_1__["default"],
+  src: "images/rekam-ktp.jpg",
   alt: ""
 }, null, -1
 /* HOISTED */
@@ -857,7 +832,7 @@ var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "class": "form_file_wrap"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   "class": "form_file",
-  src: _public_file_lembar1_f101_png__WEBPACK_IMPORTED_MODULE_2__["default"],
+  src: "file/lembar1-f101.png",
   alt: ""
 })], -1
 /* HOISTED */
@@ -874,7 +849,7 @@ var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "class": "form_file_wrap"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   "class": "form_file",
-  src: _public_file_lembar2_f101_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+  src: "file/lembar2-f101.png",
   alt: ""
 })], -1
 /* HOISTED */
@@ -909,44 +884,44 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DataPelaporPemohon, {
-        rekamKtp: $data.rekamKtp,
-        onSendLampiran: _ctx.getLampiran
+        setLampiran: _ctx.setLampiran,
+        rekamKtp: $data.rekamKtp
       }, null, 8
       /* PROPS */
-      , ["rekamKtp", "onSendLampiran"]), _hoisted_6, _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
+      , ["setLampiran", "rekamKtp"]), _hoisted_6, _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
         type: "file",
         name: "lampiran1",
-        onChange: _ctx.setLampiran1
-      }, null, 8
-      /* PROPS */
-      , ["onChange"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
+        onChange: _cache[0] || (_cache[0] = function ($event) {
+          return _ctx.setLampiran($event, 'lampiran1');
+        })
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
         name: "lampiran1",
         "class": "error"
       })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
         type: "file",
         name: "lampiran2",
-        onChange: _ctx.setLampiran2
-      }, null, 8
-      /* PROPS */
-      , ["onChange"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
+        onChange: _cache[1] || (_cache[1] = function ($event) {
+          return _ctx.setLampiran($event, 'lampiran2');
+        })
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
         name: "lampiran2",
         "class": "error"
       })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [_hoisted_13, _hoisted_14, _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
         type: "file",
         name: "lampiran3",
-        onChange: _ctx.setLampiran3
-      }, null, 8
-      /* PROPS */
-      , ["onChange"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
+        onChange: _cache[2] || (_cache[2] = function ($event) {
+          return _ctx.setLampiran($event, 'lampiran3');
+        })
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
         name: "lampiran3",
         "class": "error"
       }), _hoisted_16, _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
         type: "file",
         name: "lampiran4",
-        onChange: _ctx.setLampiran4
-      }, null, 8
-      /* PROPS */
-      , ["onChange"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
+        onChange: _cache[3] || (_cache[3] = function ($event) {
+          return _ctx.setLampiran($event, 'lampiran4');
+        })
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
         name: "lampiran4",
         "class": "error"
       })]), _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
@@ -1025,122 +1000,85 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       },
       schemaCurrent: {},
       submitLoading: false,
-      fileLampiran1: null,
-      fileLampiran2: null,
-      fileLampiran3: null,
-      fileLampiran4: null,
-      fileLampiran5: null
+      lampiran: {
+        lampiran1: null,
+        lampiran2: null,
+        lampiran3: null,
+        lampiran4: null,
+        lampiran5: null
+      }
     };
   },
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)({
     user: "user"
   })),
   methods: {
-    getLampiran: function getLampiran(value) {
-      this.fileLampiran5 = value;
-    },
     setLampiran: function setLampiran(e, lampiran) {
       var _this = this;
 
       var file = e.target.files[0];
       var reader = new FileReader();
 
-      reader.onload = function (e) {
-        if (lampiran === 1) {
-          _this.fileLampiran1 = e.target.result;
-        }
+      reader.onload = /*#__PURE__*/function () {
+        var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(e) {
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  _context.next = 2;
+                  return e.target.result;
 
-        if (lampiran === 2) {
-          _this.fileLampiran2 = e.target.result;
-        }
+                case 2:
+                  _this.lampiran[lampiran] = _context.sent;
 
-        if (lampiran === 3) {
-          _this.fileLampiran3 = e.target.result;
-        }
+                case 3:
+                case "end":
+                  return _context.stop();
+              }
+            }
+          }, _callee);
+        }));
 
-        if (lampiran === 4) {
-          _this.fileLampiran4 = e.target.result;
-        }
-      };
+        return function (_x) {
+          return _ref.apply(this, arguments);
+        };
+      }();
 
       reader.readAsDataURL(file);
-    },
-    setLampiran1: function setLampiran1(e) {
-      this.setLampiran(e, 1);
-    },
-    setLampiran2: function setLampiran2(e) {
-      this.setLampiran(e, 2);
-    },
-    setLampiran3: function setLampiran3(e) {
-      this.setLampiran(e, 3);
-    },
-    setLampiran4: function setLampiran4(e) {
-      this.setLampiran(e, 4);
-    },
-    onInvalidSubmit: function onInvalidSubmit(_ref) {
-      var values = _ref.values,
-          errors = _ref.errors,
-          results = _ref.results;
-      console.log(values); // current form values
-
-      console.log(errors); // a map of field names and their first error message
-
-      console.log(results); // a detailed map of field names and their validation results
     },
     daftar: function daftar(values, _ref2) {
       var _this2 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        var resetForm;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                resetForm = _ref2.resetForm;
-                _this2.submitLoading = true;
-                values.lampiran1 = _this2.fileLampiran1;
-                values.lampiran2 = _this2.fileLampiran2;
-                values.lampiran3 = _this2.fileLampiran3;
-                values.lampiran4 = _this2.fileLampiran4;
-                values.lampiran5 = _this2.fileLampiran5;
-                values["id_masyarakat"] = _this2.user.id_masyarakat;
-                _context.next = 10;
-                return _this2.$store.dispatch("addPengajuan", values).then(function () {
-                  _this2.submitLoading = false;
-                  setTimeout(function () {
-                    window.scrollTo(0, 0);
-                  }, 1000);
+      var resetForm = _ref2.resetForm;
+      this.submitLoading = true;
+      values["id_masyarakat"] = this.user.id_masyarakat;
+      var fixValues = Object.assign(values, this.lampiran);
+      this.$store.dispatch("addPengajuan", fixValues).then(function () {
+        _this2.submitLoading = false;
+        resetForm();
+        setTimeout(function () {
+          window.scrollTo(0, 0);
+        }, 1000);
 
-                  _this2.$toast.add({
-                    severity: "success",
-                    summary: "Sukses",
-                    detail: "Pengajuan berhasil!",
-                    life: 3000
-                  });
-                })["catch"](function (error) {
-                  _this2.submitLoading = false;
-                  setTimeout(function () {
-                    window.scrollTo(0, 0);
-                  }, 1000);
+        _this2.$toast.add({
+          severity: "success",
+          summary: "Sukses",
+          detail: "Pengajuan berhasil!",
+          life: 3000
+        });
+      })["catch"](function () {
+        _this2.submitLoading = false;
+        setTimeout(function () {
+          window.scrollTo(0, 0);
+        }, 1000);
 
-                  _this2.$toast.add({
-                    severity: "error",
-                    summary: "Gagal",
-                    detail: "Pengajuan sudah terekam!",
-                    life: 3000
-                  });
-                });
-
-              case 10:
-                resetForm();
-
-              case 11:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
+        _this2.$toast.add({
+          severity: "error",
+          summary: "Gagal",
+          detail: "Pengajuan sudah terekam!",
+          life: 3000
+        });
+      });
     }
   }
 });
@@ -1186,52 +1124,10 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.text-left[data-v-a3b0f8c6] {\r\n\tdisplay: flex;\r\n\talign-items: flex-start;\n}\ni.pi.pi-spin.pi-spinner[data-v-a3b0f8c6] {\r\n\tfont-size: 2rem;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.button[data-v-a3b0f8c6]:disabled {\r\n\tcursor: not-allowed;\r\n\tbackground-color: cornflowerblue;\n}\n.text-left[data-v-a3b0f8c6] {\r\n\tdisplay: flex;\r\n\talign-items: flex-start;\n}\ni.pi.pi-spin.pi-spinner[data-v-a3b0f8c6] {\r\n\tfont-size: 2rem;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
-
-/***/ }),
-
-/***/ "./public/file/lembar1-f101.png":
-/*!**************************************!*\
-  !*** ./public/file/lembar1-f101.png ***!
-  \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/lembar1-f101.png?aae6a1a1b6959e90c45c7da8d8bcd5e7");
-
-/***/ }),
-
-/***/ "./public/file/lembar2-f101.png":
-/*!**************************************!*\
-  !*** ./public/file/lembar2-f101.png ***!
-  \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/lembar2-f101.png?84fd6d4504fb5dcb39f05e394444e776");
-
-/***/ }),
-
-/***/ "./public/images/rekam-ktp.jpg":
-/*!*************************************!*\
-  !*** ./public/images/rekam-ktp.jpg ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/rekam-ktp.jpg?d77e30fd43fa5813681554ab18cda767");
 
 /***/ }),
 

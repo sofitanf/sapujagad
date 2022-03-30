@@ -1,15 +1,7 @@
 <template>
 	<div class="layout-profile">
 		<div>
-			<Avatar
-				:image="
-					user && user.avatar
-						? `/storage/avatar/${user.avatar}`
-						: '/storage/avatar/avatar.png'
-				"
-				size="xlarge"
-				shape="circle"
-			/>
+			<Avatar :image="avatar" size="xlarge" shape="circle" />
 		</div>
 		<button class="p-link layout-profile-link" @click="onClick">
 			<span class="username">{{ user?.nama }}</span>
@@ -55,9 +47,9 @@ export default {
 			event.preventDefault();
 		},
 		logout() {
-			this.$store.dispatch("logout").then((res) => {
-				this.$router.push("/admin/login");
-			});
+			this.$store
+				.dispatch("logout")
+				.then(() => this.$router.push("/admin/login"));
 		},
 	},
 };

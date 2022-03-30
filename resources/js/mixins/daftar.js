@@ -22,11 +22,13 @@ export default {
             },
             schemaCurrent: {},
             submitLoading: false,
-            fileLampiran1: null,
-            fileLampiran2: null,
-            fileLampiran3: null,
-            fileLampiran4: null,
-            fileLampiran5: null,
+            lampiran: {
+                lampiran1: null,
+                lampiran2: null,
+                lampiran3: null,
+                lampiran4: null,
+                lampiran5: null,
+            },
         };
     },
     computed: {
@@ -35,61 +37,24 @@ export default {
         }),
     },
     methods: {
-        getLampiran(value) {
-            this.fileLampiran5 = value;
-        },
         setLampiran(e, lampiran) {
             let file = e.target.files[0];
-
             let reader = new FileReader();
-            reader.onload = (e) => {
-                if (lampiran === 1) {
-                    this.fileLampiran1 = e.target.result;
-                }
-                if (lampiran === 2) {
-                    this.fileLampiran2 = e.target.result;
-                }
-                if (lampiran === 3) {
-                    this.fileLampiran3 = e.target.result;
-                }
-                if (lampiran === 4) {
-                    this.fileLampiran4 = e.target.result;
-                }
+            reader.onload = async(e) => {
+                this.lampiran[lampiran] = await e.target.result;
             };
-
             reader.readAsDataURL(file);
         },
-        setLampiran1(e) {
-            this.setLampiran(e, 1);
-        },
-        setLampiran2(e) {
-            this.setLampiran(e, 2);
-        },
-        setLampiran3(e) {
-            this.setLampiran(e, 3);
-        },
-        setLampiran4(e) {
-            this.setLampiran(e, 4);
-        },
-        onInvalidSubmit({ values, errors, results }) {
-            console.log(values); // current form values
-            console.log(errors); // a map of field names and their first error message
-            console.log(results); // a detailed map of field names and their validation results
-        },
-        async daftar(values, { resetForm }) {
+        daftar(values, { resetForm }) {
             this.submitLoading = true;
-            values.lampiran1 = this.fileLampiran1;
-            values.lampiran2 = this.fileLampiran2;
-            values.lampiran3 = this.fileLampiran3;
-            values.lampiran4 = this.fileLampiran4;
-            values.lampiran5 = this.fileLampiran5;
-
             values["id_masyarakat"] = this.user.id_masyarakat;
+            let fixValues = Object.assign(values, this.lampiran);
 
-            await this.$store
-                .dispatch("addPengajuan", values)
+            this.$store
+                .dispatch("addPengajuan", fixValues)
                 .then(() => {
                     this.submitLoading = false;
+                    resetForm();
 
                     setTimeout(() => {
                         window.scrollTo(0, 0);
@@ -102,7 +67,7 @@ export default {
                         life: 3000,
                     });
                 })
-                .catch((error) => {
+                .catch(() => {
                     this.submitLoading = false;
 
                     setTimeout(() => {
@@ -115,8 +80,6 @@ export default {
                         life: 3000,
                     });
                 });
-
-            resetForm();
         },
     },
 };

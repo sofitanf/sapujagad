@@ -46,7 +46,11 @@
 		</p>
 	</div>
 	<div class="form_baris">
-		<vee-field type="file" name="lampiran5" @change="setLampiran" />
+		<vee-field
+			type="file"
+			name="lampiran5"
+			@change="setLampiran($event, 'lampiran5')"
+		/>
 		<error-message name="lampiran5" class="error" />
 	</div>
 	<hr />
@@ -106,7 +110,7 @@
 		<label for="">KECAMATAN</label>
 		<vee-field
 			v-model="id_kecamatan"
-			@change="pilihKecamatan()"
+			@change="fetchKelurahan()"
 			name="id_kecamatan"
 			as="select"
 			class="select"
@@ -140,7 +144,6 @@ import DataRekamKTP from "../components/DataRekamKTP.vue";
 import { mapGetters } from "vuex";
 
 export default {
-	emits: ["sendLampiran"],
 	props: {
 		rekamKtp: {
 			type: Boolean,
@@ -149,6 +152,9 @@ export default {
 			type: Boolean,
 			default: true,
 		},
+		setLampiran: {
+			type: Function,
+		},
 	},
 	components: { DataRekamKTP },
 	data() {
@@ -156,7 +162,6 @@ export default {
 			kecamatan: [],
 			kelurahan: [],
 			id_kecamatan: null,
-			lampiran: null,
 		};
 	},
 	computed: {
@@ -165,36 +170,19 @@ export default {
 		}),
 	},
 	methods: {
-		setLampiran(e) {
-			let file = e.target.files[0];
-
-			let reader = new FileReader();
-			reader.onload = (e) => {
-				this.lampiran = e.target.result;
-				this.$emit("sendLampiran", this.lampiran);
-			};
-
-			reader.readAsDataURL(file);
-		},
-		fetchKecamatan() {
-			axios
-				.get("/kecamatan")
-				.then(({ data }) => {
-					this.kecamatan = data.data;
-				})
-				.catch((error) => console.log(error));
-		},
 		fetchKelurahan() {
 			axios.get(`/kelurahan/${this.id_kecamatan}`).then(({ data }) => {
 				this.kelurahan = data.data;
 			});
 		},
-		pilihKecamatan() {
-			this.fetchKelurahan();
-		},
 	},
 	created() {
-		this.fetchKecamatan();
+		axios
+			.get("/kecamatan")
+			.then(({ data }) => {
+				this.kecamatan = data.data;
+			})
+			.catch((error) => console.log(error));
 	},
 };
 </script>

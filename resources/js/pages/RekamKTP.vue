@@ -2,11 +2,7 @@
 	<div class="container">
 		<div class="form form_center">
 			<h1 class="form_judul">FORM PENGAJUAN REKAM KTP-EL</h1>
-			<img
-				class="form_gambar"
-				src="../../../public/images/rekam-ktp.jpg"
-				alt=""
-			/>
+			<img class="form_gambar" src="images/rekam-ktp.jpg" alt="" />
 			<div class="form_baris">
 				<h2>DATA PELAPOR</h2>
 			</div>
@@ -15,7 +11,7 @@
 				class="vee-form"
 				@submit="daftar"
 			>
-				<DataPelaporPemohon :rekamKtp="rekamKtp" @sendLampiran="getLampiran" />
+				<DataPelaporPemohon :setLampiran="setLampiran" :rekamKtp="rekamKtp" />
 				<hr />
 				<div class="form_baris">
 					<h2>UPLOAD DATA PENDUKUNG</h2>
@@ -26,12 +22,20 @@
 				</div>
 				<div class="form_baris">
 					<label for="">KARTU KELUARGA</label>
-					<vee-field type="file" name="lampiran1" @change="setLampiran1" />
+					<vee-field
+						type="file"
+						name="lampiran1"
+						@change="setLampiran($event, 'lampiran1')"
+					/>
 					<error-message name="lampiran1" class="error" />
 				</div>
 				<div class="form_baris">
 					<label for="">SURAT PERMOHONAN REKAM KTP-EL</label>
-					<vee-field type="file" name="lampiran2" @change="setLampiran2" />
+					<vee-field
+						type="file"
+						name="lampiran2"
+						@change="setLampiran($event, 'lampiran2')"
+					/>
 					<error-message name="lampiran2" class="error" />
 				</div>
 				<div class="form_baris">
@@ -40,24 +44,24 @@
 						Keluarga)</label
 					>
 					<div class="form_file_wrap">
-						<img
-							class="form_file"
-							src="../../../public/file/lembar1-f101.png"
-							alt=""
-						/>
+						<img class="form_file" src="file/lembar1-f101.png" alt="" />
 					</div>
 					<label class="align-center" for="">LEMBAR 1</label>
-					<vee-field type="file" name="lampiran3" @change="setLampiran3" />
+					<vee-field
+						type="file"
+						name="lampiran3"
+						@change="setLampiran($event, 'lampiran3')"
+					/>
 					<error-message name="lampiran3" class="error" />
 					<div class="form_file_wrap">
-						<img
-							class="form_file"
-							src="../../../public/file/lembar2-f101.png"
-							alt=""
-						/>
+						<img class="form_file" src="file/lembar2-f101.png" alt="" />
 					</div>
 					<label class="align-center" for="">LEMBAR 2</label>
-					<vee-field type="file" name="lampiran4" @change="setLampiran4" />
+					<vee-field
+						type="file"
+						name="lampiran4"
+						@change="setLampiran($event, 'lampiran4')"
+					/>
 					<error-message name="lampiran4" class="error" />
 				</div>
 				<hr />

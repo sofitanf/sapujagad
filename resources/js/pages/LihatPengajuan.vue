@@ -92,8 +92,8 @@ export default {
 		},
 	},
 	methods: {
-		async fetchData() {
-			await axios
+		fetchData() {
+			axios
 				.get(`/cek-pengajuan/${this.user.id_masyarakat}`)
 				.then(({ data }) => {
 					this.pengajuan = data.data;

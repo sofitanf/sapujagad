@@ -21,26 +21,13 @@ export default {
             state.isLoggedIn = false;
         },
         editUser(state, data) {
+            const { key, value } = data;
             state.user = {
                 ...state.user,
-                email: data,
+                [key]: value,
             };
-            state.emailEdit = false;
-        },
-        editPassword(state, data) {
-            state.user = {
-                ...state.user,
-                password: data,
-            };
-        },
-        editAvatar(state, data) {
-            state.user = {
-                ...state.user,
-                avatar: data,
-            };
-        },
-        removeAvatar(state) {
-            state.user = {...state.user, avatar: null };
+
+            if (key == "email") state.emailEdit = false;
         },
     },
     getters: {
@@ -50,14 +37,11 @@ export default {
         isLoggedIn(state) {
             return state.isLoggedIn;
         },
-        isUserLoggedIn(state) {
-            return state.isUserLoggedIn;
-        },
         emailEdit(state) {
             return state.emailEdit;
         },
         avatar(state) {
-            state.user.avatar ?
+            return state.user.avatar ?
                 `/storage/avatar/${state.user.avatar}` :
                 "/storage/avatar/avatar.png";
         },
@@ -68,15 +52,11 @@ export default {
                 axios
                     .post("/login", payload)
                     .then((response) => {
-                        const token = response.data.token;
-                        localStorage.setItem("token", token);
-                        setHeaderToken(token);
-                        dispatch("getUser");
+                        addUser(response, dispatch);
                         resolve(response);
                     })
                     .catch((err) => {
-                        commit("resetUser");
-                        localStorage.removeItem("token");
+                        removeUser(commit);
                         reject(err);
                     });
             });
@@ -86,15 +66,12 @@ export default {
                 axios
                     .post("/login-user", payload)
                     .then((response) => {
-                        const token = response.data.token;
-                        localStorage.setItem("token", token);
-                        setHeaderToken(token);
-                        dispatch("getUser");
+                        addUser(response, dispatch);
+
                         resolve(response);
                     })
                     .catch((err) => {
-                        commit("resetUser");
-                        localStorage.removeItem("token");
+                        removeUser(commit);
                         reject(err);
                     });
             });
@@ -108,35 +85,44 @@ export default {
                 let res = await axios.get("/userLogin");
                 commit("setUser", res.data.data);
             } catch (error) {
-                commit("resetUser");
-                removeHeaderToken();
-                localStorage.removeItem("token");
+                removeUser(commit);
                 return error;
             }
         },
         async updateUser({ commit }, data) {
             let res = await axios.patch("/user", data);
-            commit("editUser", res.data.data);
+            commit("editUser", { key: "email", value: res.data.data });
         },
         async updatePassword({ commit }, data) {
             let res = await axios.put("/user/password", data);
-            commit("editPassword", res.data.data);
+            commit("editUser", { key: "password", value: res.data.data });
         },
         async updateAvatar({ commit }, data) {
             let res = await axios.put("/updateAvatar", data);
-            commit("editAvatar", res.data.data);
+            commit("editUser", { key: "avatar", value: res.data.data });
         },
         async deleteAvatar({ commit }) {
             await axios.delete("/deleteAvatar");
-            commit("removeAvatar");
+            commit("editUser", { key: "avatar", value: null });
         },
 
         logout({ commit }) {
-            return axios.post("/logout").then((res) => {
-                commit("resetUser");
-                localStorage.removeItem("token");
-                removeHeaderToken();
+            return axios.post("/logout").then(() => {
+                removeUser(commit);
             });
         },
     },
+};
+
+const removeUser = (commit) => {
+    commit("resetUser");
+    localStorage.removeItem("token");
+    removeHeaderToken();
+};
+
+const addUser = (response, dispatch) => {
+    const token = response.data.token;
+    localStorage.setItem("token", token);
+    setHeaderToken(token);
+    dispatch("getUser");
 };

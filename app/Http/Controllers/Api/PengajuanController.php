@@ -76,8 +76,6 @@ class PengajuanController extends Controller
             'alamat' => 'required',
             'id_kecamatan' => 'required',
             'id_kelurahan' => 'required',
-            'kecacatan' => 'required',
-            'lansia' => 'required',
             'kategori' => 'required',
             'hubungan' => 'required',
             'pernyataan' => 'required',

@@ -26268,17 +26268,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var viewerjs_dist_viewer_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! viewerjs/dist/viewer.css */ "./node_modules/viewerjs/dist/viewer.css");
 /* harmony import */ var v_viewer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! v-viewer */ "./node_modules/v-viewer/dist/index.es.js");
 /* harmony import */ var primevue_config__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! primevue/config */ "./node_modules/primevue/config/config.esm.js");
-/* harmony import */ var v_calendar__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! v-calendar */ "./node_modules/v-calendar/lib/esm/index.js");
-/* harmony import */ var _includes_validation__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./includes/validation */ "./resources/js/includes/validation.js");
-/* harmony import */ var _includes_ui__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./includes/ui */ "./resources/js/includes/ui.js");
-/* harmony import */ var _includes_progress_bar__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./includes/progress-bar */ "./resources/js/includes/progress-bar.js");
-/* harmony import */ var _includes_i18n__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./includes/i18n */ "./resources/js/includes/i18n.js");
-/* harmony import */ var _includes_calendar__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./includes/calendar */ "./resources/js/includes/calendar.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
-/* harmony import */ var primevue_ripple__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! primevue/ripple */ "./node_modules/primevue/ripple/ripple.esm.js");
-/* harmony import */ var primevue_toastservice__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! primevue/toastservice */ "./node_modules/primevue/toastservice/toastservice.esm.js");
-/* harmony import */ var primevue_confirmationservice__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! primevue/confirmationservice */ "./node_modules/primevue/confirmationservice/confirmationservice.esm.js");
-/* harmony import */ var nprogress_nprogress_css__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! nprogress/nprogress.css */ "./node_modules/nprogress/nprogress.css");
+/* harmony import */ var _includes_validation__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./includes/validation */ "./resources/js/includes/validation.js");
+/* harmony import */ var _includes_ui__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./includes/ui */ "./resources/js/includes/ui.js");
+/* harmony import */ var _includes_progress_bar__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./includes/progress-bar */ "./resources/js/includes/progress-bar.js");
+/* harmony import */ var _includes_i18n__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./includes/i18n */ "./resources/js/includes/i18n.js");
+/* harmony import */ var _includes_calendar__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./includes/calendar */ "./resources/js/includes/calendar.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
+/* harmony import */ var primevue_ripple__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! primevue/ripple */ "./node_modules/primevue/ripple/ripple.esm.js");
+/* harmony import */ var primevue_toastservice__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! primevue/toastservice */ "./node_modules/primevue/toastservice/toastservice.esm.js");
+/* harmony import */ var primevue_confirmationservice__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! primevue/confirmationservice */ "./node_modules/primevue/confirmationservice/confirmationservice.esm.js");
+/* harmony import */ var nprogress_nprogress_css__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! nprogress/nprogress.css */ "./node_modules/nprogress/nprogress.css");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
@@ -26302,9 +26301,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-(0,_includes_progress_bar__WEBPACK_IMPORTED_MODULE_14__["default"])(_router__WEBPACK_IMPORTED_MODULE_2__["default"]);
+(0,_includes_progress_bar__WEBPACK_IMPORTED_MODULE_13__["default"])(_router__WEBPACK_IMPORTED_MODULE_2__["default"]);
 var app;
 var token = localStorage.getItem("token");
 
@@ -26312,24 +26310,23 @@ if (token) {
   (0,_includes_auth__WEBPACK_IMPORTED_MODULE_3__.setHeaderToken)(token);
 }
 
-_store__WEBPACK_IMPORTED_MODULE_17__["default"].dispatch("getUser", token).then(function () {
-  app = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)(_App_vue__WEBPACK_IMPORTED_MODULE_1__["default"]).use(_includes_i18n__WEBPACK_IMPORTED_MODULE_15__["default"]);
+_store__WEBPACK_IMPORTED_MODULE_16__["default"].dispatch("getUser", token).then(function () {
+  app = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)(_App_vue__WEBPACK_IMPORTED_MODULE_1__["default"]).use(_includes_i18n__WEBPACK_IMPORTED_MODULE_14__["default"]);
   app.config.globalProperties.$appState = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
     inputStyle: "outlined"
   });
   app.use(_router__WEBPACK_IMPORTED_MODULE_2__["default"]);
-  app.use(primevue_confirmationservice__WEBPACK_IMPORTED_MODULE_20__["default"]);
-  app.use(_store__WEBPACK_IMPORTED_MODULE_17__["default"]);
+  app.use(primevue_confirmationservice__WEBPACK_IMPORTED_MODULE_19__["default"]);
+  app.use(_store__WEBPACK_IMPORTED_MODULE_16__["default"]);
   app.use(v_viewer__WEBPACK_IMPORTED_MODULE_9__["default"]);
-  app.use(v_calendar__WEBPACK_IMPORTED_MODULE_11__["default"]);
-  app.use(_includes_validation__WEBPACK_IMPORTED_MODULE_12__["default"]);
-  app.use(_includes_ui__WEBPACK_IMPORTED_MODULE_13__["default"]);
-  app.use(_includes_calendar__WEBPACK_IMPORTED_MODULE_16__["default"]);
+  app.use(_includes_validation__WEBPACK_IMPORTED_MODULE_11__["default"]);
+  app.use(_includes_ui__WEBPACK_IMPORTED_MODULE_12__["default"]);
+  app.use(_includes_calendar__WEBPACK_IMPORTED_MODULE_15__["default"]);
   app.use(primevue_config__WEBPACK_IMPORTED_MODULE_10__["default"], {
     ripple: true
   });
-  app.use(primevue_toastservice__WEBPACK_IMPORTED_MODULE_19__["default"]);
-  app.directive("ripple", primevue_ripple__WEBPACK_IMPORTED_MODULE_18__["default"]);
+  app.use(primevue_toastservice__WEBPACK_IMPORTED_MODULE_18__["default"]);
+  app.directive("ripple", primevue_ripple__WEBPACK_IMPORTED_MODULE_17__["default"]);
   app.mount("#app");
 })["catch"](function (error) {
   console.error(error);
@@ -26630,15 +26627,7 @@ __webpack_require__.r(__webpack_exports__);
           nik_min: "NIK harus berjumlah 16 angka",
           nik_max: "NIK harus berjumlah 16 angka"
         };
-        var message = messages[ctx.rule.name] ? messages[ctx.rule.name] : "".concat(ctx.field, " adalah kesalahan"); // if (message.length != null) {
-        //     this.$toast.add({
-        //         severity: "error",
-        //         summary: "Gagal",
-        //         detail: "Cek data pengajuan!",
-        //         life: 3000,
-        //     });
-        // }
-
+        var message = messages[ctx.rule.name] ? messages[ctx.rule.name] : "".concat(ctx.field, " adalah kesalahan");
         return message;
       },
       validateOnBlur: true,
@@ -26662,81 +26651,54 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
-/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./routes */ "./resources/js/router/routes.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./routes */ "./resources/js/router/routes.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
 
 
 
-
-var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_3__.createRouter)({
-  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_3__.createWebHistory)(),
-  routes: _routes__WEBPACK_IMPORTED_MODULE_1__["default"],
+var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_2__.createRouter)({
+  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_2__.createWebHistory)(),
+  routes: _routes__WEBPACK_IMPORTED_MODULE_0__["default"],
   linkExactActiveClass: "active"
 });
-router.beforeEach( /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(to, from, next) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            if (to.matched.some(function (record) {
-              return record.meta.login;
-            }) && _store__WEBPACK_IMPORTED_MODULE_2__["default"].getters.isLoggedIn) {
-              next("/admin/dashboard");
-            }
+router.beforeEach(function (to) {
+  if (to.matched.some(function (record) {
+    return record.meta.admininstratorLoginRequired;
+  }) && _store__WEBPACK_IMPORTED_MODULE_1__["default"].getters.isLoggedIn && _store__WEBPACK_IMPORTED_MODULE_1__["default"].getters.user.role === "Masyarakat") {
+    return "/redirect";
+  }
 
-            if (to.matched.some(function (record) {
-              return record.meta.admin;
-            }) && _store__WEBPACK_IMPORTED_MODULE_2__["default"].getters.isLoggedIn && _store__WEBPACK_IMPORTED_MODULE_2__["default"].getters.user.role === "Petugas") {
-              next("/admin/dashboard");
-            }
+  if (to.matched.some(function (record) {
+    return record.meta.masyarakatLoginRequired;
+  }) && _store__WEBPACK_IMPORTED_MODULE_1__["default"].getters.isLoggedIn && _store__WEBPACK_IMPORTED_MODULE_1__["default"].getters.user.role !== "Masyarakat") {
+    return "/redirect-admin";
+  }
 
-            if (to.matched.some(function (record) {
-              return record.meta.masyarakatLogin;
-            }) && _store__WEBPACK_IMPORTED_MODULE_2__["default"].getters.isLoggedIn) {
-              next("/");
-            }
+  if (to.matched.some(function (record) {
+    return record.meta.login;
+  }) && _store__WEBPACK_IMPORTED_MODULE_1__["default"].getters.isLoggedIn && _store__WEBPACK_IMPORTED_MODULE_1__["default"].getters.user.role !== "Masyarakat") {
+    return "/admin/dashboard";
+  }
 
-            if (to.matched.some(function (record) {
-              return record.meta.admininstrator;
-            }) && _store__WEBPACK_IMPORTED_MODULE_2__["default"].getters.isLoggedIn && _store__WEBPACK_IMPORTED_MODULE_2__["default"].getters.user.role === "Masyarakat") {
-              next("/redirect");
-            }
+  if (to.matched.some(function (record) {
+    return record.meta.admin;
+  }) && _store__WEBPACK_IMPORTED_MODULE_1__["default"].getters.isLoggedIn && _store__WEBPACK_IMPORTED_MODULE_1__["default"].getters.user.role === "Petugas") {
+    return "/admin/dashboard";
+  }
 
-            if (to.matched.some(function (record) {
-              return record.meta.masyarakat;
-            }) && !_store__WEBPACK_IMPORTED_MODULE_2__["default"].getters.isLoggedIn) {
-              next("/login");
-            }
+  if (to.matched.some(function (record) {
+    return record.meta.masyarakatLoginRequired == false;
+  }) && _store__WEBPACK_IMPORTED_MODULE_1__["default"].getters.isLoggedIn && _store__WEBPACK_IMPORTED_MODULE_1__["default"].getters.user.role === "Masyarakat") {
+    return "/";
+  }
 
-            if (to.matched.some(function (record) {
-              return record.meta.masyarakat;
-            }) && _store__WEBPACK_IMPORTED_MODULE_2__["default"].getters.isLoggedIn && _store__WEBPACK_IMPORTED_MODULE_2__["default"].getters.user.role !== "Masyarakat") {
-              next("/redirect-admin");
-            }
-
-            next();
-
-          case 7:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-
-  return function (_x, _x2, _x3) {
-    return _ref.apply(this, arguments);
-  };
-}());
+  if (to.matched.some(function (record) {
+    return record.meta.masyarakatLoginRequired;
+  }) && !_store__WEBPACK_IMPORTED_MODULE_1__["default"].getters.isLoggedIn) {
+    return "/login";
+  }
+});
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (router);
 
 /***/ }),
@@ -26778,7 +26740,7 @@ var routes = [{
       return __webpack_require__.e(/*! import() */ "resources_js_pages_Login_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/Login.vue */ "./resources/js/pages/Login.vue"));
     },
     meta: {
-      masyarakatLogin: true
+      masyarakatLoginRequired: false
     }
   }, {
     path: "/registrasi",
@@ -26786,7 +26748,7 @@ var routes = [{
       return __webpack_require__.e(/*! import() */ "resources_js_pages_Registrasi_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/Registrasi.vue */ "./resources/js/pages/Registrasi.vue"));
     },
     meta: {
-      masyarakatLogin: true
+      masyarakatLoginRequired: false
     }
   }, {
     path: "/lihat-pengajuan",
@@ -26795,7 +26757,7 @@ var routes = [{
       return __webpack_require__.e(/*! import() */ "resources_js_pages_LihatPengajuan_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/LihatPengajuan.vue */ "./resources/js/pages/LihatPengajuan.vue"));
     },
     meta: {
-      masyarakat: true
+      masyarakatLoginRequired: true
     }
   }, {
     path: "cetak-ktp-el",
@@ -26803,7 +26765,7 @@ var routes = [{
       return __webpack_require__.e(/*! import() */ "resources_js_pages_CetakKTP_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/CetakKTP.vue */ "./resources/js/pages/CetakKTP.vue"));
     },
     meta: {
-      masyarakat: true
+      masyarakatLoginRequired: true
     }
   }, {
     path: "rekam-ktp-el",
@@ -26811,7 +26773,7 @@ var routes = [{
       return __webpack_require__.e(/*! import() */ "resources_js_pages_RekamKTP_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/RekamKTP.vue */ "./resources/js/pages/RekamKTP.vue"));
     },
     meta: {
-      masyarakat: true
+      masyarakatLoginRequired: true
     }
   }, {
     path: "kia",
@@ -26819,7 +26781,7 @@ var routes = [{
       return __webpack_require__.e(/*! import() */ "resources_js_pages_KIA_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/KIA.vue */ "./resources/js/pages/KIA.vue"));
     },
     meta: {
-      masyarakat: true
+      masyarakatLoginRequired: true
     }
   }, {
     path: "akta",
@@ -26827,7 +26789,7 @@ var routes = [{
       return __webpack_require__.e(/*! import() */ "resources_js_pages_Akta_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/Akta.vue */ "./resources/js/pages/Akta.vue"));
     },
     meta: {
-      masyarakat: true
+      masyarakatLoginRequired: true
     }
   }]
 }, {
@@ -26841,7 +26803,7 @@ var routes = [{
       return __webpack_require__.e(/*! import() */ "resources_js_pages_admin_Dashboard_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/admin/Dashboard.vue */ "./resources/js/pages/admin/Dashboard.vue"));
     },
     meta: {
-      admininstrator: true
+      admininstratorLoginRequired: true
     }
   }, {
     path: "/admin/pengajuan",
@@ -26849,7 +26811,7 @@ var routes = [{
       return __webpack_require__.e(/*! import() */ "resources_js_pages_admin_pengajuan_Pengajuan_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/admin/pengajuan/Pengajuan.vue */ "./resources/js/pages/admin/pengajuan/Pengajuan.vue"));
     },
     meta: {
-      admininstrator: true
+      admininstratorLoginRequired: true
     }
   }, {
     path: "/admin/pengajuan/:id",
@@ -26858,7 +26820,7 @@ var routes = [{
     },
     name: "admin.pengajuan",
     meta: {
-      admininstrator: true
+      admininstratorLoginRequired: true
     }
   }, {
     path: "/admin/user",
@@ -26867,7 +26829,7 @@ var routes = [{
     },
     meta: {
       admin: true,
-      admininstrator: true
+      admininstratorLoginRequired: true
     }
   }, {
     path: "/admin/create-user",
@@ -26876,7 +26838,7 @@ var routes = [{
     },
     meta: {
       admin: true,
-      admininstrator: true
+      admininstratorLoginRequired: true
     }
   }, {
     path: "/admin/edit-user",
@@ -26884,7 +26846,7 @@ var routes = [{
       return __webpack_require__.e(/*! import() */ "resources_js_pages_admin_user_EditUser_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/admin/user/EditUser.vue */ "./resources/js/pages/admin/user/EditUser.vue"));
     },
     meta: {
-      admininstrator: true
+      admininstratorLoginRequired: true
     }
   }]
 }, {
@@ -26895,7 +26857,7 @@ var routes = [{
   name: "Login",
   meta: {
     login: true,
-    admininstrator: true
+    admininstratorLoginRequired: true
   }
 }];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (routes);
@@ -26973,25 +26935,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       state.isLoggedIn = false;
     },
     editUser: function editUser(state, data) {
-      state.user = _objectSpread(_objectSpread({}, state.user), {}, {
-        email: data
-      });
-      state.emailEdit = false;
-    },
-    editPassword: function editPassword(state, data) {
-      state.user = _objectSpread(_objectSpread({}, state.user), {}, {
-        password: data
-      });
-    },
-    editAvatar: function editAvatar(state, data) {
-      state.user = _objectSpread(_objectSpread({}, state.user), {}, {
-        avatar: data
-      });
-    },
-    removeAvatar: function removeAvatar(state) {
-      state.user = _objectSpread(_objectSpread({}, state.user), {}, {
-        avatar: null
-      });
+      var key = data.key,
+          value = data.value;
+      state.user = _objectSpread(_objectSpread({}, state.user), {}, _defineProperty({}, key, value));
+      if (key == "email") state.emailEdit = false;
     }
   },
   getters: {
@@ -27001,14 +26948,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     isLoggedIn: function isLoggedIn(state) {
       return state.isLoggedIn;
     },
-    isUserLoggedIn: function isUserLoggedIn(state) {
-      return state.isUserLoggedIn;
-    },
     emailEdit: function emailEdit(state) {
       return state.emailEdit;
     },
     avatar: function avatar(state) {
-      state.user.avatar ? "/storage/avatar/".concat(state.user.avatar) : "/storage/avatar/avatar.png";
+      return state.user.avatar ? "/storage/avatar/".concat(state.user.avatar) : "/storage/avatar/avatar.png";
     }
   },
   actions: {
@@ -27022,14 +26966,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 commit = _ref.commit, dispatch = _ref.dispatch;
                 return _context.abrupt("return", new Promise(function (resolve, reject) {
                   axios__WEBPACK_IMPORTED_MODULE_1___default().post("/login", payload).then(function (response) {
-                    var token = response.data.token;
-                    localStorage.setItem("token", token);
-                    (0,_includes_auth__WEBPACK_IMPORTED_MODULE_2__.setHeaderToken)(token);
-                    dispatch("getUser");
+                    addUser(response, dispatch);
                     resolve(response);
                   })["catch"](function (err) {
-                    commit("resetUser");
-                    localStorage.removeItem("token");
+                    removeUser(commit);
                     reject(err);
                   });
                 }));
@@ -27052,14 +26992,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 commit = _ref2.commit, dispatch = _ref2.dispatch;
                 return _context2.abrupt("return", new Promise(function (resolve, reject) {
                   axios__WEBPACK_IMPORTED_MODULE_1___default().post("/login-user", payload).then(function (response) {
-                    var token = response.data.token;
-                    localStorage.setItem("token", token);
-                    (0,_includes_auth__WEBPACK_IMPORTED_MODULE_2__.setHeaderToken)(token);
-                    dispatch("getUser");
+                    addUser(response, dispatch);
                     resolve(response);
                   })["catch"](function (err) {
-                    commit("resetUser");
-                    localStorage.removeItem("token");
+                    removeUser(commit);
                     reject(err);
                   });
                 }));
@@ -27096,18 +27032,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 6:
                 res = _context3.sent;
                 commit("setUser", res.data.data);
-                _context3.next = 16;
+                _context3.next = 14;
                 break;
 
               case 10:
                 _context3.prev = 10;
                 _context3.t0 = _context3["catch"](3);
-                commit("resetUser");
-                (0,_includes_auth__WEBPACK_IMPORTED_MODULE_2__.removeHeaderToken)();
-                localStorage.removeItem("token");
+                removeUser(commit);
                 return _context3.abrupt("return", _context3.t0);
 
-              case 16:
+              case 14:
               case "end":
                 return _context3.stop();
             }
@@ -27128,7 +27062,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
               case 3:
                 res = _context4.sent;
-                commit("editUser", res.data.data);
+                commit("editUser", {
+                  key: "email",
+                  value: res.data.data
+                });
 
               case 5:
               case "end":
@@ -27151,7 +27088,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
               case 3:
                 res = _context5.sent;
-                commit("editPassword", res.data.data);
+                commit("editUser", {
+                  key: "password",
+                  value: res.data.data
+                });
 
               case 5:
               case "end":
@@ -27174,7 +27114,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
               case 3:
                 res = _context6.sent;
-                commit("editAvatar", res.data.data);
+                commit("editUser", {
+                  key: "avatar",
+                  value: res.data.data
+                });
 
               case 5:
               case "end":
@@ -27196,7 +27139,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("/deleteAvatar");
 
               case 3:
-                commit("removeAvatar");
+                commit("editUser", {
+                  key: "avatar",
+                  value: null
+                });
 
               case 4:
               case "end":
@@ -27208,14 +27154,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     logout: function logout(_ref8) {
       var commit = _ref8.commit;
-      return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/logout").then(function (res) {
-        commit("resetUser");
-        localStorage.removeItem("token");
-        (0,_includes_auth__WEBPACK_IMPORTED_MODULE_2__.removeHeaderToken)();
+      return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/logout").then(function () {
+        removeUser(commit);
       });
     }
   }
 });
+
+var removeUser = function removeUser(commit) {
+  commit("resetUser");
+  localStorage.removeItem("token");
+  (0,_includes_auth__WEBPACK_IMPORTED_MODULE_2__.removeHeaderToken)();
+};
+
+var addUser = function addUser(response, dispatch) {
+  var token = response.data.token;
+  localStorage.setItem("token", token);
+  (0,_includes_auth__WEBPACK_IMPORTED_MODULE_2__.setHeaderToken)(token);
+  dispatch("getUser");
+};
 
 /***/ }),
 
@@ -27276,7 +27233,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     pengajuan: [],
     detailPengajuan: {},
     totalKategori: {},
-    dashboardTotal: {},
     loadingPengajuan: true
   },
   getters: {
@@ -27297,9 +27253,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   mutations: {
-    setDashboardTotal: function setDashboardTotal(state, data) {
-      state.dashboardTotal = data;
-    },
     setTotalKategori: function setTotalKategori(state, data) {
       state.totalKategori = data;
     },
@@ -27307,9 +27260,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       state.pengajuan = data;
       state.loadingPengajuan = false;
     },
-    // removePengajuan(state, id) {
-    //     state.pengajuan = state.pengajuan.filter((data) => data.id !== id);
-    // },
     setDetailPengajuan: function setDetailPengajuan(state, data) {
       state.detailPengajuan = data;
     },
@@ -27343,18 +27293,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     addPengajuan: function addPengajuan(_ref2, data) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-        var commit, dispatch, res;
+        var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                commit = _ref2.commit, dispatch = _ref2.dispatch;
+                commit = _ref2.commit;
                 _context2.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default().post("/pengajuan", data);
 
               case 3:
                 res = _context2.sent;
-                commit("addPengajuan", data); // dispatch("getTotalKategori");
+                commit("addPengajuan", data);
 
               case 5:
               case "end":
@@ -27387,10 +27337,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3);
       }))();
     },
-    // async deletePengajuan({ commit }, id) {
-    //     await axios.delete(`/pengajuan/${id}`);
-    //     commit("removePengajuan", id);
-    // },
     editPengajuan: function editPengajuan(_ref4, data) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
         var commit, state, id, res;
@@ -27415,7 +27361,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee4);
       }))();
     },
-    getDashboardTotal: function getDashboardTotal(_ref5) {
+    getTotalKategori: function getTotalKategori(_ref5) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
         var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
@@ -27424,11 +27370,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref5.commit;
                 _context5.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/dashboard/total");
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/pengajuan/total");
 
               case 3:
                 res = _context5.sent;
-                commit("setDashboardTotal", res.data);
+                commit("setTotalKategori", res.data);
 
               case 5:
               case "end":
@@ -27436,29 +27382,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee5);
-      }))();
-    },
-    getTotalKategori: function getTotalKategori(_ref6) {
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6() {
-        var commit, res;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
-          while (1) {
-            switch (_context6.prev = _context6.next) {
-              case 0:
-                commit = _ref6.commit;
-                _context6.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/pengajuan/total");
-
-              case 3:
-                res = _context6.sent;
-                commit("setTotalKategori", res.data);
-
-              case 5:
-              case "end":
-                return _context6.stop();
-            }
-          }
-        }, _callee6);
       }))();
     }
   }
