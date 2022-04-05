@@ -1,490 +1,496 @@
-                            :root {
-                               --bg-info: #f7f7f7;
-                               --bg-footer: #252525;
-                               --bg-button: #d7e0fc;
-                               --bg-container: #e1e7fb;
-                               --text-grey: #8f9297;
-                               --text-black: #373737;
-                               --text-white: #fbfeff;
-                               --color-blue: #3762f0;
-                               --shadow: 0 .1rem .6rem var(--text-grey);
-                               --bp-largest: 80em;
-                           }
-                           
-                           * {
-                               margin: 0;
-                               padding: 0;
-                           }
-                           
-                           *,
-                           *::before,
-                           *::after {
-                               box-sizing: inherit;
-                           }
-                           
-                           html {
-                               box-sizing: border-box;
-                               font-size: 62.5%;
-                           }
-                           
-                           body {
-                               font-family: "Open Sans", sans-serif;
-                               font-weight: 400;
-                               font-size: 13px;
-                           }
-                           
-                           .fade-enter-from {
-                               opacity: 0;
-                           }
-                           
-                           .fade-enter-active {
-                               transition: all 0.5s linear;
-                           }
-                           
-                           .fade-leave-to {
-                               transition: all 0.5s linear;
-                               opacity: 0;
-                           }
-                           
-                           a {
-                               text-decoration: none;
-                           }
-                           
-                           .p-toast-message-text {
-                               font-size: 16px;
-                           }
-                           
-                           i.pi.pi-search {
-                               font-size: 12px;
-                           }
-                           
-                           input.p-inputtext.p-component {
-                               font-size: 12px;
-                           }
-                           
-                           span.p-column-title {
-                               font-size: 12px;
-                           }
-                           
-                           tbody.p-datatable-tbody {
-                               font-size: 12px;
-                           }
-                           
-                           .align-center {
-                               display: flex;
-                               justify-content: center;
-                           }
-                           
-                           .align-right {
-                               display: flex;
-                               justify-content: flex-end;
-                           }
-                           
-                           .col {
-                               display: flex;
-                               flex-direction: column;
-                               gap: 2rem;
-                               align-items: center;
-                           }
-                           
-                           .button_search {
-                               background-color: #3762f0;
-                               color: white;
-                               padding: 1rem;
-                               border: none;
-                               border-radius: .5rem;
-                           }
-                           
-                           .align-left {
-                               display: flex;
-                               justify-content: flex-start;
-                           }
-                           
-                           .header_info {
-                               background-color: var(--bg-info);
-                               padding: 1rem 1.5rem;
-                               display: flex;
-                               gap: 2rem;
-                           }
-                           
-                           .header_info_text {
-                               color: var(--text-grey);
-                           }
-                           
-                           .nav,
-                           .sticky-nav {
-                               padding: 1rem 3rem;
-                               display: flex;
-                               flex: 1;
-                               align-items: center;
-                               justify-content: space-between;
-                               background-color: var(--text-white);
-                               width: 100%;
-                               z-index: 1000;
-                           }
-                           
-                           .sticky-nav {
-                               position: fixed;
-                               top: 0;
-                               margin: 0;
-                           }
-                           
-                           .sidebar {
-                               background-color: var(--text-white);
-                               width: 100%;
-                               height: 100%;
-                               display: flex;
-                               flex-direction: column;
-                               gap: 5rem;
-                               padding: 2rem 2rem;
-                           }
-                           
-                           .header_navbar_link {
-                               display: flex;
-                               align-items: center;
-                               gap: 1.5rem;
-                           }
-                           
-                           .header_navbar_link_text {
-                               color: var(--color-blue);
-                               font-weight: 600;
-                           }
-                           
-                           .active {
-                               background-color: var(--bg-button);
-                               padding: 1.2rem 1.5rem;
-                               border-radius: 5px;
-                           }
-                           
-                           .pengajuan {
-                               padding: 5rem 5rem;
-                           }
-                           
-                           .pengajuan_judul {
-                               text-align: center;
-                               margin-bottom: 5rem;
-                               color: var(--text-black);
-                           }
-                           
-                           .pengajuan_daftar {
-                               display: flex;
-                               flex: 1;
-                               justify-content: center;
-                               gap: 4rem;
-                           }
-                           
-                           .pengajuan_tipe {
-                               box-shadow: var(--shadow);
-                               border-radius: 1rem;
-                               color: var(--text-black);
-                               width: 27rem;
-                           }
-                           
-                           .pengajuan-1 {
-                               display: flex;
-                               align-items: flex-start;
-                               gap: 4rem;
-                           }
-                           
-                           .pengajuan-2 {
-                               display: flex;
-                               align-items: flex-start;
-                               gap: 4rem;
-                           }
-                           
-                           .pengajuan_deskripsi {
-                               padding: 2.5rem 2rem;
-                               display: flex;
-                               flex-direction: column;
-                               gap: 2rem;
-                           }
-                           
-                           .pengajuan_persyaratan {
-                               line-height: 2.3rem;
-                           }
-                           
-                           .pengajuan_gambar {
-                               width: 27rem;
-                               border-top-left-radius: 0.5rem;
-                               border-top-right-radius: 0.5rem;
-                           }
-                           
-                           ol {
-                               padding: 0 1.4rem;
-                           }
-                           
-                           .pengajuan_button_wrap {
-                               background-color: var(--bg-info);
-                               display: flex;
-                               margin: 0;
-                           }
-                           
-                           .pengajuan_button {
-                               padding: 1rem 1rem;
-                               color: var(--text-white);
-                               background-color: var(--color-blue);
-                               border-bottom-right-radius: 0.5rem;
-                               font-weight: 600;
-                           }
-                           
-                           .total {
-                               padding: 12rem 20rem;
-                               text-align: center;
-                               color: var(--text-black);
-                           }
-                           
-                           .total_judul {
-                               margin-bottom: 10rem;
-                           }
-                           
-                           .total_pengajuan_wrap {
-                               display: flex;
-                               flex-wrap: wrap;
-                               justify-content: center;
-                               gap: 15rem;
-                           }
-                           
-                           .total_pengajuan {
-                               width: 5rem;
-                           }
-                           
-                           .total_angka {
-                               font-size: 3.5rem;
-                               font-weight: 700;
-                               margin-bottom: 1rem;
-                               color: var(--color-blue);
-                           }
-                           
-                           .footer {
-                               background-color: var(--bg-footer);
-                           }
-                           
-                           .footer_deskripsi {
-                               color: var(--text-white);
-                               padding: 5rem 0;
-                               text-align: center;
-                               display: flex;
-                               flex-direction: column;
-                               gap: 2rem;
-                           }
-                           
-                           .copyright {
-                               text-decoration: none;
-                               color: var(--text-grey);
-                           }
-                           
-                           .footer_info {
-                               padding: 1rem 2rem;
-                               display: flex;
-                               justify-content: space-between;
-                           }
-                           
-                           .footer_info_text {
-                               text-decoration: none;
-                               color: var(--text-grey);
-                               margin-right: 2rem;
-                           }
-                           
-                           .footer_info_alamat {
-                               text-decoration: none;
-                               color: var(--text-grey);
-                               display: flex;
-                               justify-content: flex-end;
-                           }
-                           
-                           .container {
-                               background-color: var(--bg-container);
-                               display: flex;
-                               justify-content: center;
-                               padding: 10rem 2rem;
-                           }
-                           
-                           .form {
-                               background-color: var(--text-white);
-                               padding: 5rem 4rem;
-                               border-radius: 1rem;
-                               color: var(--text-black);
-                               display: flex;
-                               flex-direction: column;
-                               gap: 2rem;
-                           }
-                           
-                           input#password,
-                           input[type=text] {
-                               border: 1px solid var(--text-grey);
-                               border-radius: 0.5rem;
-                               padding: 1rem 0.5rem;
-                               /* width: 45rem; */
-                               width: 100%;
-                           }
-                           
-                           .p-button,
-                           .p-inputtext {
-                               font-size: 1.3rem !important;
-                           }
-                           
-                           input:focus {
-                               border: 3px solid var(--bg-button);
-                           }
-                           
-                           label {
-                               width: 45rem;
-                           }
-                           
-                           .form_gambar,
-                           .form_judul {
-                               width: 47rem;
-                           }
-                           
-                           .form_pernyataan {
-                               display: flex;
-                               gap: 1rem;
-                               width: 45rem;
-                           }
-                           
-                           .form_peringatan {
-                               width: 45rem;
-                               color: red;
-                           }
-                           
-                           @media screen and (max-width: 1280px) {
-                               .pengajuan_tipe,
-                               .pengajuan_gambar {
-                                   width: 23rem;
-                               }
-                           }
-                           
-                           @media screen and (max-width: 1130px) {
-                               .pengajuan_tipe,
-                               .pengajuan_gambar {
-                                   width: 20rem;
-                               }
-                               .total {
-                                   padding: 12rem 8rem;
-                               }
-                           }
-                           
-                           @media screen and (max-width: 1000px) {
-                               .pengajuan_daftar {
-                                   flex-direction: column;
-                                   align-items: center;
-                               }
-                               .pengajuan_tipe,
-                               .pengajuan_gambar {
-                                   width: 33rem;
-                               }
-                               .total_pengajuan-1,
-                               .total_pengajuan-2 {
-                                   flex-direction: column;
-                               }
-                           }
-                           
-                           @media screen and (max-width: 850px) {
-                               .footer_info {
-                                   flex-direction: column;
-                                   gap: 2rem;
-                                   padding: 2rem 1rem;
-                                   align-items: center;
-                               }
-                               .footer_info_alamat {
-                                   justify-content: flex-start;
-                               }
-                           }
-                           
-                           @media screen and (max-width: 775px) {
-                               .pengajuan-1,
-                               .pengajuan-2 {
-                                   flex-direction: column;
-                               }
-                               .header_navbar_link {
-                                   display: none;
-                               }
-                               .pengajuan_tipe,
-                               .pengajuan_gambar {
-                                   width: 48rem;
-                               }
-                               .icon_nav {
-                                   display: block;
-                               }
-                           }
-                           
-                           @media screen and (max-width: 550px) {
-                               .pengajuan_tipe,
-                               .pengajuan_gambar {
-                                   width: 33rem;
-                               }
-                               .footer {
-                                   padding: 0 2rem;
-                               }
-                               .footer_kontak {
-                                   display: flex;
-                                   flex-direction: column;
-                                   gap: 1rem;
-                                   align-items: center;
-                               }
-                               .button,
-                               label,
-                               .form_judul,
-                               .form_gambar,
-                               .form_pernyataan,
-                               .form_peringatan,
-                               .form_file {
-                                   width: 100%;
-                               }
-                               .nav,
-                               .sticky-nav {
-                                   padding: 1rem;
-                               }
-                           }
-                           
-                           @media screen and (max-width: 455px) {
-                               .header_info {
-                                   flex-direction: column;
-                                   gap: 1rem;
-                               }
-                               .header_navbar {
-                                   padding: 1rem;
-                               }
-                               .header_logo {
-                                   width: 25rem;
-                               }
-                           }
-                           
-                           @media screen and (max-width: 405px) {
-                               .footer_kontak {
-                                   display: flex;
-                                   flex-direction: column;
-                                   gap: 1rem;
-                                   align-items: flex-start;
-                               }
-                               .footer_info {
-                                   align-items: flex-start;
-                               }
-                           }
-                           
-                           @media screen and (max-width: 360px) {
-                               .header_info {
-                                   padding: 1rem;
-                                   font-size: 98%;
-                               }
-                               .header_logo {
-                                   width: 20rem;
-                               }
-                               .pengajuan_gambar,
-                               .pengajuan_tipe {
-                                   width: 24rem;
-                               }
-                               .pengajuan_judul,
-                               .pengajuan_tipe_judul,
-                               .total_judul,
-                               .footer_judul {
-                                   font-size: 130%;
-                               }
-                               .footer_ket {
-                                   font-size: 90%;
-                                   font-weight: 100;
-                               }
-                               .total {
-                                   padding: 12rem 2rem;
-                               }
-                           }
+                             :root {
+                                --bg-info: #f7f7f7;
+                                --bg-footer: #252525;
+                                --bg-button: #d7e0fc;
+                                --bg-container: #e1e7fb;
+                                --text-grey: #8f9297;
+                                --text-black: #373737;
+                                --text-white: #fbfeff;
+                                --color-blue: #3762f0;
+                                --shadow: 0 .1rem .6rem var(--text-grey);
+                                --bp-largest: 80em;
+                            }
+                            
+                            * {
+                                margin: 0;
+                                padding: 0;
+                                outline: none;
+                            }
+                            
+                            *,
+                            *::before,
+                            *::after {
+                                box-sizing: inherit;
+                            }
+                            
+                            html {
+                                box-sizing: border-box;
+                                font-size: 62.5%;
+                            }
+                            
+                            body {
+                                font-family: "Open Sans", sans-serif;
+                                font-weight: 400;
+                                font-size: 13px;
+                            }
+                            
+                            textarea {
+                                resize: none;
+                                padding: 0 10px;
+                            }
+                            
+                            .fade-enter-from {
+                                opacity: 0;
+                            }
+                            
+                            .fade-enter-active {
+                                transition: all 0.5s linear;
+                            }
+                            
+                            .fade-leave-to {
+                                transition: all 0.5s linear;
+                                opacity: 0;
+                            }
+                            
+                            a {
+                                text-decoration: none;
+                            }
+                            
+                            .p-toast-message-text {
+                                font-size: 16px;
+                            }
+                            
+                            i.pi.pi-search {
+                                font-size: 12px;
+                            }
+                            
+                            input.p-inputtext.p-component {
+                                font-size: 12px;
+                            }
+                            
+                            span.p-column-title {
+                                font-size: 12px;
+                            }
+                            
+                            tbody.p-datatable-tbody {
+                                font-size: 12px;
+                            }
+                            
+                            .align-center {
+                                display: flex;
+                                justify-content: center;
+                            }
+                            
+                            .align-right {
+                                display: flex;
+                                justify-content: flex-end;
+                            }
+                            
+                            .col {
+                                display: flex;
+                                flex-direction: column;
+                                gap: 2rem;
+                                align-items: center;
+                            }
+                            
+                            .button_search {
+                                background-color: #3762f0;
+                                color: white;
+                                padding: 1rem;
+                                border: none;
+                                border-radius: .5rem;
+                            }
+                            
+                            .align-left {
+                                display: flex;
+                                justify-content: flex-start;
+                            }
+                            
+                            .header_info {
+                                background-color: var(--bg-info);
+                                padding: 1rem 1.5rem;
+                                display: flex;
+                                gap: 2rem;
+                            }
+                            
+                            .header_info_text {
+                                color: var(--text-grey);
+                            }
+                            
+                            .nav,
+                            .sticky-nav {
+                                padding: 1rem 3rem;
+                                display: flex;
+                                flex: 1;
+                                align-items: center;
+                                justify-content: space-between;
+                                background-color: var(--text-white);
+                                width: 100%;
+                                z-index: 1000;
+                            }
+                            
+                            .sticky-nav {
+                                position: fixed;
+                                top: 0;
+                                margin: 0;
+                            }
+                            
+                            .sidebar {
+                                background-color: var(--text-white);
+                                width: 100%;
+                                height: 100%;
+                                display: flex;
+                                flex-direction: column;
+                                gap: 5rem;
+                                padding: 2rem 2rem;
+                            }
+                            
+                            .header_navbar_link {
+                                display: flex;
+                                align-items: center;
+                                gap: 1.5rem;
+                            }
+                            
+                            .header_navbar_link_text {
+                                color: var(--color-blue);
+                                font-weight: 600;
+                            }
+                            
+                            .active {
+                                background-color: var(--bg-button);
+                                padding: 1.2rem 1.5rem;
+                                border-radius: 5px;
+                            }
+                            
+                            .pengajuan {
+                                padding: 5rem 5rem;
+                            }
+                            
+                            .pengajuan_judul {
+                                text-align: center;
+                                margin-bottom: 5rem;
+                                color: var(--text-black);
+                            }
+                            
+                            .pengajuan_daftar {
+                                display: flex;
+                                flex: 1;
+                                justify-content: center;
+                                gap: 4rem;
+                            }
+                            
+                            .pengajuan_tipe {
+                                box-shadow: var(--shadow);
+                                border-radius: 1rem;
+                                color: var(--text-black);
+                                width: 27rem;
+                            }
+                            
+                            .pengajuan-1 {
+                                display: flex;
+                                align-items: flex-start;
+                                gap: 4rem;
+                            }
+                            
+                            .pengajuan-2 {
+                                display: flex;
+                                align-items: flex-start;
+                                gap: 4rem;
+                            }
+                            
+                            .pengajuan_deskripsi {
+                                padding: 2.5rem 2rem;
+                                display: flex;
+                                flex-direction: column;
+                                gap: 2rem;
+                            }
+                            
+                            .pengajuan_persyaratan {
+                                line-height: 2.3rem;
+                            }
+                            
+                            .pengajuan_gambar {
+                                width: 27rem;
+                                border-top-left-radius: 0.5rem;
+                                border-top-right-radius: 0.5rem;
+                            }
+                            
+                            ol {
+                                padding: 0 1.4rem;
+                            }
+                            
+                            .pengajuan_button_wrap {
+                                background-color: var(--bg-info);
+                                display: flex;
+                                margin: 0;
+                            }
+                            
+                            .pengajuan_button {
+                                padding: 1rem 1rem;
+                                color: var(--text-white);
+                                background-color: var(--color-blue);
+                                border-bottom-right-radius: 0.5rem;
+                                font-weight: 600;
+                            }
+                            
+                            .total {
+                                padding: 12rem 20rem;
+                                text-align: center;
+                                color: var(--text-black);
+                            }
+                            
+                            .total_judul {
+                                margin-bottom: 10rem;
+                            }
+                            
+                            .total_pengajuan_wrap {
+                                display: flex;
+                                flex-wrap: wrap;
+                                justify-content: center;
+                                gap: 15rem;
+                            }
+                            
+                            .total_pengajuan {
+                                width: 5rem;
+                            }
+                            
+                            .total_angka {
+                                font-size: 3.5rem;
+                                font-weight: 700;
+                                margin-bottom: 1rem;
+                                color: var(--color-blue);
+                            }
+                            
+                            .footer {
+                                background-color: var(--bg-footer);
+                            }
+                            
+                            .footer_deskripsi {
+                                color: var(--text-white);
+                                padding: 5rem 0;
+                                text-align: center;
+                                display: flex;
+                                flex-direction: column;
+                                gap: 2rem;
+                            }
+                            
+                            .copyright {
+                                text-decoration: none;
+                                color: var(--text-grey);
+                            }
+                            
+                            .footer_info {
+                                padding: 1rem 2rem;
+                                display: flex;
+                                justify-content: space-between;
+                            }
+                            
+                            .footer_info_text {
+                                text-decoration: none;
+                                color: var(--text-grey);
+                                margin-right: 2rem;
+                            }
+                            
+                            .footer_info_alamat {
+                                text-decoration: none;
+                                color: var(--text-grey);
+                                display: flex;
+                                justify-content: flex-end;
+                            }
+                            
+                            .container {
+                                background-color: var(--bg-container);
+                                display: flex;
+                                justify-content: center;
+                                padding: 10rem 2rem;
+                            }
+                            
+                            .form {
+                                background-color: var(--text-white);
+                                padding: 5rem 4rem;
+                                border-radius: 1rem;
+                                color: var(--text-black);
+                                display: flex;
+                                flex-direction: column;
+                                gap: 2rem;
+                            }
+                            
+                            input#password,
+                            input[type=text] {
+                                border: 1px solid var(--text-grey);
+                                border-radius: 0.5rem;
+                                padding: 1rem 0.5rem;
+                                /* width: 45rem; */
+                                width: 100%;
+                            }
+                            
+                            .p-button,
+                            .p-inputtext {
+                                font-size: 1.3rem !important;
+                            }
+                            
+                            input:focus {
+                                border: 3px solid var(--bg-button);
+                            }
+                            
+                            label {
+                                width: 45rem;
+                            }
+                            
+                            .form_gambar,
+                            .form_judul {
+                                width: 47rem;
+                            }
+                            
+                            .form_pernyataan {
+                                display: flex;
+                                gap: 1rem;
+                                width: 45rem;
+                            }
+                            
+                            .form_peringatan {
+                                width: 45rem;
+                                color: red;
+                            }
+                            
+                            @media screen and (max-width: 1280px) {
+                                .pengajuan_tipe,
+                                .pengajuan_gambar {
+                                    width: 23rem;
+                                }
+                            }
+                            
+                            @media screen and (max-width: 1130px) {
+                                .pengajuan_tipe,
+                                .pengajuan_gambar {
+                                    width: 20rem;
+                                }
+                                .total {
+                                    padding: 12rem 8rem;
+                                }
+                            }
+                            
+                            @media screen and (max-width: 1000px) {
+                                .pengajuan_daftar {
+                                    flex-direction: column;
+                                    align-items: center;
+                                }
+                                .pengajuan_tipe,
+                                .pengajuan_gambar {
+                                    width: 33rem;
+                                }
+                                .total_pengajuan-1,
+                                .total_pengajuan-2 {
+                                    flex-direction: column;
+                                }
+                            }
+                            
+                            @media screen and (max-width: 850px) {
+                                .footer_info {
+                                    flex-direction: column;
+                                    gap: 2rem;
+                                    padding: 2rem 1rem;
+                                    align-items: center;
+                                }
+                                .footer_info_alamat {
+                                    justify-content: flex-start;
+                                }
+                            }
+                            
+                            @media screen and (max-width: 775px) {
+                                .pengajuan-1,
+                                .pengajuan-2 {
+                                    flex-direction: column;
+                                }
+                                .header_navbar_link {
+                                    display: none;
+                                }
+                                .pengajuan_tipe,
+                                .pengajuan_gambar {
+                                    width: 48rem;
+                                }
+                                .icon_nav {
+                                    display: block;
+                                }
+                            }
+                            
+                            @media screen and (max-width: 550px) {
+                                .pengajuan_tipe,
+                                .pengajuan_gambar {
+                                    width: 33rem;
+                                }
+                                .footer {
+                                    padding: 0 2rem;
+                                }
+                                .footer_kontak {
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: 1rem;
+                                    align-items: center;
+                                }
+                                .button,
+                                label,
+                                .form_judul,
+                                .form_gambar,
+                                .form_pernyataan,
+                                .form_peringatan,
+                                .form_file {
+                                    width: 100%;
+                                }
+                                .nav,
+                                .sticky-nav {
+                                    padding: 1rem;
+                                }
+                            }
+                            
+                            @media screen and (max-width: 455px) {
+                                .header_info {
+                                    flex-direction: column;
+                                    gap: 1rem;
+                                }
+                                .header_navbar {
+                                    padding: 1rem;
+                                }
+                                .header_logo {
+                                    width: 25rem;
+                                }
+                            }
+                            
+                            @media screen and (max-width: 405px) {
+                                .footer_kontak {
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: 1rem;
+                                    align-items: flex-start;
+                                }
+                                .footer_info {
+                                    align-items: flex-start;
+                                }
+                            }
+                            
+                            @media screen and (max-width: 360px) {
+                                .header_info {
+                                    padding: 1rem;
+                                    font-size: 98%;
+                                }
+                                .header_logo {
+                                    width: 20rem;
+                                }
+                                .pengajuan_gambar,
+                                .pengajuan_tipe {
+                                    width: 24rem;
+                                }
+                                .pengajuan_judul,
+                                .pengajuan_tipe_judul,
+                                .total_judul,
+                                .footer_judul {
+                                    font-size: 130%;
+                                }
+                                .footer_ket {
+                                    font-size: 90%;
+                                    font-weight: 100;
+                                }
+                                .total {
+                                    padding: 12rem 2rem;
+                                }
+                            }

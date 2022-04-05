@@ -75,13 +75,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)({
     total: "totalKategori"
   })),
-  methods: {
+  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapActions)(["getTotalKategori"])), {}, {
     download: function download(url) {
       window.open(url, "_blank");
     }
-  },
-  created: function created() {
-    this.$store.dispatch("getTotalKategori");
+  }),
+  mounted: function mounted() {
+    var _this = this;
+
+    this.getTotalKategori();
+    Echo.channel("refresh").listen("RefreshData", function () {
+      return _this.getTotalKategori();
+    });
   }
 });
 

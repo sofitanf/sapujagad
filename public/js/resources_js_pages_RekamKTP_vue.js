@@ -32,6 +32,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     setLampiran: {
       type: Function
+    },
+    updateUnsavedFlag: {
+      type: Function
     }
   },
   components: {
@@ -131,6 +134,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     });
 
     this.schemaCurrent = data;
+  },
+  beforeRouteLeave: function beforeRouteLeave(to, from, next) {
+    if (!this.unsavedFlag) {
+      next();
+    } else {
+      var leave = confirm("Anda yakin ingin keluar dari halaman form pengajuan?");
+      next(leave);
+    }
   }
 });
 
@@ -513,12 +524,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     name: "lampiran5",
     "class": "error"
   })]), _hoisted_20, _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
+    onInput: _cache[1] || (_cache[1] = function ($event) {
+      return $props.updateUnsavedFlag(true);
+    }),
     type: "text",
     name: "nik"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
     name: "nik",
     "class": "error"
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [_hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
+    onInput: _cache[2] || (_cache[2] = function ($event) {
+      return $props.updateUnsavedFlag(true);
+    }),
     type: "text",
     name: "nama"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
@@ -542,10 +559,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     value: "Ya"
   }), _hoisted_47])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_48, _hoisted_49, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_50, [_hoisted_51, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
     modelValue: $data.id_kecamatan,
-    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return $data.id_kecamatan = $event;
     }),
-    onChange: _cache[2] || (_cache[2] = function ($event) {
+    onChange: _cache[4] || (_cache[4] = function ($event) {
       return $options.fetchKelurahan();
     }),
     name: "id_kecamatan",
@@ -982,7 +999,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       schema: {
-        nik: "nik|nik_number|nik_min:16|nik_max:16|min_value:3326019999999999|max_value:3326199999999999",
+        nik: {
+          nik: true,
+          nik_number: true,
+          nik_format: /^3326(0[1-9]|1[1-9])\d{9}/
+        },
         nama: {
           nama: true,
           regex: /^[A-Za-z .']+$/
@@ -1006,7 +1027,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         lampiran3: null,
         lampiran4: null,
         lampiran5: null
-      }
+      },
+      unsavedFlag: false
     };
   },
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)({
@@ -1045,6 +1067,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }();
 
       reader.readAsDataURL(file);
+      this.unsavedFlag = true;
     },
     daftar: function daftar(values, _ref2) {
       var _this2 = this;
@@ -1055,6 +1078,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var fixValues = Object.assign(values, this.lampiran);
       this.$store.dispatch("addPengajuan", fixValues).then(function () {
         _this2.submitLoading = false;
+        _this2.unsavedFlag = false;
         resetForm();
         setTimeout(function () {
           window.scrollTo(0, 0);
@@ -1079,6 +1103,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           life: 3000
         });
       });
+    },
+    updateUnsavedFlag: function updateUnsavedFlag(value) {
+      this.unsavedFlag = value;
     }
   }
 });

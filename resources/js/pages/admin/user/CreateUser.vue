@@ -63,8 +63,8 @@ export default {
 		};
 	},
 	methods: {
-		async tambahUser(values) {
-			await this.$store
+		tambahUser(values) {
+			this.$store
 				.dispatch("addUser", values)
 				.then(() => {
 					this.$router.push("/admin/user", () => {

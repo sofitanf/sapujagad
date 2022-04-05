@@ -5,7 +5,7 @@
 			<h4>NIK : {{ user.nik }}</h4>
 			<h4>Nama : {{ user.nama }}</h4>
 			<DataTable
-				:value="pengajuanIndex"
+				:value="pengajuan"
 				responsiveLayout="scroll"
 				:paginator="true"
 				:rows="10"
@@ -84,24 +84,8 @@ export default {
 		...mapGetters({
 			user: "user",
 		}),
-		pengajuanIndex() {
-			return this.pengajuan.map((items, index) => ({
-				...items,
-				index: index + 1,
-			}));
-		},
 	},
 	methods: {
-		fetchData() {
-			axios
-				.get(`/cek-pengajuan/${this.user.id_masyarakat}`)
-				.then(({ data }) => {
-					this.pengajuan = data.data;
-					this.loading = false;
-				})
-				.catch((error) => console.log(error));
-		},
-
 		initFilters() {
 			this.filters = {
 				global: { value: null, matchMode: FilterMatchMode.CONTAINS },
@@ -109,8 +93,29 @@ export default {
 		},
 	},
 	created() {
-		this.fetchData();
 		this.initFilters();
+		axios
+			.get(`/cek-pengajuan/${this.user.id_masyarakat}`)
+			.then(({ data }) => {
+				this.pengajuan = data.data.map((items, index) => ({
+					...items,
+					index: index + 1,
+				}));
+				this.loading = false;
+			})
+			.catch((error) => console.log(error));
+
+		Echo.private(`pengajuan.${this.user.id_user}`).listen(
+			"PengajuanUpdate",
+			({ data }) => {
+				this.pengajuan.filter((pengajuan) => {
+					if (pengajuan.id == data.id_pengajuan) {
+						pengajuan.status = data.status;
+						pengajuan.jadwal = data.jadwal;
+					}
+				});
+			}
+		);
 	},
 };
 </script>

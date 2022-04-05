@@ -85,6 +85,16 @@ export default {
 		};
 		this.schemaCurrent = data;
 	},
+	beforeRouteLeave(to, from, next) {
+		if (!this.unsavedFlag) {
+			next();
+		} else {
+			const leave = confirm(
+				"Anda yakin ingin keluar dari halaman form pengajuan?"
+			);
+			next(leave);
+		}
+	},
 };
 </script>
 <style>

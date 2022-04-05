@@ -47,6 +47,7 @@
 import { mapGetters } from "vuex";
 
 export default {
+	emits: ["updateData"],
 	props: {
 		detail: {
 			required: true,

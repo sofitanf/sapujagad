@@ -53,8 +53,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }),
   created: function created() {
+    var _this = this;
+
     this.getPengajuan();
     this.initFilters();
+    Echo.channel("refresh").listen("RefreshData", function () {
+      return _this.getPengajuan();
+    });
   }
 });
 

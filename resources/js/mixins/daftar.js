@@ -7,7 +7,11 @@ export default {
     data() {
         return {
             schema: {
-                nik: "nik|nik_number|nik_min:16|nik_max:16|min_value:3326019999999999|max_value:3326199999999999",
+                nik: {
+                    nik: true,
+                    nik_number: true,
+                    nik_format: /^3326(0[1-9]|1[1-9])\d{9}/,
+                },
                 nama: { nama: true, regex: /^[A-Za-z .']+$/ },
                 id_kecamatan: "required",
                 hubungan: "hubungan",
@@ -29,6 +33,7 @@ export default {
                 lampiran4: null,
                 lampiran5: null,
             },
+            unsavedFlag: false,
         };
     },
     computed: {
@@ -44,6 +49,7 @@ export default {
                 this.lampiran[lampiran] = await e.target.result;
             };
             reader.readAsDataURL(file);
+            this.unsavedFlag = true;
         },
         daftar(values, { resetForm }) {
             this.submitLoading = true;
@@ -54,6 +60,8 @@ export default {
                 .dispatch("addPengajuan", fixValues)
                 .then(() => {
                     this.submitLoading = false;
+                    this.unsavedFlag = false;
+
                     resetForm();
 
                     setTimeout(() => {
@@ -80,6 +88,9 @@ export default {
                         life: 3000,
                     });
                 });
+        },
+        updateUnsavedFlag(value) {
+            this.unsavedFlag = value;
         },
     },
 };

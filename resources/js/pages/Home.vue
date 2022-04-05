@@ -72,7 +72,7 @@
 	</div>
 </template>
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import PengajuanItem from "../components/PengajuanItem.vue";
 import JmlKategoriItem from "../components/JmlKategoriItem.vue";
 
@@ -82,12 +82,16 @@ export default {
 		...mapGetters({ total: "totalKategori" }),
 	},
 	methods: {
+		...mapActions(["getTotalKategori"]),
 		download(url) {
 			window.open(url, "_blank");
 		},
 	},
-	created() {
-		this.$store.dispatch("getTotalKategori");
+	mounted() {
+		this.getTotalKategori();
+		Echo.channel("refresh").listen("RefreshData", () =>
+			this.getTotalKategori()
+		);
 	},
 };
 </script>

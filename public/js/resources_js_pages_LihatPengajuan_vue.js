@@ -32,29 +32,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       loading: true
     };
   },
-  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)({
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)({
     user: "user"
-  })), {}, {
-    pengajuanIndex: function pengajuanIndex() {
-      return this.pengajuan.map(function (items, index) {
-        return _objectSpread(_objectSpread({}, items), {}, {
-          index: index + 1
-        });
-      });
-    }
-  }),
+  })),
   methods: {
-    fetchData: function fetchData() {
-      var _this = this;
-
-      axios.get("/cek-pengajuan/".concat(this.user.id_masyarakat)).then(function (_ref) {
-        var data = _ref.data;
-        _this.pengajuan = data.data;
-        _this.loading = false;
-      })["catch"](function (error) {
-        return console.log(error);
-      });
-    },
     initFilters: function initFilters() {
       this.filters = {
         global: {
@@ -65,8 +46,30 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   created: function created() {
-    this.fetchData();
+    var _this = this;
+
     this.initFilters();
+    axios.get("/cek-pengajuan/".concat(this.user.id_masyarakat)).then(function (_ref) {
+      var data = _ref.data;
+      _this.pengajuan = data.data.map(function (items, index) {
+        return _objectSpread(_objectSpread({}, items), {}, {
+          index: index + 1
+        });
+      });
+      _this.loading = false;
+    })["catch"](function (error) {
+      return console.log(error);
+    });
+    Echo["private"]("pengajuan.".concat(this.user.id_user)).listen("PengajuanUpdate", function (_ref2) {
+      var data = _ref2.data;
+
+      _this.pengajuan.filter(function (pengajuan) {
+        if (pengajuan.id == data.id_pengajuan) {
+          pengajuan.status = data.status;
+          pengajuan.jadwal = data.jadwal;
+        }
+      });
+    });
   }
 });
 
@@ -137,7 +140,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", null, "Nama : " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.user.nama), 1
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DataTable, {
-    value: $options.pengajuanIndex,
+    value: $data.pengajuan,
     responsiveLayout: "scroll",
     paginator: true,
     rows: 10,

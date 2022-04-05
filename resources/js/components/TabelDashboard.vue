@@ -2,7 +2,7 @@
 	<div class="col-12">
 		<div class="card flex flex-column">
 			<span class="text-2xl mb-3">Total Pengajuan</span>
-			<DataTable responsiveLayout="scroll" :value="kecamatanIndex">
+			<DataTable responsiveLayout="scroll" :value="kecamatan">
 				<Column field="index" header="#" :sortable="true" />
 				<Column field="nama_kecamatan" header="Kecamatan" />
 				<Column field="total" header="Total" :sortable="true" />
@@ -37,22 +37,25 @@ export default {
 	},
 	computed: {
 		...mapGetters({ total: "totalKategori" }),
-		kecamatanIndex() {
-			return this.kecamatan.map((items, i) => ({
-				...items,
-				index: i + 1,
-			}));
+	},
+	methods: {
+		getData() {
+			this.$store.dispatch("getTotalKategori");
+
+			axios.get("/dashboard/tabel-kecamatan").then(({ data }) => {
+				this.kecamatan = data.data.map((items, i) => ({
+					...items,
+					index: i + 1,
+				}));
+			});
+			axios.get("/pengajuan/totalAll").then(({ data }) => {
+				this.totalPengajuan = data.data;
+			});
 		},
 	},
-	created() {
-		this.$store.dispatch("getTotalKategori");
-
-		axios.get("/dashboard/tabel-kecamatan").then(({ data }) => {
-			this.kecamatan = data.data;
-		});
-		axios.get("/pengajuan/totalAll").then(({ data }) => {
-			this.totalPengajuan = data.data;
-		});
+	mounted() {
+		this.getData();
+		Echo.channel("refresh").listen("RefreshData", () => this.getData());
 	},
 };
 </script>

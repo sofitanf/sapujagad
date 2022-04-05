@@ -19,7 +19,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     return {
       schema: (_schema = {
-        nik: "nik|nik_number|nik_min:16|nik_max:16|min_value:3326019999999999|max_value:3326199999999999",
+        nik: {
+          nik: true,
+          nik_number: true,
+          nik_format: /^3326(0[1-9]|1[1-9])\d{9}/
+        },
         nama: {
           nama: true,
           regex: /^[A-Za-z .']+$/

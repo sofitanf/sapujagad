@@ -11,8 +11,6 @@ import {
     alpha_spaces,
     min,
     max,
-    min_value,
-    max_value,
     image,
     size,
     email,
@@ -40,17 +38,12 @@ export default {
         defineRule("nik_max", max);
         defineRule("numeric", numeric);
         defineRule("nama_alpha", alpha_spaces);
-        defineRule("min", min);
-        defineRule("max", max);
-        defineRule("min_value", min_value);
-        defineRule("max_value", max_value);
         defineRule("image", image);
         defineRule("size", size);
         defineRule("email", email);
         defineRule("confirmed", confirmed);
         defineRule("phone", regex);
         defineRule("nik_format", regex);
-
         configure({
             generateMessage: (ctx) => {
                 const messages = {
@@ -71,12 +64,9 @@ export default {
                     confirmed: `${ctx.field} tidak valid`,
                     image: `File berupa img, jpg dan png`,
                     size: `Ukuran file maksimal 2MB`,
-                    min_value: "NIK tidak dalam cakupan warga Kabupaten Pekalongan",
-                    max_value: "NIK tidak dalam cakupan warga Kabupaten Pekalongan",
                     nik_format: "NIK tidak dalam cakupan warga Kabupaten Pekalongan",
                     phone: "Nomor WA tidak valid",
-                    nik_min: "NIK harus berjumlah 16 angka",
-                    nik_max: "NIK harus berjumlah 16 angka",
+                    nik_digit: "NIK harus berjumlah 16 angka",
                 };
 
                 const message = messages[ctx.rule.name] ?

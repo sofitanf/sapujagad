@@ -4,7 +4,7 @@
 	</div>
 	<div v-if="detail && detail.id_pengajuan">
 		<detail-data-pengajuan :detail="detail" />
-		<tanggapan-pengajuan @update-data="fetchData" :detail="detail" />
+		<tanggapan-pengajuan @update-data="fetchPengajuan" :detail="detail" />
 	</div>
 </template>
 <script>
@@ -34,12 +34,12 @@ export default {
 				"_blank"
 			);
 		},
-		fetchData() {
-			this.fetchPengajuan();
-		},
 	},
-	created() {
+	mounted() {
 		this.fetchPengajuan();
+		Echo.channel("pengajuan-update").listen("PengajuanUpdate", () =>
+			this.fetchPengajuan()
+		);
 	},
 };
 </script>

@@ -9,7 +9,10 @@
 				<h2>DATA PELAPOR</h2>
 			</div>
 			<vee-form :validation-schema="schema" class="vee-form" @submit="daftar">
-				<DataPelaporPemohon :setLampiran="setLampiran" />
+				<DataPelaporPemohon
+					:updateUnsavedFlag="updateUnsavedFlag"
+					:setLampiran="setLampiran"
+				/>
 				<hr />
 				<div class="form_baris">
 					<h2>UPLOAD DATA PENDUKUNG</h2>
@@ -61,6 +64,16 @@
 import daftar from "../mixins/daftar";
 export default {
 	mixins: [daftar],
+	beforeRouteLeave(to, from, next) {
+		if (!this.unsavedFlag) {
+			next();
+		} else {
+			const leave = confirm(
+				"Anda yakin ingin keluar dari halaman form pengajuan?"
+			);
+			next(leave);
+		}
+	},
 };
 </script>
 <style>

@@ -62,12 +62,12 @@
 	</div>
 	<div class="form_baris">
 		<label for="">NIK</label>
-		<vee-field type="text" name="nik" />
+		<vee-field @input="updateUnsavedFlag(true)" type="text" name="nik" />
 		<error-message name="nik" class="error" />
 	</div>
 	<div class="form_baris">
 		<label for="">NAMA</label>
-		<vee-field type="text" name="nama" />
+		<vee-field @input="updateUnsavedFlag(true)" type="text" name="nama" />
 		<error-message name="nama" class="error" />
 	</div>
 	<div v-if="rekamKtp">
@@ -153,6 +153,9 @@ export default {
 			default: true,
 		},
 		setLampiran: {
+			type: Function,
+		},
+		updateUnsavedFlag: {
 			type: Function,
 		},
 	},

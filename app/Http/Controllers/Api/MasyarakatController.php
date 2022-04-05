@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Events\RefreshData;
 use App\Http\Controllers\Controller;
 use App\Models\Masyarakat;
 use App\Models\User;
@@ -28,7 +29,7 @@ class MasyarakatController extends Controller
             return response()->json($validator->errors(), 400);
         }
 
-        $user = new User();
+        $user = new User(); 
         $user->role = 'Masyarakat';
         $user->email = $request->email;
         $user->password = bcrypt($request->password); 
@@ -40,6 +41,8 @@ class MasyarakatController extends Controller
         $masyarakat->telepon = $request->telepon;
         $masyarakat->id_user = $user->id_user;
         $masyarakat->save();
+
+        broadcast(new RefreshData());
 
         return response()->json([
             'message' => 'User berhasil dibuat'

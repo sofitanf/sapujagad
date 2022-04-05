@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Events\PengajuanUpdate;
+use App\Events\RefreshData;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CekPengajuanResource;
 use App\Mail\PostMail;
@@ -123,13 +125,14 @@ class PengajuanController extends Controller
                 $this->upload($request, 'lampiran4', $pengajuan);
                 $this->upload($request, 'lampiran5', $pengajuan);
         
-                $emails = DB::table('users')
-                            ->where('role', 'Petugas')
-                            ->select('email')
-                            ->get();
+                // $emails = DB::table('users')
+                //             ->where('role', 'Petugas')
+                //             ->select('email')
+                //             ->get();
         
-                Mail::to($emails)->send(new PostMail());
-        
+                // Mail::to($emails)->send(new PostMail());
+                broadcast(new RefreshData());
+                
                 return response()->json([
                     'message' => 'Pengajuan berhasil dibuat',
                     'data' => $pengajuan,
@@ -170,6 +173,14 @@ class PengajuanController extends Controller
             $data->nama_administrator = $request->get('nama_administrator');
             $data->bagian_administrator = $request->get('bagian_administrator');
             $data->save();
+            
+            $userData = DB::table('users')
+            ->join('masyarakat', 'masyarakat.id_user', '=', 'users.id_user')
+            ->where('masyarakat.id_masyarakat', $data->id_masyarakat)
+            ->select('users.id_user')
+            ->first();
+            // var_dump($id_user);
+            broadcast(new PengajuanUpdate($data, $userData->id_user))->toOthers();
 
             return response()->json([
                 'message' => 'Pengajuan berhasil diupdate!',

@@ -110,6 +110,7 @@ export default {
 	created() {
 		this.getPengajuan();
 		this.initFilters();
+		Echo.channel("refresh").listen("RefreshData", () => this.getPengajuan());
 	},
 };
 </script>

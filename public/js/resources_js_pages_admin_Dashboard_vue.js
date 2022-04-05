@@ -11767,9 +11767,14 @@ __webpack_require__.r(__webpack_exports__);
     year: "grafik"
   },
   created: function created() {
+    var _this3 = this;
+
     moment__WEBPACK_IMPORTED_MODULE_0___default().locale("id");
     this.fetchYear();
     this.grafik();
+    Echo.channel("refresh").listen("RefreshData", function () {
+      return _this3.grafik();
+    });
   }
 });
 
@@ -11801,28 +11806,34 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       totalPengajuan: null
     };
   },
-  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)({
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)({
     total: "totalKategori"
-  })), {}, {
-    kecamatanIndex: function kecamatanIndex() {
-      return this.kecamatan.map(function (items, i) {
-        return _objectSpread(_objectSpread({}, items), {}, {
-          index: i + 1
+  })),
+  methods: {
+    getData: function getData() {
+      var _this = this;
+
+      this.$store.dispatch("getTotalKategori");
+      axios.get("/dashboard/tabel-kecamatan").then(function (_ref) {
+        var data = _ref.data;
+        _this.kecamatan = data.data.map(function (items, i) {
+          return _objectSpread(_objectSpread({}, items), {}, {
+            index: i + 1
+          });
         });
       });
+      axios.get("/pengajuan/totalAll").then(function (_ref2) {
+        var data = _ref2.data;
+        _this.totalPengajuan = data.data;
+      });
     }
-  }),
-  created: function created() {
-    var _this = this;
+  },
+  mounted: function mounted() {
+    var _this2 = this;
 
-    this.$store.dispatch("getTotalKategori");
-    axios.get("/dashboard/tabel-kecamatan").then(function (_ref) {
-      var data = _ref.data;
-      _this.kecamatan = data.data;
-    });
-    axios.get("/pengajuan/totalAll").then(function (_ref2) {
-      var data = _ref2.data;
-      _this.totalPengajuan = data.data;
+    this.getData();
+    Echo.channel("refresh").listen("RefreshData", function () {
+      return _this2.getData();
     });
   }
 });
@@ -11897,16 +11908,31 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
-  created: function created() {
-    var _this = this;
+  methods: {
+    getTotal: function getTotal() {
+      var _this = this;
 
-    axios.get("/dashboard/total").then(function (_ref) {
-      var data = _ref.data;
-      _this.total = data;
-    });
-    axios.get("/dashboard/jadwal").then(function (_ref2) {
-      var data = _ref2.data;
-      _this.calendarOptions.events = data.data;
+      axios.get("/dashboard/total").then(function (_ref) {
+        var data = _ref.data;
+        _this.total = data;
+      });
+    },
+    getJadwal: function getJadwal() {
+      var _this2 = this;
+
+      axios.get("/dashboard/jadwal").then(function (_ref2) {
+        var data = _ref2.data;
+        _this2.calendarOptions.events = data.data;
+      });
+    }
+  },
+  mounted: function mounted() {
+    var _this3 = this;
+
+    this.getTotal();
+    this.getJadwal();
+    Echo.channel("refresh").listen("RefreshData", function () {
+      return _this3.getTotal();
     });
   }
 });
@@ -12004,7 +12030,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DataTable, {
     responsiveLayout: "scroll",
-    value: $options.kecamatanIndex
+    value: $data.kecamatan
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Column, {

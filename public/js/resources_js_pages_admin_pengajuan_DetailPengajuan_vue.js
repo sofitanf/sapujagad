@@ -84,6 +84,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  emits: ["updateData"],
   props: {
     detail: {
       required: true
@@ -248,13 +249,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       telepon = telepon.substring(1);
       var message = "Pemohon yang terhormat, tim kami akan menuju ke ".concat(this.detail.alamat, " pada ").concat(jadwal, " pukul ").concat(jam, " WIB. -TIM SAPU JAGAD. DINDUKCAPIL KAB.PEKALONGAN");
       window.open("https://api.whatsapp.com/send?phone=62".concat(telepon, "&text=").concat(message, "&source=&data"), "_blank");
-    },
-    fetchData: function fetchData() {
-      this.fetchPengajuan();
     }
   },
-  created: function created() {
+  mounted: function mounted() {
+    var _this2 = this;
+
     this.fetchPengajuan();
+    Echo.channel("pengajuan-update").listen("PengajuanUpdate", function () {
+      return _this2.fetchPengajuan();
+    });
   }
 });
 
@@ -823,7 +826,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 8
   /* PROPS */
   , ["detail"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_tanggapan_pengajuan, {
-    onUpdateData: $options.fetchData,
+    onUpdateData: $options.fetchPengajuan,
     detail: _ctx.detail
   }, null, 8
   /* PROPS */
