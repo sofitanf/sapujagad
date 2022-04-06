@@ -26419,7 +26419,6 @@ __webpack_require__.r(__webpack_exports__);
   install: function install(app) {
     app.use(v_calendar__WEBPACK_IMPORTED_MODULE_0__.SetupCalendar, {}); // Use the components
 
-    app.component("Calendar", v_calendar__WEBPACK_IMPORTED_MODULE_0__.Calendar);
     app.component("DatePicker", v_calendar__WEBPACK_IMPORTED_MODULE_0__.DatePicker);
   }
 });
@@ -26602,17 +26601,12 @@ __webpack_require__.r(__webpack_exports__);
     (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("nik_max", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.max);
     (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("numeric", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.numeric);
     (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("nama_alpha", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.alpha_spaces);
-    (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("min", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.min);
-    (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("max", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.max);
-    (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("min_value", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.min_value);
-    (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("max_value", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.max_value);
     (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("image", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.image);
     (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("size", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.size);
     (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("email", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.email);
     (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("confirmed", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.confirmed);
     (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("phone", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.regex);
     (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("nik_format", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.regex);
-    (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("nik_digit", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.regex);
     (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.configure)({
       generateMessage: function generateMessage(ctx) {
         var messages = {
