@@ -78,3 +78,15 @@ export default {
 	},
 };
 </script>
+<style scoped>
+.aksi {
+	display: flex;
+	gap: 1rem;
+}
+.opsi {
+	width: 90px;
+}
+.badge {
+	cursor: pointer;
+}
+</style>
