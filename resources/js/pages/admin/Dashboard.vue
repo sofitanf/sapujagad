@@ -58,23 +58,13 @@ export default {
 			},
 		};
 	},
-	methods: {
-		getTotal() {
-			axios.get("/dashboard/total").then(({ data }) => {
-				this.total = data;
-			});
-		},
-		getJadwal() {
-			axios.get("/dashboard/jadwal").then(({ data }) => {
-				this.calendarOptions.events = data.data;
-			});
-		},
-	},
 	mounted() {
-		this.getTotal();
-		this.getJadwal();
-		Echo.channel("refresh").listen("RefreshData", () => this.getTotal());
-		
+		axios.get("/dashboard/total").then(({ data }) => {
+			this.total = data;
+		});
+		axios.get("/dashboard/jadwal").then(({ data }) => {
+			this.calendarOptions.events = data.data;
+		});
 	},
 };
 </script>

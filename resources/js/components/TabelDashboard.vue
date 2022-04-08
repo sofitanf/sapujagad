@@ -38,24 +38,18 @@ export default {
 	computed: {
 		...mapGetters({ total: "totalKategori" }),
 	},
-	methods: {
-		getData() {
-			this.$store.dispatch("getTotalKategori");
-
-			axios.get("/dashboard/tabel-kecamatan").then(({ data }) => {
-				this.kecamatan = data.data.map((items, i) => ({
-					...items,
-					index: i + 1,
-				}));
-			});
-			axios.get("/pengajuan/totalAll").then(({ data }) => {
-				this.totalPengajuan = data.data;
-			});
-		},
-	},
 	mounted() {
-		this.getData();
-		Echo.channel("refresh").listen("RefreshData", () => this.getData());
+		this.$store.dispatch("getTotalKategori");
+
+		axios.get("/dashboard/tabel-kecamatan").then(({ data }) => {
+			this.kecamatan = data.data.map((items, i) => ({
+				...items,
+				index: i + 1,
+			}));
+		});
+		axios.get("/pengajuan/totalAll").then(({ data }) => {
+			this.totalPengajuan = data.data;
+		});
 	},
 };
 </script>

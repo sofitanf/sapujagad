@@ -7,7 +7,11 @@
 				<h2>DATA PELAPOR</h2>
 			</div>
 			<vee-form :validation-schema="schema" class="vee-form" @submit="daftar">
-				<DataPelaporPemohon :setLampiran="setLampiran" :lansia="lansia" />
+				<DataPelaporPemohon
+					:updateUnsavedFlag="updateUnsavedFlag"
+					:setLampiran="setLampiran"
+					:lansia="lansia"
+				/>
 				<hr />
 				<div class="form_baris">
 					<h2>UPLOAD DATA PENDUKUNG</h2>

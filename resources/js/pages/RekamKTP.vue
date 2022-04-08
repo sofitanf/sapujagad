@@ -11,7 +11,11 @@
 				class="vee-form"
 				@submit="daftar"
 			>
-				<DataPelaporPemohon :setLampiran="setLampiran" :rekamKtp="rekamKtp" />
+				<DataPelaporPemohon
+					:updateUnsavedFlag="updateUnsavedFlag"
+					:setLampiran="setLampiran"
+					:rekamKtp="rekamKtp"
+				/>
 				<hr />
 				<div class="form_baris">
 					<h2>UPLOAD DATA PENDUKUNG</h2>

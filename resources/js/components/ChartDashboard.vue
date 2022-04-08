@@ -112,7 +112,6 @@ export default {
 		moment.locale("id");
 		this.fetchYear();
 		this.grafik();
-		Echo.channel("refresh").listen("RefreshData", () => this.grafik());
 	},
 };
 </script>

@@ -94,7 +94,6 @@ export default {
 					nik_format: /^3326(0[1-9]|1[1-9])\d{9}/,
 				},
 				nama: { nama: true, regex: /^[A-Za-z .']+$/ },
-				telepon: "no_wa|no_wa_number",
 				telepon: { no_wa: true, no_wa_number: true, phone: /^08\d{9,11}$/ },
 				email: "required|email",
 				password: "required|min:6",
