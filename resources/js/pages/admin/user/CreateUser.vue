@@ -3,25 +3,33 @@
 		<h4 class="col-12">Tambah User</h4>
 		<vee-form class="col-12" :validation-schema="schema" @submit="tambahUser">
 			<div class="form_baris mb-3">
-				<label for="">Nama</label>
-				<vee-field name="nama" id="nama" type="text" class="p-inputtext" />
+				<label>Nama</label>
+				<vee-field label="Nama" name="nama" type="text" class="p-inputtext" />
 				<error-message name="nama" class="error" />
 			</div>
 			<div class="form_baris mb-3">
-				<label for="">Email</label>
-				<vee-field name="email" id="email" type="email" class="p-inputtext" />
+				<label>Email</label>
+				<vee-field name="email" class="p-inputtext" label="Email" />
 				<error-message name="email" class="error" />
 				<div v-if="validation.email" class="error">
 					{{ validation.email[0] }}
 				</div>
 			</div>
 			<div class="form_baris mb-3">
-				<label for="">Bagian</label>
+				<label>Username</label>
+				<vee-field name="username" class="p-inputtext" label="Username" />
+				<error-message name="username" class="error" />
+				<div v-if="validation.username" class="error">
+					{{ validation.username[0] }}
+				</div>
+			</div>
+			<div class="form_baris mb-3">
+				<label>Bagian</label>
 				<vee-field
 					name="bagian"
-					id="bagian"
 					as="select"
 					class="p-dropdown w-full h-3rem"
+					label="Bagian"
 				>
 					<option value="">-- Pilih Bagian --</option>
 					<option value="Pendaftaran Penduduk">Pendaftaran Penduduk</option>
@@ -32,12 +40,12 @@
 				<error-message name="bagian" class="error" />
 			</div>
 			<div class="form_baris mb-5">
-				<label for="">Kategori</label>
+				<label>Kategori</label>
 				<vee-field
 					name="role"
-					id="kategori"
 					as="select"
 					class="p-dropdown w-full h-3rem"
+					label="Kategori"
 				>
 					<option value="">-- Pilih Kategori --</option>
 					<option value="Admin">Admin</option>
@@ -54,9 +62,10 @@ export default {
 	data() {
 		return {
 			schema: {
-				nama: "required|nama_alpha",
+				nama: { required: true, regex: /^[A-Za-z .']+$/ },
 				role: "required",
 				bagian: "required",
+				username: "required|min:6",
 				email: "required|email",
 			},
 			validation: [],

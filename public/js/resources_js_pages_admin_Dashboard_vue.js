@@ -11767,14 +11767,9 @@ __webpack_require__.r(__webpack_exports__);
     year: "grafik"
   },
   created: function created() {
-    var _this3 = this;
-
     moment__WEBPACK_IMPORTED_MODULE_0___default().locale("id");
     this.fetchYear();
     this.grafik();
-    Echo.channel("refresh").listen("RefreshData", function () {
-      return _this3.grafik();
-    });
   }
 });
 
@@ -11809,31 +11804,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)({
     total: "totalKategori"
   })),
-  methods: {
-    getData: function getData() {
-      var _this = this;
+  mounted: function mounted() {
+    var _this = this;
 
-      this.$store.dispatch("getTotalKategori");
-      axios.get("/dashboard/tabel-kecamatan").then(function (_ref) {
-        var data = _ref.data;
-        _this.kecamatan = data.data.map(function (items, i) {
-          return _objectSpread(_objectSpread({}, items), {}, {
-            index: i + 1
-          });
+    this.$store.dispatch("getTotalKategori");
+    axios.get("/dashboard/tabel-kecamatan").then(function (_ref) {
+      var data = _ref.data;
+      _this.kecamatan = data.data.map(function (items, i) {
+        return _objectSpread(_objectSpread({}, items), {}, {
+          index: i + 1
         });
       });
-      axios.get("/pengajuan/totalAll").then(function (_ref2) {
-        var data = _ref2.data;
-        _this.totalPengajuan = data.data;
-      });
-    }
-  },
-  mounted: function mounted() {
-    var _this2 = this;
-
-    this.getData();
-    Echo.channel("refresh").listen("RefreshData", function () {
-      return _this2.getData();
+    });
+    axios.get("/pengajuan/totalAll").then(function (_ref2) {
+      var data = _ref2.data;
+      _this.totalPengajuan = data.data;
     });
   }
 });
@@ -11908,31 +11893,16 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
-  methods: {
-    getTotal: function getTotal() {
-      var _this = this;
-
-      axios.get("/dashboard/total").then(function (_ref) {
-        var data = _ref.data;
-        _this.total = data;
-      });
-    },
-    getJadwal: function getJadwal() {
-      var _this2 = this;
-
-      axios.get("/dashboard/jadwal").then(function (_ref2) {
-        var data = _ref2.data;
-        _this2.calendarOptions.events = data.data;
-      });
-    }
-  },
   mounted: function mounted() {
-    var _this3 = this;
+    var _this = this;
 
-    this.getTotal();
-    this.getJadwal();
-    Echo.channel("refresh").listen("RefreshData", function () {
-      return _this3.getTotal();
+    axios.get("/dashboard/total").then(function (_ref) {
+      var data = _ref.data;
+      _this.total = data;
+    });
+    axios.get("/dashboard/jadwal").then(function (_ref2) {
+      var data = _ref2.data;
+      _this.calendarOptions.events = data.data;
     });
   }
 });

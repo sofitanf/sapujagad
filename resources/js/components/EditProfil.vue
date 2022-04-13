@@ -3,12 +3,12 @@
 		<div class="card">
 			<h4 class="col-12">Edit Profil</h4>
 			<div class="pl-2">
-				<label for="">Email</label>
+				<label for="">Username</label>
 				<div
 					v-if="!isEdit"
 					class="flex justify-content-between align-items-center mt-3"
 				>
-					<p>{{ user.email }}</p>
+					<p>{{ user.username }}</p>
 					<span @click="editToggle()" class="pi pi-pencil mr-2"></span>
 				</div>
 				<div v-else class="mt-3">
@@ -16,20 +16,19 @@
 						<div class="flex justify-content-between align-items-center">
 							<form>
 								<input
-									name="email"
-									id="email"
-									type="email"
+									name="username"
+									id="username"
 									class="p-inputtext flex-1 mr-3"
-									v-model="email"
+									v-model="username"
 								/>
 							</form>
 							<div class="flex">
-								<span @click="editEmail()" class="pi pi-check mr-2"></span>
+								<span @click="editUsername()" class="pi pi-check mr-2"></span>
 								<span @click="editToggle()" class="pi pi-times"></span>
 							</div>
 						</div>
-						<div v-if="validation.email" class="error mt-1">
-							{{ validation.email[0] }}
+						<div v-if="validation.username" class="error mt-1">
+							{{ validation.username[0] }}
 						</div>
 					</div>
 				</div>
@@ -67,7 +66,7 @@ import { mapGetters, mapActions } from "vuex";
 export default {
 	data() {
 		return {
-			email: null,
+			username: null,
 			lampiran: null,
 			validation: [],
 			isEdit: false,
@@ -97,17 +96,17 @@ export default {
 		editToggle() {
 			this.isEdit = !this.isEdit;
 		},
-		editEmail() {
-			if (this.user.email !== this.email) {
+		editUsername() {
+			if (this.user.username !== this.username) {
 				this.$store
-					.dispatch("updateUser", { email: this.email })
+					.dispatch("updateUser", { username: this.username })
 					.then(() => {
-						this.email = this.user.email;
+						this.username = this.user.username;
 						this.isEdit = false;
 						this.$toast.add({
 							severity: "success",
 							summary: "Sukses",
-							detail: "Email berhasil diubah!",
+							detail: "username berhasil diubah!",
 							life: 3000,
 						});
 					})
@@ -115,7 +114,7 @@ export default {
 						this.$toast.add({
 							severity: "error",
 							summary: "Gagal",
-							detail: "Email gagal diubah!",
+							detail: "username gagal diubah!",
 							life: 3000,
 						});
 					});
@@ -123,7 +122,7 @@ export default {
 		},
 	},
 	created() {
-		this.email = this.user.email;
+		this.username = this.user.username;
 	},
 };
 </script>

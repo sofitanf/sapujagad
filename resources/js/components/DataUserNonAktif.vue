@@ -10,7 +10,7 @@
 				:loading="loading"
 			>
 				<template #loading> Loading data. Please wait. </template>
-				<Column field="email" header="Email" />
+				<Column field="username" header="Username" />
 				<Column field="role" header="Kategori" />
 				<Column header="Aksi" class="opsi">
 					<template #body="{ data }">

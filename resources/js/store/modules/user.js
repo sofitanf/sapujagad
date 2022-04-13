@@ -74,7 +74,6 @@ export default {
         },
         async addUser({ commit }, data) {
             let res = await axios.post("/user", data);
-            debugger;
             commit("addUser", res.data.data);
         },
     },

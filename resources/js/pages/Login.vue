@@ -7,23 +7,26 @@
 				<div class="text-900 text-3xl font-bold mb-3">Login</div>
 			</div>
 			<vee-form :validation-schema="schema" @submit="login">
-				<label for="email" class="block text-900 font-medium mb-2">Email</label>
+				<label for="username" class="block text-900 font-medium mb-2"
+					>Username</label
+				>
 				<vee-field
-					id="email"
-					name="email"
-					type="text"
+					id="username"
+					name="username"
 					class="w-full mb-3 p-inputtext"
+					label="Username"
 				/>
-				<error-message name="email" class="error mb-3" />
+				<error-message name="username" class="error mb-3" />
 
 				<label for="password" class="block text-900 font-medium mb-2 mt-3"
-					>Password</label
+					>Kata Sandi</label
 				>
 				<vee-field
 					id="password"
 					name="password"
 					type="password"
 					class="w-full mb-3 p-inputtext"
+					label="Kata sandi"
 				/>
 				<error-message name="password" class="error mb-3" />
 
@@ -48,8 +51,8 @@ export default {
 	data() {
 		return {
 			schema: {
-				email: "required|email",
-				password: "required|min:6",
+				username: "required",
+				password: "required",
 			},
 		};
 	},
@@ -64,7 +67,7 @@ export default {
 					this.$toast.add({
 						severity: "error",
 						summary: "Gagal",
-						detail: "Email atau password salah",
+						detail: "username atau password salah",
 						life: 3000,
 					});
 				});

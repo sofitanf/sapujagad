@@ -486,6 +486,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 8
   /* PROPS */
   , _hoisted_9)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
+    label: "Hubungan pelapor terhadap pemohon",
     type: "radio",
     id: "ortu",
     name: "hubungan",
@@ -494,12 +495,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     type: "radio",
     id: "kepala-desa",
     name: "hubungan",
-    value: "Kepala Desa"
+    value: "Kepala Desa",
+    label: "Hubungan pelapor terhadap pemohon"
   }), _hoisted_15]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
     type: "radio",
     id: "kepala-sekolah",
     name: "hubungan",
-    value: "Kepala Sekolah"
+    value: "Kepala Sekolah",
+    label: "Hubungan pelapor terhadap pemohon"
   }), _hoisted_17]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
     name: "hubungan",
     "class": "error"
@@ -508,7 +511,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     name: "lampiran5",
     onChange: _cache[0] || (_cache[0] = function ($event) {
       return $props.setLampiran($event, 'lampiran5');
-    })
+    }),
+    label: "Bukti keterikatan pelapor terhadap pemohon"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
     name: "lampiran5",
     "class": "error"
@@ -517,7 +521,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $props.updateUnsavedFlag(true);
     }),
     type: "text",
-    name: "nik"
+    name: "nik",
+    label: "NIK"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
     name: "nik",
     "class": "error"
@@ -526,11 +531,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $props.updateUnsavedFlag(true);
     }),
     type: "text",
-    name: "nama"
+    name: "nama",
+    label: "Nama"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
     name: "nama",
     "class": "error"
   })]), $props.rekamKtp ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DataRekamKTP)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [_hoisted_28, _hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
+    label: "Jenis kecacatan",
     name: "kecacatan",
     id: "kecacatan",
     as: "select",
@@ -556,7 +563,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     name: "id_kecamatan",
     as: "select",
-    "class": "select"
+    "class": "select",
+    label: "Kecamatan"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_52, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.kecamatan, function (data) {
@@ -579,6 +587,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     name: "id_kecamatan",
     "class": "error"
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_54, [_hoisted_55, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
+    label: "Kelurahan",
     name: "id_kelurahan",
     as: "select",
     "class": "select"
@@ -605,7 +614,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     as: "textarea",
     type: "text",
     name: "alamat",
-    rows: "4"
+    rows: "4",
+    label: "Alamat"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
     name: "alamat",
     "class": "error"
@@ -738,7 +748,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
     type: "checkbox",
     name: "pernyataan",
-    value: "Ya"
+    value: "Ya",
+    label: "Pernyataan"
   }), _hoisted_3]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
     "class": "error text-left",
     name: "pernyataan"
@@ -890,15 +901,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DataPelaporPemohon, {
+        updateUnsavedFlag: _ctx.updateUnsavedFlag,
         setLampiran: _ctx.setLampiran
       }, null, 8
       /* PROPS */
-      , ["setLampiran"]), _hoisted_6, _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
+      , ["updateUnsavedFlag", "setLampiran"]), _hoisted_6, _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
         type: "file",
         name: "lampiran1",
         onChange: _cache[0] || (_cache[0] = function ($event) {
           return _ctx.setLampiran($event, 'lampiran1');
-        })
+        }),
+        label: "Kartu keluarga"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
         name: "lampiran1",
         "class": "error"
@@ -907,7 +920,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         name: "lampiran2",
         onChange: _cache[1] || (_cache[1] = function ($event) {
           return _ctx.setLampiran($event, 'lampiran2');
-        })
+        }),
+        label: "Surat nikah orang tua"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
         name: "lampiran2",
         "class": "error"
@@ -916,7 +930,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         name: "lampiran3",
         onChange: _cache[2] || (_cache[2] = function ($event) {
           return _ctx.setLampiran($event, 'lampiran3');
-        })
+        }),
+        label: "Surat nikah orang tua"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
         name: "lampiran3",
         "class": "error"
@@ -925,7 +940,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         name: "lampiran4",
         onChange: _cache[3] || (_cache[3] = function ($event) {
           return _ctx.setLampiran($event, 'lampiran4');
-        })
+        }),
+        label: "Surat kelahiran asli fasilitas kesehatan / surat pernyataan tanggung jawab mutlak"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
         name: "lampiran4",
         "class": "error"
@@ -988,23 +1004,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {
       schema: {
         nik: {
-          nik: true,
-          nik_number: true,
+          required: true,
+          numeric: true,
           nik_format: /^3326(0[1-9]|1[1-9])\d{9}/
         },
         nama: {
-          nama: true,
+          required: true,
           regex: /^[A-Za-z .']+$/
         },
         id_kecamatan: "required",
-        hubungan: "hubungan",
+        hubungan: "required",
         id_kelurahan: "required",
         alamat: "required",
-        lampiran1: "file|image|size:2048",
+        lampiran1: "required|image|size:2048",
         lampiran2: "image|size:2048",
         lampiran3: "image|size:2048",
         lampiran4: "image|size:2048",
-        lampiran5: "file|image|size:2048",
+        lampiran5: "required|image|size:2048",
         pernyataan: "required"
       },
       schemaCurrent: {},

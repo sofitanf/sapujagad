@@ -29,6 +29,7 @@
 						type="file"
 						name="lampiran1"
 						@change="setLampiran($event, 'lampiran1')"
+						label="Kartu keluarga"
 					/>
 					<error-message name="lampiran1" class="error" />
 				</div>
@@ -42,6 +43,7 @@
 						type="file"
 						name="lampiran2"
 						@change="setLampiran($event, 'lampiran2')"
+						label="Surat nikah orang tua"
 					/>
 					<error-message name="lampiran2" class="error" />
 					<div class="form_file_wrap">
@@ -52,6 +54,7 @@
 						type="file"
 						name="lampiran3"
 						@change="setLampiran($event, 'lampiran3')"
+						label="Surat nikah orang tua"
 					/>
 					<error-message name="lampiran3" class="error" />
 				</div>
@@ -64,6 +67,7 @@
 						type="file"
 						name="lampiran4"
 						@change="setLampiran($event, 'lampiran4')"
+						label="Surat kelahiran asli fasilitas kesehatan / surat pernyataan tanggung jawab mutlak"
 					/>
 					<error-message name="lampiran4" class="error" />
 				</div>

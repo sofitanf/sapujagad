@@ -14,14 +14,14 @@ class MasyarakatController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'unique:users|required',
+            'username' => 'unique:users|required',
             'password' => 'required',
             'nama' => 'required',
             'telepon' => 'unique:masyarakat|required',
             'nik' => 'unique:masyarakat|required',
         ],[
-            'email.unique' => 'Email sudah terdaftar',
-            'telepon.unique' => 'Telepon sudah terdaftar',
+            'username.unique' => 'Username sudah terdaftar',
+            'telepon.unique' => 'Nomor hp sudah terdaftar',
             'nik.unique' => 'NIK sudah terdaftar',
         ]);
 
@@ -31,7 +31,7 @@ class MasyarakatController extends Controller
 
         $user = new User(); 
         $user->role = 'Masyarakat';
-        $user->email = $request->email;
+        $user->username = $request->username;
         $user->password = bcrypt($request->password); 
         $user->save();
 

@@ -14,7 +14,13 @@
 	<div class="form_baris">
 		<label for="">HUBUNGAN PELAPOR TERHADAP PEMOHON</label>
 		<div class="row">
-			<vee-field type="radio" id="ortu" name="hubungan" value="Keluarga/Wali" />
+			<vee-field
+				label="Hubungan pelapor terhadap pemohon"
+				type="radio"
+				id="ortu"
+				name="hubungan"
+				value="Keluarga/Wali"
+			/>
 			<label for="ortu">Keluarga / Wali</label>
 		</div>
 		<div class="row">
@@ -23,6 +29,7 @@
 				id="kepala-desa"
 				name="hubungan"
 				value="Kepala Desa"
+				label="Hubungan pelapor terhadap pemohon"
 			/>
 			<label for="kepala-desa">Kepala Desa</label>
 		</div>
@@ -32,6 +39,7 @@
 				id="kepala-sekolah"
 				name="hubungan"
 				value="Kepala Sekolah"
+				label="Hubungan pelapor terhadap pemohon"
 			/>
 			<label for="kepala-sekolah">Kepala Sekolah</label>
 		</div>
@@ -50,6 +58,7 @@
 			type="file"
 			name="lampiran5"
 			@change="setLampiran($event, 'lampiran5')"
+			label="Bukti keterikatan pelapor terhadap pemohon"
 		/>
 		<error-message name="lampiran5" class="error" />
 	</div>
@@ -62,12 +71,22 @@
 	</div>
 	<div class="form_baris">
 		<label for="">NIK</label>
-		<vee-field @input="updateUnsavedFlag(true)" type="text" name="nik" />
+		<vee-field
+			@input="updateUnsavedFlag(true)"
+			type="text"
+			name="nik"
+			label="NIK"
+		/>
 		<error-message name="nik" class="error" />
 	</div>
 	<div class="form_baris">
 		<label for="">NAMA</label>
-		<vee-field @input="updateUnsavedFlag(true)" type="text" name="nama" />
+		<vee-field
+			@input="updateUnsavedFlag(true)"
+			type="text"
+			name="nama"
+			label="Nama"
+		/>
 		<error-message name="nama" class="error" />
 	</div>
 	<div v-if="rekamKtp">
@@ -76,7 +95,13 @@
 	<div class="form_baris">
 		<label for="">JENIS KECACATAN</label>
 		<p class="form_catatan">Abaikan jika pemohon tidak memiliki kecacatan</p>
-		<vee-field name="kecacatan" id="kecacatan" as="select" class="select">
+		<vee-field
+			label="Jenis kecacatan"
+			name="kecacatan"
+			id="kecacatan"
+			as="select"
+			class="select"
+		>
 			<option value="" selected>Pilih</option>
 			<option value="Fisik">Fisik</option>
 			<option value="Netra">Netra</option>
@@ -114,6 +139,7 @@
 			name="id_kecamatan"
 			as="select"
 			class="select"
+			label="Kecamatan"
 		>
 			<option value="" selected disable hidden>Pilih Kecamatan</option>
 			<option v-for="data in kecamatan" :key="data.id" :value="data.id">
@@ -124,7 +150,7 @@
 	</div>
 	<div class="form_baris">
 		<label for="">KELURAHAN/DESA</label>
-		<vee-field name="id_kelurahan" as="select" class="select">
+		<vee-field label="Kelurahan" name="id_kelurahan" as="select" class="select">
 			<option value="" selected disable hidden>Pilih Kelurahan/Desa</option>
 			<option v-for="data in kelurahan" :key="data.id" :value="data.id">
 				{{ data.nama }}
@@ -135,7 +161,13 @@
 	<div class="form_baris">
 		<label for="">ALAMAT</label>
 		<p class="form_catatan">Contoh : Dukuh Sidokidul No 252 RT 03 RW 02</p>
-		<vee-field as="textarea" type="text" name="alamat" rows="4" />
+		<vee-field
+			as="textarea"
+			type="text"
+			name="alamat"
+			rows="4"
+			label="Alamat"
+		/>
 		<error-message name="alamat" class="error" />
 	</div>
 </template>

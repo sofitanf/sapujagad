@@ -11,29 +11,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
-    var _schema;
-
     return {
-      schema: (_schema = {
+      schema: {
         nik: {
-          nik: true,
-          nik_number: true,
+          required: true,
+          numeric: true,
           nik_format: /^3326(0[1-9]|1[1-9])\d{9}/
         },
         nama: {
-          nama: true,
+          required: true,
           regex: /^[A-Za-z .']+$/
         },
-        telepon: "no_wa|no_wa_number"
-      }, _defineProperty(_schema, "telepon", {
-        no_wa: true,
-        no_wa_number: true,
-        phone: /^08\d{9,11}$/
-      }), _defineProperty(_schema, "email", "required|email"), _defineProperty(_schema, "password", "required|min:6"), _defineProperty(_schema, "confirm_password", "required|min:6|confirmed:@password"), _schema),
+        telepon: {
+          required: true,
+          numeric: true,
+          phone: /^08\d{9,11}$/
+        },
+        username: "required|min:6",
+        password: "required|min:6",
+        confirm_password: "required|min:6|confirmed:@password"
+      },
       validation: []
     };
   },
@@ -130,9 +129,9 @@ var _hoisted_6 = /*#__PURE__*/_withScopeId(function () {
 
 var _hoisted_7 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-    "for": "email",
+    "for": "username",
     "class": "block text-900 font-medium mb-2"
-  }, "Email", -1
+  }, "Username", -1
   /* HOISTED */
   );
 });
@@ -192,7 +191,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         id: "nik",
         name: "nik",
         type: "text",
-        "class": "w-full mb-3 p-inputtext"
+        "class": "w-full mb-3 p-inputtext",
+        label: "NIK"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
         name: "nik",
         "class": "error mb-3"
@@ -202,25 +202,28 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         id: "nama",
         name: "nama",
         type: "text",
-        "class": "w-full mb-3 p-inputtext"
+        "class": "w-full mb-3 p-inputtext",
+        label: "Nama"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
         name: "nama",
         "class": "error mb-3"
       }), _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
-        id: "email",
-        name: "email",
+        id: "username",
+        name: "username",
         type: "text",
-        "class": "w-full mb-3 p-inputtext"
+        "class": "w-full mb-3 p-inputtext",
+        label: "Username"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
-        name: "email",
+        name: "username",
         "class": "error mb-3"
-      }), $data.validation.email ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.validation.email[0]), 1
+      }), $data.validation.username ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.validation.username[0]), 1
       /* TEXT */
       )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
         id: "telepon",
         name: "telepon",
         type: "text",
-        "class": "w-full mb-3 p-inputtext"
+        "class": "w-full mb-3 p-inputtext",
+        label: "Nomor hp"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
         name: "telepon",
         "class": "error mb-3"
@@ -230,7 +233,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         id: "password",
         name: "password",
         type: "password",
-        "class": "w-full mb-3 p-inputtext"
+        "class": "w-full mb-3 p-inputtext",
+        label: "Kata sandi"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
         name: "password",
         "class": "error mb-3"
@@ -238,14 +242,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         id: "confirm_password",
         name: "confirm_password",
         type: "password",
-        "class": "w-full mb-3 p-inputtext"
+        "class": "w-full mb-3 p-inputtext",
+        label: "Konfirmasi kata sandi"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
         name: "confirm_password",
         "class": "error mb-3"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
-        hidden: "",
-        name: "role",
-        value: "Masyarakat"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Button, {
         type: "submit",
         label: "Daftar",

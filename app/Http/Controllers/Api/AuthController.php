@@ -15,12 +15,12 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-        $user = User::where('email', $request->email)->first();
+        $user = User::where('username', $request->username)->first();
 
         if (!$user || $user->role === 'Masyarakat' ||!Hash::check($request->password, $user->password)) {
             return  response()->json([ 
                 'errors' => [
-                    'msg' => ['Email atau password tidak valid!.']
+                    'msg' => ['Username atau password tidak valid!.']
                 ]  
             ], 401);
         }
@@ -33,12 +33,12 @@ class AuthController extends Controller
 
     public function masyarakatLogin(Request $request)
     {
-        $user = User::where('role', 'Masyarakat')->where('email', $request->email)->first();
+        $user = User::where('role', 'Masyarakat')->where('username', $request->username)->first();
 
         if (!$user ||!Hash::check($request->password, $user->password)) {
             return  response()->json([ 
                 'errors' => [
-                    'msg' => ['Email atau password tidak valid!.']
+                    'msg' => ['Username atau password tidak valid!.']
                 ]  
             ], 401);
         }
@@ -74,7 +74,7 @@ class AuthController extends Controller
             $user =DB::table('administrator')
             ->join('users', 'users.id_user', '=', 'administrator.id_user')
             ->where('users.id_user', $id)
-            ->select('administrator.*','users.role', 'users.avatar', 'users.email')->first();
+            ->select('administrator.*','users.role', 'users.avatar', 'users.username')->first();
         }
 
         return response()->json([

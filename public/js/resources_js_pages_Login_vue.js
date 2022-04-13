@@ -15,8 +15,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       schema: {
-        email: "required|email",
-        password: "required|min:6"
+        username: "required",
+        password: "required"
       }
     };
   },
@@ -30,7 +30,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.$toast.add({
           severity: "error",
           summary: "Gagal",
-          detail: "Email atau password salah",
+          detail: "username atau password salah",
           life: 3000
         });
       });
@@ -83,9 +83,9 @@ var _hoisted_3 = /*#__PURE__*/_withScopeId(function () {
 
 var _hoisted_4 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-    "for": "email",
+    "for": "username",
     "class": "block text-900 font-medium mb-2"
-  }, "Email", -1
+  }, "Username", -1
   /* HOISTED */
   );
 });
@@ -94,7 +94,7 @@ var _hoisted_5 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "for": "password",
     "class": "block text-900 font-medium mb-2 mt-3"
-  }, "Password", -1
+  }, "Kata Sandi", -1
   /* HOISTED */
   );
 });
@@ -134,18 +134,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
-        id: "email",
-        name: "email",
-        type: "text",
-        "class": "w-full mb-3 p-inputtext"
+        id: "username",
+        name: "username",
+        "class": "w-full mb-3 p-inputtext",
+        label: "Username"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
-        name: "email",
+        name: "username",
         "class": "error mb-3"
       }), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_vee_field, {
         id: "password",
         name: "password",
         type: "password",
-        "class": "w-full mb-3 p-inputtext"
+        "class": "w-full mb-3 p-inputtext",
+        label: "Kata sandi"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_error_message, {
         name: "password",
         "class": "error mb-3"

@@ -15,13 +15,14 @@ class AdministratorController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
+            'username' => 'unique:users|required',
             'email' => 'unique:users|required',
             'nama' => 'required',
-            'id_user' => 'required',
             'role' => 'required',
             'bagian' => 'required'
 
         ],[
+            'username.unique' => 'Username sudah terdaftar', 
             'email.unique' => 'Email sudah terdaftar', 
         ]);
 
@@ -31,6 +32,7 @@ class AdministratorController extends Controller
 
         $user = new User();
         $user->role = $request->role;
+        $user->username = $request->username;
         $user->email = $request->email;
         $user->password = bcrypt('rahasia'); 
         $user->save();
@@ -105,8 +107,8 @@ class AdministratorController extends Controller
     public function update(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'unique:users|email|required',
-        ]);
+            'username' => 'unique:users|required',
+        ]); 
 
         if ($validator->fails()) {
             return response()->json($validator->errors(), 400);
@@ -115,12 +117,12 @@ class AdministratorController extends Controller
         $id = auth()->user()->id_user;
         $user =  User::findOrFail($id);
 
-        $user->email=$request->get('email');
+        $user->username=$request->get('username');
         $user->save();
 
         return response()->json([
-            'message' => 'Email berhasil diperbaharui!',
-            'data' => $user->email
+            'message' => 'Username berhasil diperbaharui!',
+            'data' => $user->username
         ]);
     }
 

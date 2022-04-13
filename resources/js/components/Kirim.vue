@@ -1,7 +1,12 @@
 <template>
 	<div class="form_kirim">
 		<div class="form_pernyataan">
-			<vee-field type="checkbox" name="pernyataan" value="Ya" />
+			<vee-field
+				type="checkbox"
+				name="pernyataan"
+				value="Ya"
+				label="Pernyataan"
+			/>
 			<h4>
 				Saya menyatakan data yang dikirim adalah data benar dan jika dikemudian
 				hari terjadi masalah hukum maka saya siap mempertanggungjawabkannya

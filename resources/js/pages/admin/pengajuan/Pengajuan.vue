@@ -46,10 +46,25 @@ export default {
 			this.range.start = moment(this.range.start).format("YYYY-MM-DD");
 			this.range.end = moment(this.range.end).format("YYYY-MM-DD");
 
-			window.open(
-				"/laporan/" + this.range.start + "+" + this.range.end,
-				"_blank"
-			);
+			axios({
+				url: `/laporan/${this.range.start}+${this.range.end}`,
+				method: "GET",
+				responseType: "blob",
+			}).then((response) => {
+				var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+				var fileLink = document.createElement("a");
+				fileLink.href = fileURL;
+				fileLink.setAttribute(
+					"download",
+					`Laporan Sapu Jagad ${this.$d(
+						new Date(this.range.start),
+						"medium",
+						"id-ID"
+					)} - ${this.$d(new Date(this.range.end), "medium", "id-ID")}.pdf`
+				);
+				document.body.appendChild(fileLink);
+				fileLink.click();
+			});
 		},
 	},
 	created() {

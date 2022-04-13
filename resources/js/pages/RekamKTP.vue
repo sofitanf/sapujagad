@@ -30,15 +30,17 @@
 						type="file"
 						name="lampiran1"
 						@change="setLampiran($event, 'lampiran1')"
+						label="Kartu keluarga"
 					/>
 					<error-message name="lampiran1" class="error" />
 				</div>
 				<div class="form_baris">
-					<label for="">SURAT PERMOHONAN REKAM KTP-EL</label>
+					<label for="">SURAT PERMOHONAN REKAM KTP-El</label>
 					<vee-field
 						type="file"
 						name="lampiran2"
 						@change="setLampiran($event, 'lampiran2')"
+						label="Surat permohonan rekam KTP-El"
 					/>
 					<error-message name="lampiran2" class="error" />
 				</div>
@@ -55,6 +57,7 @@
 						type="file"
 						name="lampiran3"
 						@change="setLampiran($event, 'lampiran3')"
+						label="F-1.01 form biodata keluarga"
 					/>
 					<error-message name="lampiran3" class="error" />
 					<div class="form_file_wrap">
@@ -65,6 +68,7 @@
 						type="file"
 						name="lampiran4"
 						@change="setLampiran($event, 'lampiran4')"
+						label="F-1.01 form biodata keluarga"
 					/>
 					<error-message name="lampiran4" class="error" />
 				</div>

@@ -5,7 +5,6 @@ export default {
     state: {
         user: {},
         isLoggedIn: false,
-        emailEdit: false,
         token: null,
     },
     mutations: {
@@ -26,8 +25,6 @@ export default {
                 ...state.user,
                 [key]: value,
             };
-
-            if (key == "email") state.emailEdit = false;
         },
     },
     getters: {
@@ -36,9 +33,6 @@ export default {
         },
         isLoggedIn(state) {
             return state.isLoggedIn;
-        },
-        emailEdit(state) {
-            return state.emailEdit;
         },
         avatar(state) {
             return state.user.avatar ?
@@ -91,7 +85,7 @@ export default {
         },
         async updateUser({ commit }, data) {
             let res = await axios.patch("/user", data);
-            commit("editUser", { key: "email", value: res.data.data });
+            commit("editUser", { key: "username", value: res.data.data });
         },
         async updatePassword({ commit }, data) {
             let res = await axios.put("/user/password", data);

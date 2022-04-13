@@ -125,12 +125,12 @@ class PengajuanController extends Controller
                 $this->upload($request, 'lampiran4', $pengajuan);
                 $this->upload($request, 'lampiran5', $pengajuan);
         
-                // $emails = DB::table('users')
-                //             ->where('role', 'Petugas')
-                //             ->select('email')
-                //             ->get();
+                $emails = DB::table('users')
+                            ->where('role', 'Petugas')
+                            ->select('email')
+                            ->get();
         
-                // Mail::to($emails)->send(new PostMail());
+                Mail::to($emails)->send(new PostMail());
                 broadcast(new RefreshData());
                 
                 return response()->json([
@@ -179,7 +179,7 @@ class PengajuanController extends Controller
             ->where('masyarakat.id_masyarakat', $data->id_masyarakat)
             ->select('users.id_user')
             ->first();
-            // var_dump($id_user);
+
             broadcast(new PengajuanUpdate($data, $userData->id_user))->toOthers();
 
             return response()->json([
@@ -241,8 +241,9 @@ class PengajuanController extends Controller
         $start = TanggalID("j M Y", $start);
         $end = TanggalID("j M Y", $end);
 
-
+        // return view('laporan', compact('kecamatan' ,'start', 'end', 'total', 'pelapor', 'pemohon', 'cetakKtp', 'rekamKtp', 'kia', 'akta'));
         $pdf = PDF::loadView('laporan', compact('kecamatan' ,'start', 'end', 'total', 'pelapor', 'pemohon', 'cetakKtp', 'rekamKtp', 'kia', 'akta'));
-        return $pdf->stream('Laporan Sapu Jagad Bulan'. $start.' - '. $end);
+        // return $pdf->stream('Laporan Sapu Jagad Bulan'. $start.' - '. $end);
+        return $pdf->output();
     }
 }

@@ -26,6 +26,7 @@
 						type="file"
 						name="lampiran1"
 						@change="setLampiran($event, 'lampiran1')"
+						label="Akta kelahiran"
 					/>
 					<error-message name="lampiran1" class="error" />
 				</div>
@@ -35,6 +36,7 @@
 						type="file"
 						name="lampiran2"
 						@change="setLampiran($event, 'lampiran2')"
+						label="Pas photo"
 					/>
 					<error-message name="lampiran2" class="error" />
 				</div>

@@ -41,6 +41,7 @@ Route::group(['middleware'=>['auth:api']],function(){
     Route::get('/dashboard/jadwal', [DashboardController::class, 'jadwal']);
     Route::get('/dashboard/tabel-kecamatan', [DashboardController::class, 'tabelKecamatan']);
     Route::get('/pengajuan', [PengajuanController::class, 'pengajuan']);
+    Route::get('/laporan/{daterange}', [PengajuanController::class, 'laporan']);
     Route::get('/pengajuan/{id}', [PengajuanController::class, 'pengajuanDetail']);
     Route::patch('/pengajuan/{id}', [PengajuanController::class, 'update']);
     Route::get('/user', [AdministratorController::class, 'index']);

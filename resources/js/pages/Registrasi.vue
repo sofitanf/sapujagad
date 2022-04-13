@@ -13,6 +13,7 @@
 					name="nik"
 					type="text"
 					class="w-full mb-3 p-inputtext"
+					label="NIK"
 				/>
 				<error-message name="nik" class="error mb-3" />
 				<div v-if="validation.nik" class="error">
@@ -24,18 +25,22 @@
 					name="nama"
 					type="text"
 					class="w-full mb-3 p-inputtext"
+					label="Nama"
 				/>
 				<error-message name="nama" class="error mb-3" />
-				<label for="email" class="block text-900 font-medium mb-2">Email</label>
+				<label for="username" class="block text-900 font-medium mb-2"
+					>Username</label
+				>
 				<vee-field
-					id="email"
-					name="email"
+					id="username"
+					name="username"
 					type="text"
 					class="w-full mb-3 p-inputtext"
+					label="Username"
 				/>
-				<error-message name="email" class="error mb-3" />
-				<div v-if="validation.email" class="error">
-					{{ validation.email[0] }}
+				<error-message name="username" class="error mb-3" />
+				<div v-if="validation.username" class="error">
+					{{ validation.username[0] }}
 				</div>
 				<label for="telepon" class="block text-900 font-medium mb-2"
 					>Nomor WA Aktif</label
@@ -45,6 +50,7 @@
 					name="telepon"
 					type="text"
 					class="w-full mb-3 p-inputtext"
+					label="Nomor hp"
 				/>
 				<error-message name="telepon" class="error mb-3" />
 				<div v-if="validation.telepon" class="error">
@@ -58,6 +64,7 @@
 					name="password"
 					type="password"
 					class="w-full mb-3 p-inputtext"
+					label="Kata sandi"
 				/>
 				<error-message name="password" class="error mb-3" />
 				<label
@@ -70,9 +77,9 @@
 					name="confirm_password"
 					type="password"
 					class="w-full mb-3 p-inputtext"
+					label="Konfirmasi kata sandi"
 				/>
 				<error-message name="confirm_password" class="error mb-3" />
-				<vee-field hidden name="role" value="Masyarakat" />
 				<Button
 					type="submit"
 					label="Daftar"
@@ -89,13 +96,13 @@ export default {
 		return {
 			schema: {
 				nik: {
-					nik: true,
-					nik_number: true,
+					required: true,
+					numeric: true,
 					nik_format: /^3326(0[1-9]|1[1-9])\d{9}/,
 				},
-				nama: { nama: true, regex: /^[A-Za-z .']+$/ },
-				telepon: { no_wa: true, no_wa_number: true, phone: /^08\d{9,11}$/ },
-				email: "required|email",
+				nama: { required: true, regex: /^[A-Za-z .']+$/ },
+				telepon: { required: true, numeric: true, phone: /^08\d{9,11}$/ },
+				username: "required|min:6",
 				password: "required|min:6",
 				confirm_password: "required|min:6|confirmed:@password",
 			},

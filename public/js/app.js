@@ -26590,20 +26590,11 @@ __webpack_require__.r(__webpack_exports__);
     app.component("ErrorMessage", vee_validate__WEBPACK_IMPORTED_MODULE_0__.ErrorMessage);
     (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("regex", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.regex);
     (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("required", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.required);
-    (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("nik", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.required);
-    (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("nik_number", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.numeric);
-    (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("nama", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.required);
-    (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("no_wa", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.required);
-    (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("no_wa_number", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.numeric);
-    (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("hubungan", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.required);
-    (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("file", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.required);
-    (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("nik_min", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.min);
-    (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("nik_max", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.max);
     (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("numeric", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.numeric);
-    (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("nama_alpha", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.alpha_spaces);
     (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("image", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.image);
     (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("size", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.size);
     (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("email", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.email);
+    (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("min", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.min);
     (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("confirmed", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.confirmed);
     (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("phone", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.regex);
     (0,vee_validate__WEBPACK_IMPORTED_MODULE_0__.defineRule)("nik_format", _vee_validate_rules__WEBPACK_IMPORTED_MODULE_1__.regex);
@@ -26611,27 +26602,17 @@ __webpack_require__.r(__webpack_exports__);
       generateMessage: function generateMessage(ctx) {
         var messages = {
           regex: "Nama tidak valid",
-          nik: "NIK harus diisi",
-          nik_number: "NIK harus berupa angka",
-          nama: "Nama harus diisi",
-          no_wa: "Nomor WA harus diisi",
-          no_wa_number: "Nomor WA harus berupa angka",
-          hubungan: "Hubungan terhadap pemohon harus diisi",
-          file: "File harus diisi",
           required: "".concat(ctx.field, " harus diisi"),
           numeric: "".concat(ctx.field, " harus berupa angka"),
-          nama_alpha: "Nama harus berupa huruf",
           min: "".concat(ctx.field, " terlalu pendek"),
-          max: "".concat(ctx.field, " terlalu panjang"),
           email: "".concat(ctx.field, " tidak valid"),
           confirmed: "".concat(ctx.field, " tidak valid"),
           image: "File berupa img, jpg dan png",
           size: "Ukuran file maksimal 2MB",
           nik_format: "NIK tidak dalam cakupan warga Kabupaten Pekalongan",
-          phone: "Nomor WA tidak valid",
-          nik_digit: "NIK harus berjumlah 16 angka"
+          phone: "Nomor WA tidak valid"
         };
-        var message = messages[ctx.rule.name] ? messages[ctx.rule.name] : "".concat(ctx.field, " adalah kesalahan");
+        var message = messages[ctx.rule.name] ? messages[ctx.rule.name] : "".concat(ctx.field, " ada kesalahan");
         return message;
       },
       validateOnBlur: true,
@@ -26923,7 +26904,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   state: {
     user: {},
     isLoggedIn: false,
-    emailEdit: false,
     token: null
   },
   mutations: {
@@ -26942,7 +26922,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var key = data.key,
           value = data.value;
       state.user = _objectSpread(_objectSpread({}, state.user), {}, _defineProperty({}, key, value));
-      if (key == "email") state.emailEdit = false;
     }
   },
   getters: {
@@ -26951,9 +26930,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     isLoggedIn: function isLoggedIn(state) {
       return state.isLoggedIn;
-    },
-    emailEdit: function emailEdit(state) {
-      return state.emailEdit;
     },
     avatar: function avatar(state) {
       return state.user.avatar ? "/storage/avatar/".concat(state.user.avatar) : "/storage/avatar/avatar.png";
@@ -27067,7 +27043,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 3:
                 res = _context4.sent;
                 commit("editUser", {
-                  key: "email",
+                  key: "username",
                   value: res.data.data
                 });
 
@@ -27596,10 +27572,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
                 res = _context6.sent;
-                debugger;
                 commit("addUser", res.data.data);
 
-              case 6:
+              case 5:
               case "end":
                 return _context6.stop();
             }

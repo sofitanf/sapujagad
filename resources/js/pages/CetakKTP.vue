@@ -27,6 +27,7 @@
 						type="file"
 						name="lampiran1"
 						@change="setLampiran($event, 'lampiran1')"
+						label="Kartu keluarga"
 					/>
 					<error-message name="lampiran1" class="error" />
 				</div>
@@ -38,6 +39,7 @@
 						type="file"
 						name="lampiran2"
 						@change="setLampiran($event, 'lampiran2')"
+						label="Surat kehilangan dari kepolisian"
 					/>
 					<error-message name="lampiran2" class="error" />
 				</div>
@@ -49,6 +51,7 @@
 						type="file"
 						name="lampiran3"
 						@change="setLampiran($event, 'lampiran3')"
+						label="KTP lama"
 					/>
 					<error-message name="lampiran3" class="error" />
 				</div>

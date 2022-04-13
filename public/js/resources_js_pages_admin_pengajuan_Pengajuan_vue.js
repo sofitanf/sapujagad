@@ -53,13 +53,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }),
   created: function created() {
-    var _this = this;
-
     this.getPengajuan();
     this.initFilters();
-    Echo.channel("refresh").listen("RefreshData", function () {
-      return _this.getPengajuan();
-    });
   }
 });
 
@@ -95,9 +90,22 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     cetaklaporan: function cetaklaporan() {
+      var _this = this;
+
       this.range.start = moment__WEBPACK_IMPORTED_MODULE_0___default()(this.range.start).format("YYYY-MM-DD");
       this.range.end = moment__WEBPACK_IMPORTED_MODULE_0___default()(this.range.end).format("YYYY-MM-DD");
-      window.open("/laporan/" + this.range.start + "+" + this.range.end, "_blank");
+      axios({
+        url: "/laporan/".concat(this.range.start, "+").concat(this.range.end),
+        method: "GET",
+        responseType: "blob"
+      }).then(function (response) {
+        var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+        var fileLink = document.createElement("a");
+        fileLink.href = fileURL;
+        fileLink.setAttribute("download", "Laporan Sapu Jagad ".concat(_this.$d(new Date(_this.range.start), "medium", "id-ID"), " - ").concat(_this.$d(new Date(_this.range.end), "medium", "id-ID"), ".pdf"));
+        document.body.appendChild(fileLink);
+        fileLink.click();
+      });
     }
   },
   created: function created() {
